@@ -13,6 +13,7 @@ namespace fiefdouglou
         private string connString = "";
         private bool isOpen = false;
 
+
         public void getConnectionString()
         {
             connString = ConfigurationManager.ConnectionStrings["fiefdouglouConnectionString"].ToString();

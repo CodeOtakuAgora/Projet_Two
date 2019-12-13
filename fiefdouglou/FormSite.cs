@@ -75,7 +75,6 @@ namespace fiefdouglou
 
                 while (drSQLInterv.Read())
                 {
-                    MessageBox.Show("hello");
                     listViewStephane.Items.Add(drSQLInterv["materiel_concerne"].ToString() + " / " + drSQLInterv["commentaire"].ToString() + " / " + drSQLInterv["date_intervention"].ToString() + " / " + drSQLInterv["valide"].ToString());
                     listViewStephane.Columns[i].Width = 1000;
                     if ((bool)drSQLInterv["valide"] == true)

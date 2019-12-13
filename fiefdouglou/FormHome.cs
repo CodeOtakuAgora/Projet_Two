@@ -44,5 +44,10 @@ namespace fiefdouglou
                 formSos.Show();
             }
         }
+
+        private void menuToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }
