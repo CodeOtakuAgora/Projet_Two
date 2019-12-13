@@ -54,6 +54,7 @@ namespace fiefdouglou
             connect.getConnectionString();
             SqlDataReader drSQLSite, drSQLInterv = null;
             string strSQLSite, strSQLInterv = "";
+            int i = 0;
 
             try
             {
@@ -71,26 +72,22 @@ namespace fiefdouglou
                     textBoxAdresseSite.Text = drSQLSite["adresse"].ToString() + " / " + drSQLSite["code_postal"].ToString() + " / " + drSQLSite["ville"].ToString();
                 }
 
-                
-                    while (drSQLInterv.Read())
+
+                while (drSQLInterv.Read())
+                {
+                    MessageBox.Show("hello");
+                    listViewStephane.Items.Add(drSQLInterv["materiel_concerne"].ToString() + " / " + drSQLInterv["commentaire"].ToString() + " / " + drSQLInterv["date_intervention"].ToString() + " / " + drSQLInterv["valide"].ToString());
+                    listViewStephane.Columns[i].Width = 1000;
+                    if ((bool)drSQLInterv["valide"] == true)
                     {
-                        listViewMatDate.Items.Add(drSQLInterv["materiel_concerne"].ToString() + " / " + drSQLInterv["commentaire"].ToString() + " / " + drSQLInterv["date_intervention"].ToString() + " / " + drSQLInterv["valide"].ToString() + "\n");
-
-                        for (int i = 0; i < listViewMatDate.Items.Count; i++)
-                        {
-                            if ((bool)drSQLInterv["valide"] == true)
-                            {
-                                listViewMatDate.Items[i].BackColor = Color.Green;
-                            }
-                            else
-                            {
-                                listViewMatDate.Items[i].BackColor = Color.Red;
-                            }
-                        }
+                        listViewStephane.Items[i].BackColor = Color.Green;
                     }
-
-                MessageBox.Show(listViewMatDate.Items.Count.ToString());
-
+                    else
+                    {
+                        listViewStephane.Items[i].BackColor = Color.Red;
+                    }
+                    i++;
+                }            
             }
             catch (SqlException excep)
             {

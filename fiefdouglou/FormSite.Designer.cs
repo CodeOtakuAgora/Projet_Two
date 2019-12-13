@@ -47,7 +47,10 @@
             this.ButtonNewIntervention = new System.Windows.Forms.Button();
             this.buttonValiderSite = new System.Windows.Forms.Button();
             this.buttonRetourSite = new System.Windows.Forms.Button();
-            this.listViewMatDate = new System.Windows.Forms.ListView();
+            this.listViewStephane = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.fiefdouglouDataSet1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -205,21 +208,27 @@
             this.buttonRetourSite.UseVisualStyleBackColor = true;
             this.buttonRetourSite.Click += new System.EventHandler(this.buttonRetourSite_Click);
             // 
-            // listViewMatDate
+            // listViewStephane
             // 
-            this.listViewMatDate.HideSelection = false;
-            this.listViewMatDate.Location = new System.Drawing.Point(202, 144);
-            this.listViewMatDate.Name = "listViewMatDate";
-            this.listViewMatDate.Size = new System.Drawing.Size(395, 183);
-            this.listViewMatDate.TabIndex = 21;
-            this.listViewMatDate.UseCompatibleStateImageBehavior = false;
+            this.listViewStephane.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listViewStephane.HideSelection = false;
+            this.listViewStephane.LabelWrap = false;
+            this.listViewStephane.Location = new System.Drawing.Point(138, 145);
+            this.listViewStephane.Name = "listViewStephane";
+            this.listViewStephane.Size = new System.Drawing.Size(568, 183);
+            this.listViewStephane.TabIndex = 22;
+            this.listViewStephane.UseCompatibleStateImageBehavior = false;
+            this.listViewStephane.View = System.Windows.Forms.View.List;
             // 
             // FormSite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listViewMatDate);
+            this.Controls.Add(this.listViewStephane);
             this.Controls.Add(this.buttonRetourSite);
             this.Controls.Add(this.buttonValiderSite);
             this.Controls.Add(this.ButtonNewIntervention);
@@ -261,6 +270,9 @@
         private System.Windows.Forms.Button ButtonNewIntervention;
         private System.Windows.Forms.Button buttonValiderSite;
         private System.Windows.Forms.Button buttonRetourSite;
-        private System.Windows.Forms.ListView listViewMatDate;
+        private System.Windows.Forms.ListView listViewStephane;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }

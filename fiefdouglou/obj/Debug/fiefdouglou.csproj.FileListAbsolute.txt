@@ -10,8 +10,10 @@ D:\PPE2_repo_git\ppe2\fiefdouglou\obj\Debug\fiefdouglou.pdb
 D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\bin\Debug\fiefdouglou.exe.config
 D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\bin\Debug\fiefdouglou.exe
 D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\bin\Debug\fiefdouglou.pdb
+D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\bin\Debug\EntityFramework.dll
 D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\bin\Debug\EntityFramework.xml
 D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\bin\Debug\fr\EntityFramework.resources.dll
+D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\obj\Debug\fiefdouglou.csprojAssemblyReference.cache
 D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\obj\Debug\fiefdouglou.FormHome.resources
 D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\obj\Debug\fiefdouglou.FormIntervention.resources
 D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\obj\Debug\fiefdouglou.FormLogin.resources
@@ -23,5 +25,3 @@ D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\obj\Debug\fiefdouglou.csproj.Gener
 D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\obj\Debug\fiefdouglou.csproj.CopyComplete
 D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\obj\Debug\fiefdouglou.exe
 D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\obj\Debug\fiefdouglou.pdb
-D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\obj\Debug\fiefdouglou.csprojAssemblyReference.cache
-D:\c#-repo\source\ppe\fiefdouglou\fiefdouglou\bin\Debug\EntityFramework.dll
