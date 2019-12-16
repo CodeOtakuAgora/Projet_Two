@@ -28,6 +28,16 @@ namespace fiefdouglou
             return drSQL;
         }
 
+        public int executeCountQuery(string sqlQuery)
+        {
+            strSQL = sqlQuery;
+            cnSQL = new SqlConnection(connString);
+            cnSQL.Open();
+            cmSQL = new SqlCommand(strSQL, cnSQL);
+            int res = (int)cmSQL.ExecuteScalar();
+            return res;
+        }
+
         public void executeQuery(string sqlQuery)
         {
             strSQL = sqlQuery;

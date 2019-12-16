@@ -24,31 +24,40 @@ namespace fiefdouglou
 
             try
             {
-                string strSQLPassword = "SELECT * FROM client WHERE login = '" + textBoxLogin.Text.Trim() + "'";
-                string inputPassword = "";
-                SqlDataReader drSQLPassword = connect.openConnection(strSQLPassword);
-                while (drSQLPassword.Read())
-                {
-                    inputPassword = drSQLPassword["password"].ToString();
-                }
-                bool matches = BCrypt.CheckPassword(textBoxLogin.Text.Trim(), inputPassword);
+                string countUser = string.Format("SELECT COUNT(*) FROM client WHERE login = '{0}' AND password = '{1}'",textBoxLogin.Text.Trim(), textBoxPassword.Text.Trim());
+                int res = connect.executeCountQuery(countUser);
 
-                if (matches == true)
-                {
-                    MessageBox.Show("connection réussi", "Log de Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
-                    Connection myConnect = new Connection();
-                    bool isFormOpen = myConnect.isAlreadyOpen(typeof(FormHome));
-                    if (isFormOpen == false)
-                    {
-                        FormHome formHome = new FormHome();
-                        formHome.StartPosition = FormStartPosition.CenterScreen;
-                        formHome.Show();
-                    }
-                }
-                else
+                if (res == 0)
                 {
                     MessageBox.Show("couple login / password invalide", "Log d'Érreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (res == 1)
+                {
+                    string strSQLPassword = "SELECT * FROM client WHERE login = '" + textBoxLogin.Text.Trim() + "'";
+                    string inputPassword = "";
+                    SqlDataReader drSQLPassword = connect.openConnection(strSQLPassword);
+                    while (drSQLPassword.Read())
+                    {
+                        inputPassword = drSQLPassword["password"].ToString();
+                    }
+                    bool matches = BCrypt.CheckPassword(textBoxLogin.Text.Trim(), inputPassword);
+                    MessageBox.Show(matches.ToString() + " / " + textBoxLogin.Text.Trim() + " / " + inputPassword);
+
+                    if (matches == true)
+                    {
+                        MessageBox.Show("connection réussi", "Log de Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Hide();
+                        Connection myConnect = new Connection();
+                        bool isFormOpen = myConnect.isAlreadyOpen(typeof(FormHome));
+                        if (isFormOpen == false)
+                        {
+                            FormHome formHome = new FormHome();
+                            formHome.StartPosition = FormStartPosition.CenterScreen;
+                            formHome.Show();
+                        }
+                    }
                 }
             }
 
