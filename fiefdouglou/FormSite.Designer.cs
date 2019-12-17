@@ -47,7 +47,7 @@
             this.ButtonNewIntervention = new System.Windows.Forms.Button();
             this.buttonValiderSite = new System.Windows.Forms.Button();
             this.buttonRetourSite = new System.Windows.Forms.Button();
-            this.listViewStephane = new System.Windows.Forms.ListView();
+            this.listViewInterv = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -170,7 +170,7 @@
             // 
             // ButtonIntervention
             // 
-            this.ButtonIntervention.Location = new System.Drawing.Point(56, 371);
+            this.ButtonIntervention.Location = new System.Drawing.Point(59, 354);
             this.ButtonIntervention.Name = "ButtonIntervention";
             this.ButtonIntervention.Size = new System.Drawing.Size(95, 67);
             this.ButtonIntervention.TabIndex = 3;
@@ -180,7 +180,7 @@
             // 
             // ButtonNewIntervention
             // 
-            this.ButtonNewIntervention.Location = new System.Drawing.Point(263, 371);
+            this.ButtonNewIntervention.Location = new System.Drawing.Point(263, 356);
             this.ButtonNewIntervention.Name = "ButtonNewIntervention";
             this.ButtonNewIntervention.Size = new System.Drawing.Size(95, 67);
             this.ButtonNewIntervention.TabIndex = 4;
@@ -208,27 +208,27 @@
             this.buttonRetourSite.UseVisualStyleBackColor = true;
             this.buttonRetourSite.Click += new System.EventHandler(this.buttonRetourSite_Click);
             // 
-            // listViewStephane
+            // listViewInterv
             // 
-            this.listViewStephane.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewInterv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            this.listViewStephane.HideSelection = false;
-            this.listViewStephane.LabelWrap = false;
-            this.listViewStephane.Location = new System.Drawing.Point(138, 145);
-            this.listViewStephane.Name = "listViewStephane";
-            this.listViewStephane.Size = new System.Drawing.Size(568, 183);
-            this.listViewStephane.TabIndex = 22;
-            this.listViewStephane.UseCompatibleStateImageBehavior = false;
-            this.listViewStephane.View = System.Windows.Forms.View.List;
+            this.listViewInterv.HideSelection = false;
+            this.listViewInterv.LabelWrap = false;
+            this.listViewInterv.Location = new System.Drawing.Point(138, 145);
+            this.listViewInterv.Name = "listViewInterv";
+            this.listViewInterv.Size = new System.Drawing.Size(568, 183);
+            this.listViewInterv.TabIndex = 2;
+            this.listViewInterv.UseCompatibleStateImageBehavior = false;
+            this.listViewInterv.View = System.Windows.Forms.View.List;
             // 
             // FormSite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listViewStephane);
+            this.Controls.Add(this.listViewInterv);
             this.Controls.Add(this.buttonRetourSite);
             this.Controls.Add(this.buttonValiderSite);
             this.Controls.Add(this.ButtonNewIntervention);
@@ -270,7 +270,7 @@
         private System.Windows.Forms.Button ButtonNewIntervention;
         private System.Windows.Forms.Button buttonValiderSite;
         private System.Windows.Forms.Button buttonRetourSite;
-        private System.Windows.Forms.ListView listViewStephane;
+        private System.Windows.Forms.ListView listViewInterv;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;

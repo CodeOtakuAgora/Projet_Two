@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Drawing;
 
-
 namespace fiefdouglou
 {
     public partial class FormSite : Form
@@ -75,15 +74,15 @@ namespace fiefdouglou
 
                 while (drSQLInterv.Read())
                 {
-                    listViewStephane.Items.Add(drSQLInterv["materiel_concerne"].ToString() + " / " + drSQLInterv["commentaire"].ToString() + " / " + drSQLInterv["date_intervention"].ToString() + " / " + drSQLInterv["valide"].ToString());
-                    listViewStephane.Columns[i].Width = 1000;
+                    listViewInterv.Items.Add(drSQLInterv["id_intervention"].ToString() + " / " + drSQLInterv["materiel_concerne"].ToString() + " / " + drSQLInterv["commentaire"].ToString() + " / " + drSQLInterv["date_intervention"].ToString() + " / " + drSQLInterv["valide"].ToString());
+                    listViewInterv.Columns[i].Width = 1000;
                     if ((bool)drSQLInterv["valide"] == true)
                     {
-                        listViewStephane.Items[i].BackColor = Color.Green;
+                        listViewInterv.Items[i].BackColor = Color.Green;
                     }
                     else
                     {
-                        listViewStephane.Items[i].BackColor = Color.Red;
+                        listViewInterv.Items[i].BackColor = Color.Red;
                     }
                     i++;
                 }            
@@ -108,11 +107,30 @@ namespace fiefdouglou
         {
             connect.getConnectionString();
             string strSQLInterv;
+            bool validate = false;
 
             try
             {
-                strSQLInterv = "UPDATE intervention SET valide = 1 WHERE id_intervention = 3";
-                connect.executeQuery(strSQLInterv);
+                string text = listViewInterv.SelectedItems[0].Text;
+                if (text == null)
+                {
+                    MessageBox.Show("Veuillez selectionner une interventions", "Log d'Érreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (text.Contains("False"))
+                {
+                    DialogResult dr = MessageBox.Show("Voulez vous vraiment valider cette intervention ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dr == DialogResult.Yes)
+                    {
+                        strSQLInterv = string.Format("UPDATE intervention SET valide = 1 WHERE id_intervention = {0}", text[0]);
+                        connect.executeQuery(strSQLInterv);
+                        validate = true;
+                    }
+                }    
+                else if (text.Contains("True"))
+                {
+                    MessageBox.Show("Cette intervention à déjà été validée", "Log d'Infos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             catch (SqlException excep)
@@ -127,6 +145,18 @@ namespace fiefdouglou
             finally
             {
                 connect.closeConnection();
+                if (validate == true)
+                {
+                    this.Close();
+                    bool isFormOpen = connect.isAlreadyOpen(typeof(FormSite));
+                    if (isFormOpen == false)
+                    {
+                        FormSite formSite = new FormSite();
+                        formSite.StartPosition = FormStartPosition.CenterScreen;
+                        formSite.Show();
+                    }
+                }
+                
             }
         }
     }
