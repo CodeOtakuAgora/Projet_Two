@@ -24,7 +24,7 @@ namespace fiefdouglou
 
             try
             {
-                string countUser = string.Format("SELECT COUNT(*) FROM client WHERE login = '{0}' AND password = '{1}'",textBoxLogin.Text.Trim(), textBoxPassword.Text.Trim());
+                string countUser = string.Format("SELECT COUNT(*) FROM client WHERE login = '{0}'", textBoxLogin.Text.Trim());
                 int res = connect.executeCountQuery(countUser);
 
                 if (res == 0)
@@ -42,8 +42,7 @@ namespace fiefdouglou
                     {
                         inputPassword = drSQLPassword["password"].ToString();
                     }
-                    bool matches = BCrypt.CheckPassword(textBoxLogin.Text.Trim(), inputPassword);
-                    MessageBox.Show(matches.ToString() + " / " + textBoxLogin.Text.Trim() + " / " + inputPassword);
+                    bool matches = BCrypt.CheckPassword(textBoxPassword.Text.Trim(), inputPassword);
 
                     if (matches == true)
                     {
@@ -57,6 +56,10 @@ namespace fiefdouglou
                             formHome.StartPosition = FormStartPosition.CenterScreen;
                             formHome.Show();
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("couple login / password invalide", "Log d'Érreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
