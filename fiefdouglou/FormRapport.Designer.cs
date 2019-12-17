@@ -144,7 +144,7 @@
             // buttonPrint
             // 
             this.buttonPrint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPrint.BackgroundImage")));
-            this.buttonPrint.Location = new System.Drawing.Point(599, 375);
+            this.buttonPrint.Location = new System.Drawing.Point(599, 357);
             this.buttonPrint.Name = "buttonPrint";
             this.buttonPrint.Size = new System.Drawing.Size(77, 63);
             this.buttonPrint.TabIndex = 5;
@@ -153,7 +153,7 @@
             // buttonCancel
             // 
             this.buttonCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonCancel.BackgroundImage")));
-            this.buttonCancel.Location = new System.Drawing.Point(694, 375);
+            this.buttonCancel.Location = new System.Drawing.Point(694, 357);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(73, 63);
             this.buttonCancel.TabIndex = 6;

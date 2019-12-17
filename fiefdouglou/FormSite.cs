@@ -111,7 +111,6 @@ namespace fiefdouglou
             try
             {                 
                 text = listViewInterv.SelectedItems[0].Text;
-                MessageBox.Show(text);
                 if (text.Contains("False"))
                 {
                     DialogResult dr = MessageBox.Show("Voulez vous vraiment valider cette intervention ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);

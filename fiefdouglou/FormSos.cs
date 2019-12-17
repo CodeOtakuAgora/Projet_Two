@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace fiefdouglou
 {
@@ -32,6 +34,35 @@ namespace fiefdouglou
                 FormRapport formRapport = new FormRapport();
                 formRapport.StartPosition = FormStartPosition.CenterScreen;
                 formRapport.Show();
+            }
+        }
+
+        private void buttonValider_Click(object sender, System.EventArgs e)
+        {
+            Connection connection = new Connection();
+            connection.getConnectionString();
+            string strSQLInterv;
+
+            try
+            {
+                DialogResult dr = MessageBox.Show("Voulez vous vraiment ajouter une intervention ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
+                {
+                    strSQLInterv = string.Format("INSERT INTO intervention(id_technicien, materiel_concerne, commentaire, date_intervention, valide) VALUES ({0}, '{1}', '{2}', '{3}', 0)", textBoxTech.Text, textBoxMat.Text, richTextBoxCom.Text, dateTimePickerInterv.Value);
+                    connection.executeQuery(strSQLInterv);
+                }
+            }
+            catch (SqlException excep)
+            {
+                MessageBox.Show(excep.Message, "Érreur SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception excep)
+            {
+                MessageBox.Show(excep.Message, "Érreur Générale", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.closeConnection();
             }
         }
     }

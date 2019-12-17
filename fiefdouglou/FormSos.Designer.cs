@@ -42,12 +42,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.dateTimePickerInterv = new System.Windows.Forms.DateTimePicker();
+            this.richTextBoxCom = new System.Windows.Forms.RichTextBox();
             this.back = new System.Windows.Forms.Button();
             this.confirm = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.buttonValider = new System.Windows.Forms.Button();
+            this.textBoxMat = new System.Windows.Forms.TextBox();
+            this.labelMat = new System.Windows.Forms.Label();
+            this.labelTech = new System.Windows.Forms.Label();
+            this.textBoxTech = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -162,20 +167,20 @@
             this.label4.TabIndex = 20;
             this.label4.Text = "Liste matériels :";
             // 
-            // dateTimePicker1
+            // dateTimePickerInterv
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(118, 174);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 2;
+            this.dateTimePickerInterv.Location = new System.Drawing.Point(118, 174);
+            this.dateTimePickerInterv.Name = "dateTimePickerInterv";
+            this.dateTimePickerInterv.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePickerInterv.TabIndex = 2;
             // 
-            // richTextBox1
+            // richTextBoxCom
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(118, 234);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(226, 191);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
+            this.richTextBoxCom.Location = new System.Drawing.Point(118, 234);
+            this.richTextBoxCom.Name = "richTextBoxCom";
+            this.richTextBoxCom.Size = new System.Drawing.Size(226, 191);
+            this.richTextBoxCom.TabIndex = 3;
+            this.richTextBoxCom.Text = "";
             // 
             // back
             // 
@@ -213,17 +218,64 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 0;
             // 
+            // buttonValider
+            // 
+            this.buttonValider.Location = new System.Drawing.Point(653, 283);
+            this.buttonValider.Name = "buttonValider";
+            this.buttonValider.Size = new System.Drawing.Size(86, 68);
+            this.buttonValider.TabIndex = 21;
+            this.buttonValider.Text = "Valider";
+            this.buttonValider.UseVisualStyleBackColor = true;
+            this.buttonValider.Click += new System.EventHandler(this.buttonValider_Click);
+            // 
+            // textBoxMat
+            // 
+            this.textBoxMat.Location = new System.Drawing.Point(118, 135);
+            this.textBoxMat.Name = "textBoxMat";
+            this.textBoxMat.Size = new System.Drawing.Size(200, 22);
+            this.textBoxMat.TabIndex = 22;
+            // 
+            // labelMat
+            // 
+            this.labelMat.AutoSize = true;
+            this.labelMat.Location = new System.Drawing.Point(46, 138);
+            this.labelMat.Name = "labelMat";
+            this.labelMat.Size = new System.Drawing.Size(66, 17);
+            this.labelMat.TabIndex = 23;
+            this.labelMat.Text = "Materiel :";
+            // 
+            // labelTech
+            // 
+            this.labelTech.AutoSize = true;
+            this.labelTech.Location = new System.Drawing.Point(27, 101);
+            this.labelTech.Name = "labelTech";
+            this.labelTech.Size = new System.Drawing.Size(85, 17);
+            this.labelTech.TabIndex = 25;
+            this.labelTech.Text = "Technicien :";
+            // 
+            // textBoxTech
+            // 
+            this.textBoxTech.Location = new System.Drawing.Point(118, 98);
+            this.textBoxTech.Name = "textBoxTech";
+            this.textBoxTech.Size = new System.Drawing.Size(200, 22);
+            this.textBoxTech.TabIndex = 24;
+            // 
             // FormSos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelTech);
+            this.Controls.Add(this.textBoxTech);
+            this.Controls.Add(this.labelMat);
+            this.Controls.Add(this.textBoxMat);
+            this.Controls.Add(this.buttonValider);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.confirm);
             this.Controls.Add(this.back);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.richTextBoxCom);
+            this.Controls.Add(this.dateTimePickerInterv);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -254,11 +306,16 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerInterv;
+        private System.Windows.Forms.RichTextBox richTextBoxCom;
         private System.Windows.Forms.Button back;
         private System.Windows.Forms.Button confirm;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button buttonValider;
+        private System.Windows.Forms.TextBox textBoxMat;
+        private System.Windows.Forms.Label labelMat;
+        private System.Windows.Forms.Label labelTech;
+        private System.Windows.Forms.TextBox textBoxTech;
     }
 }
