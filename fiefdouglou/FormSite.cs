@@ -8,7 +8,6 @@ namespace fiefdouglou
     public partial class FormSite : Form
     {
         Connection connect = new Connection();
-
         public FormSite()
         {
             InitializeComponent();
@@ -106,17 +105,13 @@ namespace fiefdouglou
         private void buttonValiderSite_Click(object sender, EventArgs e)
         {
             connect.getConnectionString();
-            string strSQLInterv;
+            string strSQLInterv, text;
             bool validate = false;
 
             try
-            {
-                string text = listViewInterv.SelectedItems[0].Text;
-                if (text == null)
-                {
-                    MessageBox.Show("Veuillez selectionner une interventions", "Log d'Érreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+            {                 
+                text = listViewInterv.SelectedItems[0].Text;
+                MessageBox.Show(text);
                 if (text.Contains("False"))
                 {
                     DialogResult dr = MessageBox.Show("Voulez vous vraiment valider cette intervention ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -133,10 +128,14 @@ namespace fiefdouglou
                 }
             }
 
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Veuillez selectionner une intervention", "Érreur d'Argument", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             catch (SqlException excep)
             {
                 MessageBox.Show(excep.Message, "Érreur SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
             catch (Exception excep)
             {
@@ -157,6 +156,61 @@ namespace fiefdouglou
                     }
                 }
                 
+            }
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            connect.getConnectionString();
+            string strSQLInterv, strSQLCountInterv;
+            SqlDataReader drSQLInterv;
+            int i = 0;
+            int interv;
+            try
+            {
+                strSQLInterv = string.Format("SELECT * FROM intervention WHERE materiel_concerne LIKE '%{0}%'", textBoxSearch.Text);
+                drSQLInterv = connect.openConnection(strSQLInterv);
+
+                strSQLCountInterv = string.Format("SELECT COUNT(*) FROM intervention WHERE materiel_concerne LIKE '%{0}%'", textBoxSearch.Text);
+                interv = connect.executeCountQuery(strSQLCountInterv);
+
+                
+                listViewInterv.Items.Clear();
+
+
+                while (drSQLInterv.Read())
+                {
+                    listViewInterv.Items.Add(drSQLInterv["id_intervention"].ToString() + " / " + drSQLInterv["materiel_concerne"].ToString() + " / " + drSQLInterv["commentaire"].ToString() + " / " + drSQLInterv["date_intervention"].ToString() + " / " + drSQLInterv["valide"].ToString());
+                    listViewInterv.Columns[i].Width = 1000;
+
+                    if ((bool)drSQLInterv["valide"] == true)
+                    {
+                        listViewInterv.Items[i].BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        listViewInterv.Items[i].BackColor = Color.Red;
+                    }
+                    i++;
+                }
+
+                if (interv == 0)
+                {
+                    MessageBox.Show("Aucun Résultat", "Érreur de Recherche", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (SqlException excep)
+            {
+                MessageBox.Show(excep.Message, "Érreur SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            catch (Exception excep)
+            {
+                MessageBox.Show(excep.Message, "Érreur Générale", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connect.closeConnection();
             }
         }
     }

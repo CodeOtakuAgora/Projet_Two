@@ -46,7 +46,7 @@ namespace fiefdouglou
 
                     if (matches == true)
                     {
-                        MessageBox.Show("connection réussi", "Log de Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("connection Solved", "Log de Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
                         Connection myConnect = new Connection();
                         bool isFormOpen = myConnect.isAlreadyOpen(typeof(FormHome));

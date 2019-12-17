@@ -51,6 +51,8 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.fiefdouglouDataSet1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -138,7 +140,7 @@
             // labelAdresseSite
             // 
             this.labelAdresseSite.AutoSize = true;
-            this.labelAdresseSite.Location = new System.Drawing.Point(413, 85);
+            this.labelAdresseSite.Location = new System.Drawing.Point(413, 99);
             this.labelAdresseSite.Name = "labelAdresseSite";
             this.labelAdresseSite.Size = new System.Drawing.Size(60, 17);
             this.labelAdresseSite.TabIndex = 20;
@@ -147,7 +149,7 @@
             // labelNomSite
             // 
             this.labelNomSite.AutoSize = true;
-            this.labelNomSite.Location = new System.Drawing.Point(34, 85);
+            this.labelNomSite.Location = new System.Drawing.Point(34, 99);
             this.labelNomSite.Name = "labelNomSite";
             this.labelNomSite.Size = new System.Drawing.Size(83, 17);
             this.labelNomSite.TabIndex = 20;
@@ -155,7 +157,7 @@
             // 
             // textBoxAdresseSite
             // 
-            this.textBoxAdresseSite.Location = new System.Drawing.Point(512, 85);
+            this.textBoxAdresseSite.Location = new System.Drawing.Point(512, 99);
             this.textBoxAdresseSite.Name = "textBoxAdresseSite";
             this.textBoxAdresseSite.Size = new System.Drawing.Size(194, 22);
             this.textBoxAdresseSite.TabIndex = 1;
@@ -163,7 +165,7 @@
             // comboBoxSiteNom
             // 
             this.comboBoxSiteNom.FormattingEnabled = true;
-            this.comboBoxSiteNom.Location = new System.Drawing.Point(148, 83);
+            this.comboBoxSiteNom.Location = new System.Drawing.Point(148, 97);
             this.comboBoxSiteNom.Name = "comboBoxSiteNom";
             this.comboBoxSiteNom.Size = new System.Drawing.Size(121, 24);
             this.comboBoxSiteNom.TabIndex = 0;
@@ -216,18 +218,37 @@
             this.columnHeader3});
             this.listViewInterv.HideSelection = false;
             this.listViewInterv.LabelWrap = false;
-            this.listViewInterv.Location = new System.Drawing.Point(138, 145);
+            this.listViewInterv.Location = new System.Drawing.Point(138, 159);
             this.listViewInterv.Name = "listViewInterv";
             this.listViewInterv.Size = new System.Drawing.Size(568, 183);
             this.listViewInterv.TabIndex = 2;
             this.listViewInterv.UseCompatibleStateImageBehavior = false;
             this.listViewInterv.View = System.Windows.Forms.View.List;
             // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(404, 38);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(86, 35);
+            this.buttonSearch.TabIndex = 22;
+            this.buttonSearch.Text = "Search";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Location = new System.Drawing.Point(263, 44);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(118, 22);
+            this.textBoxSearch.TabIndex = 23;
+            // 
             // FormSite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBoxSearch);
+            this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.listViewInterv);
             this.Controls.Add(this.buttonRetourSite);
             this.Controls.Add(this.buttonValiderSite);
@@ -274,5 +295,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.TextBox textBoxSearch;
     }
 }
