@@ -219,12 +219,12 @@
             this.listViewInterv.HideSelection = false;
             this.listViewInterv.LabelWrap = false;
             this.listViewInterv.Location = new System.Drawing.Point(138, 159);
+            this.listViewInterv.Location = new System.Drawing.Point(138, 145);
             this.listViewInterv.Name = "listViewInterv";
             this.listViewInterv.Size = new System.Drawing.Size(568, 183);
             this.listViewInterv.TabIndex = 2;
             this.listViewInterv.UseCompatibleStateImageBehavior = false;
-            this.listViewInterv.View = System.Windows.Forms.View.List;
-            // 
+            this.listViewInterv.View = System.Windows.Forms.View.List;            // 
             // buttonSearch
             // 
             this.buttonSearch.Location = new System.Drawing.Point(404, 38);
