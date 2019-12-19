@@ -12,4 +12,6 @@ echo $test
 git add *
 read -p "veuillez rentrer un nom de commit : " -n 100 toto
 git commit -m "$toto"
-git push
+git push 2> test.log
+cat test.log | grep 'merge_requests' | cut -c11-
+rm test.log
