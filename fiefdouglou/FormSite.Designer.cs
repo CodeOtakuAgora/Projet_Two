@@ -218,19 +218,19 @@
             this.columnHeader3});
             this.listViewInterv.HideSelection = false;
             this.listViewInterv.LabelWrap = false;
-            this.listViewInterv.Location = new System.Drawing.Point(138, 159);
             this.listViewInterv.Location = new System.Drawing.Point(138, 145);
             this.listViewInterv.Name = "listViewInterv";
             this.listViewInterv.Size = new System.Drawing.Size(568, 183);
             this.listViewInterv.TabIndex = 2;
             this.listViewInterv.UseCompatibleStateImageBehavior = false;
-            this.listViewInterv.View = System.Windows.Forms.View.List;            // 
+            this.listViewInterv.View = System.Windows.Forms.View.List;
+            // 
             // buttonSearch
             // 
             this.buttonSearch.Location = new System.Drawing.Point(404, 38);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(86, 35);
-            this.buttonSearch.TabIndex = 22;
+            this.buttonSearch.TabIndex = 8;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
@@ -240,7 +240,7 @@
             this.textBoxSearch.Location = new System.Drawing.Point(263, 44);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(118, 22);
-            this.textBoxSearch.TabIndex = 23;
+            this.textBoxSearch.TabIndex = 7;
             // 
             // FormSite
             // 

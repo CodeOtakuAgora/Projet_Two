@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -125,12 +125,6 @@ namespace fiefdouglou
                 {
                     MessageBox.Show("Cette intervention à déjà été validée", "Log d'Infos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                text = listViewInterv.SelectedItems[0].Text;
-                if (text == null)
-                {
-                    MessageBox.Show("Veuillez selectionner une interventions", "Log d'Érreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
 
             catch (ArgumentException)
@@ -168,7 +162,6 @@ namespace fiefdouglou
             connect.getConnectionString();
             string strSQLInterv, strSQLCountInterv;
             SqlDataReader drSQLInterv;
-            bool validate = false;
             int i = 0;
             int interv;
             try
@@ -216,18 +209,6 @@ namespace fiefdouglou
             finally
             {
                 connect.closeConnection();
-                if (validate == true)
-                {
-                    this.Close();
-                    bool isFormOpen = connect.isAlreadyOpen(typeof(FormSite));
-                    if (isFormOpen == false)
-                    {
-                        FormSite formSite = new FormSite();
-                        formSite.StartPosition = FormStartPosition.CenterScreen;
-                        formSite.Show();
-                    }
-                }
-                
             }
         }
     }
