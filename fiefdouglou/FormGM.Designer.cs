@@ -165,32 +165,36 @@
             // 
             // columnHeaderNom
             // 
-            this.columnHeaderNom.Text = "Nom";
-            this.columnHeaderNom.Width = 150;
+            this.columnHeaderNom.Text = "Matériels";
+            this.columnHeaderNom.Width = 139;
             // 
             // columnHeaderSerie
             // 
-            this.columnHeaderSerie.Text = "No série";
-            this.columnHeaderSerie.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeaderSerie.Width = 100;
+            this.columnHeaderSerie.Text = "Commentaires";
+            this.columnHeaderSerie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeaderSerie.Width = 123;
             // 
             // columnHeaderDate
             // 
-            this.columnHeaderDate.Text = "Installation";
-            this.columnHeaderDate.Width = 100;
+            this.columnHeaderDate.Text = "Dates";
+            this.columnHeaderDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeaderDate.Width = 137;
             // 
             // columnHeaderMTBF
             // 
             this.columnHeaderMTBF.Text = "MTBF";
+            this.columnHeaderMTBF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // columnHeaderSite
             // 
-            this.columnHeaderSite.Text = "Site";
+            this.columnHeaderSite.Text = "Clients";
+            this.columnHeaderSite.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeaderSite.Width = 150;
             // 
             // columnHeaderClient
             // 
-            this.columnHeaderClient.Text = "Client";
+            this.columnHeaderClient.Text = "Sites";
+            this.columnHeaderClient.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeaderClient.Width = 150;
             // 
             // FormGM

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace fiefdouglou
@@ -46,19 +47,21 @@ namespace fiefdouglou
             string clientchoisi = comboBoxClient.SelectedItem.ToString();
             string sitechoisi = comboBoxSite.SelectedItem.ToString();
 
-            strfilter += " and (c.nom = '" + clientchoisi + "' )";
+            strfilter += " and (c.login = '" + clientchoisi + "' )";
             strfilter += " and (s.nom = '" + sitechoisi + "' )";
 
             SqlDataReader drSQLInterv = null;
             string strSQLInterv = "";
+            int i = 0;
 
             try
             {
-                strSQLInterv = "SELECT m.nom as matnom, m.NoSerie as matserie," +
-                    " m.Date_Installation as matdate, m.MTBF as matmtbf," +
-                    " c.nom clientnom, s.Nom as sitenom FROM materiel " +
-                    "m inner join client c on m.ID_Client = c.ID inner join " +
-                    "site s on m.ID_Site = s.ID" + strfilter;
+                strSQLInterv = "SELECT m.nom as matnom, m.description as matserie, " +
+                    "m.date_intervention_faite as matdate, m.mtbf as matmtbf, " +
+                    "c.login clientnom, s.nom as sitenom FROM materiel " +
+                    "m inner join client c on m.id_client = c.id_client " +
+                    "inner join site s on m.id_site = s.id_site " + strfilter;
+                
                 drSQLInterv = Connection.openConnection(strSQLInterv);
 
                 while (drSQLInterv.Read())
@@ -79,6 +82,8 @@ namespace fiefdouglou
                     lvi.SubItems.Add(client);
 
                     listViewMateriel.Items.Add(lvi);
+                    listViewMateriel.Items[i].BackColor = Color.Gray;
+                    i++;
                 };
             }
             catch (SqlException ex)
