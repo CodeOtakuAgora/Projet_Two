@@ -6,19 +6,22 @@ namespace fiefdouglou
 {
     class Connection
     {
-        private SqlConnection cnSQL = null;
-        private SqlCommand cmSQL = null;
-        private SqlDataReader drSQL = null;
-        private string strSQL = "";
-        private string connString = "";
+        private static SqlConnection cnSQL = null;
+        private static SqlCommand cmSQL = null;
+        private static SqlDataReader drSQL = null;
+        private static string strSQL = "";
+        private static string connString = "";
         private bool isOpen = false;
 
 
-        public void getConnectionString()
+        // on récupère les identifiants de connection à la base de donnée
+        public static void getConnectionString()
         {
             connString = ConfigurationManager.ConnectionStrings["fiefdouglouConnectionString"].ToString();
         }
-        public SqlDataReader openConnection(string sqlQuery)
+
+        // on execute n'importe quels requetes select
+        public static SqlDataReader openConnection(string sqlQuery)
         {
             strSQL = sqlQuery;
             cnSQL = new SqlConnection(connString);
@@ -28,7 +31,8 @@ namespace fiefdouglou
             return drSQL;
         }
 
-        public int executeCountQuery(string sqlQuery)
+        // on execute n'importe quels requetes contenuant un select avec un count
+        public static int executeCountQuery(string sqlQuery)
         {
             strSQL = sqlQuery;
             cnSQL = new SqlConnection(connString);
@@ -38,7 +42,8 @@ namespace fiefdouglou
             return res;
         }
 
-        public void executeQuery(string sqlQuery)
+        // on execute n'importe quels requetes autres select
+        public static void executeQuery(string sqlQuery)
         {
             strSQL = sqlQuery;
             cnSQL = new SqlConnection(connString);
@@ -49,7 +54,8 @@ namespace fiefdouglou
             adapter.UpdateCommand.ExecuteNonQuery();
         }
 
-        public void closeConnection()
+        // on ferme tout nos instances de connections à la base donnée
+        public static void closeConnection()
         {
             if (drSQL != null)
                 drSQL.Close();

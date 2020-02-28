@@ -95,7 +95,7 @@
             this.groupBoxLogin.Size = new System.Drawing.Size(384, 183);
             this.groupBoxLogin.TabIndex = 10;
             this.groupBoxLogin.TabStop = false;
-            this.groupBoxLogin.Text = "groupBoxLogin";
+            this.groupBoxLogin.Text = "Connection";
             // 
             // buttonUndo
             // 
@@ -117,6 +117,7 @@
             this.Controls.Add(this.groupBoxLogin);
             this.Name = "FormLogin";
             this.Text = "FormLogin";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormLogin_FormClosed);
             this.groupBoxLogin.ResumeLayout(false);
             this.groupBoxLogin.PerformLayout();
             this.ResumeLayout(false);

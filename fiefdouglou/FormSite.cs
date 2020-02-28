@@ -7,7 +7,6 @@ namespace fiefdouglou
 {
     public partial class FormSite : Form
     {
-        Connection connect = new Connection();
         public FormSite()
         {
             InitializeComponent();
@@ -15,7 +14,8 @@ namespace fiefdouglou
 
         private void ButtonIntervention_Click(object sender, EventArgs e)
         {
-            bool isFormOpen = connect.isAlreadyOpen(typeof(FormIntervention));
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormIntervention));
             if (isFormOpen == false)
             {
                 FormIntervention formInterv = new FormIntervention();
@@ -26,7 +26,8 @@ namespace fiefdouglou
 
         private void ButtonNewIntervention_Click(object sender, EventArgs e)
         {
-            bool isFormOpen = connect.isAlreadyOpen(typeof(FormSos));
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormSos));
             if (isFormOpen == false)
             {
                 FormSos formSos = new FormSos();
@@ -38,7 +39,8 @@ namespace fiefdouglou
         private void buttonRetourSite_Click(object sender, EventArgs e)
         {
             this.Close();
-            bool isFormOpen = connect.isAlreadyOpen(typeof(FormHome));
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormHome));
             if (isFormOpen == false)
             {
                 FormHome formHome = new FormHome();
@@ -49,7 +51,7 @@ namespace fiefdouglou
 
         private void FormSite_Load(object sender, EventArgs e)
         {
-            connect.getConnectionString();
+            Connection.getConnectionString();
             SqlDataReader drSQLSite, drSQLInterv = null;
             string strSQLSite, strSQLInterv = "";
             int i = 0;
@@ -57,10 +59,10 @@ namespace fiefdouglou
             try
             {
                 strSQLSite = "SELECT * FROM site";
-                drSQLSite = connect.openConnection(strSQLSite);
+                drSQLSite = Connection.openConnection(strSQLSite);
 
                 strSQLInterv = "SELECT * FROM intervention";
-                drSQLInterv = connect.openConnection(strSQLInterv);
+                drSQLInterv = Connection.openConnection(strSQLInterv);
 
                 comboBoxSiteNom.Items.Clear();
 
@@ -97,14 +99,14 @@ namespace fiefdouglou
             }
             finally
             {
-                connect.closeConnection();
+                Connection.closeConnection();
             }
 
         }
 
         private void buttonValiderSite_Click(object sender, EventArgs e)
         {
-            connect.getConnectionString();
+            Connection.getConnectionString();
             string strSQLInterv, text;
             bool validate = false;
 
@@ -117,7 +119,7 @@ namespace fiefdouglou
                     if (dr == DialogResult.Yes)
                     {
                         strSQLInterv = string.Format("UPDATE intervention SET valide = 1 WHERE id_intervention = {0}", text[0]);
-                        connect.executeQuery(strSQLInterv);
+                        Connection.executeQuery(strSQLInterv);
                         validate = true;
                     }
                 }    
@@ -142,11 +144,12 @@ namespace fiefdouglou
             }
             finally
             {
-                connect.closeConnection();
+                Connection.closeConnection();
                 if (validate == true)
                 {
                     this.Close();
-                    bool isFormOpen = connect.isAlreadyOpen(typeof(FormSite));
+                    Connection connection = new Connection();
+                    bool isFormOpen = connection.isAlreadyOpen(typeof(FormSite));
                     if (isFormOpen == false)
                     {
                         FormSite formSite = new FormSite();
@@ -159,7 +162,7 @@ namespace fiefdouglou
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            connect.getConnectionString();
+            Connection.getConnectionString();
             string strSQLInterv, strSQLCountInterv;
             SqlDataReader drSQLInterv;
             int i = 0;
@@ -167,10 +170,10 @@ namespace fiefdouglou
             try
             {
                 strSQLInterv = string.Format("SELECT * FROM intervention WHERE materiel_concerne LIKE '%{0}%'", textBoxSearch.Text);
-                drSQLInterv = connect.openConnection(strSQLInterv);
+                drSQLInterv = Connection.openConnection(strSQLInterv);
 
                 strSQLCountInterv = string.Format("SELECT COUNT(*) FROM intervention WHERE materiel_concerne LIKE '%{0}%'", textBoxSearch.Text);
-                interv = connect.executeCountQuery(strSQLCountInterv);
+                interv = Connection.executeCountQuery(strSQLCountInterv);
 
                 
                 listViewInterv.Items.Clear();
@@ -208,7 +211,7 @@ namespace fiefdouglou
             }
             finally
             {
-                connect.closeConnection();
+                Connection.closeConnection();
             }
         }
     }

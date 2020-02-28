@@ -11,8 +11,8 @@ namespace fiefdouglou
 
         private void siteToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            Connection connect = new Connection();
-            bool isFormOpen = connect.isAlreadyOpen(typeof(FormSite));
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormSite));
             if (isFormOpen == false)
             {
                 FormSite formSite = new FormSite();
@@ -23,8 +23,8 @@ namespace fiefdouglou
 
         private void interventionToolStripMenuItem1_Click(object sender, System.EventArgs e)
         {
-            Connection connect = new Connection();
-            bool isFormOpen = connect.isAlreadyOpen(typeof(FormIntervention));
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormIntervention));
             if (isFormOpen == false)
             {
                 FormIntervention formInterv = new FormIntervention();
@@ -35,14 +35,26 @@ namespace fiefdouglou
 
         private void clientToolStripMenuItem1_Click(object sender, System.EventArgs e)
         {
-            Connection connect = new Connection();
-            bool isFormOpen = connect.isAlreadyOpen(typeof(FormSos));
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormSos));
             if (isFormOpen == false)
             {
                 FormSos formSos = new FormSos();
                 formSos.StartPosition = FormStartPosition.CenterScreen;
                 formSos.Show();
             }
+        }
+
+        private void FormHome_Load(object sender, System.EventArgs e)
+        {
+            FormLogin formLogin = new FormLogin();
+            formLogin.ShowDialog();
+        }
+
+        private void consultationToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FormGM formgm = new FormGM();
+            formgm.Show();
         }
     }
 }

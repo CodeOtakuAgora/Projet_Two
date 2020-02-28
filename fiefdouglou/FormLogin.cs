@@ -19,13 +19,12 @@ namespace fiefdouglou
                 return;
             }
 
-            Connection connect = new Connection();
-            connect.getConnectionString();
+            Connection.getConnectionString();
 
             try
             {
                 string countUser = string.Format("SELECT COUNT(*) FROM client WHERE login = '{0}'", textBoxLogin.Text.Trim());
-                int res = connect.executeCountQuery(countUser);
+                int res = Connection.executeCountQuery(countUser);
 
                 if (res == 0)
                 {
@@ -37,7 +36,7 @@ namespace fiefdouglou
                 {
                     string strSQLPassword = "SELECT * FROM client WHERE login = '" + textBoxLogin.Text.Trim() + "'";
                     string inputPassword = "";
-                    SqlDataReader drSQLPassword = connect.openConnection(strSQLPassword);
+                    SqlDataReader drSQLPassword = Connection.openConnection(strSQLPassword);
                     while (drSQLPassword.Read())
                     {
                         inputPassword = drSQLPassword["password"].ToString();
@@ -48,8 +47,8 @@ namespace fiefdouglou
                     {
                         MessageBox.Show("connection Solved", "Log de Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
-                        Connection myConnect = new Connection();
-                        bool isFormOpen = myConnect.isAlreadyOpen(typeof(FormHome));
+                        Connection connection = new Connection();
+                        bool isFormOpen = connection.isAlreadyOpen(typeof(FormHome));
                         if (isFormOpen == false)
                         {
                             FormHome formHome = new FormHome();
@@ -76,7 +75,7 @@ namespace fiefdouglou
             }
             finally
             {
-                connect.closeConnection();
+                Connection.closeConnection();
             }
         }
 
@@ -87,6 +86,11 @@ namespace fiefdouglou
             {
                 Application.Exit();
             }
+        }
+
+        private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

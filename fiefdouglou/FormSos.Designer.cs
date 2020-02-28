@@ -207,7 +207,7 @@
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Location = new System.Drawing.Point(485, 54);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(120, 89);
+            this.checkedListBox1.Size = new System.Drawing.Size(253, 276);
             this.checkedListBox1.TabIndex = 1;
             // 
             // comboBox1
@@ -220,7 +220,7 @@
             // 
             // buttonValider
             // 
-            this.buttonValider.Location = new System.Drawing.Point(653, 283);
+            this.buttonValider.Location = new System.Drawing.Point(485, 357);
             this.buttonValider.Name = "buttonValider";
             this.buttonValider.Size = new System.Drawing.Size(86, 68);
             this.buttonValider.TabIndex = 21;

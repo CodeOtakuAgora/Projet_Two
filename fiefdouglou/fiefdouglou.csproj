@@ -62,6 +62,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>fiefdouglouDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FormCrudClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrudClient.Designer.cs">
+      <DependentUpon>FormCrudClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCrudSite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrudSite.Designer.cs">
+      <DependentUpon>FormCrudSite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGM.Designer.cs">
+      <DependentUpon>FormGM.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +118,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCrudClient.resx">
+      <DependentUpon>FormCrudClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCrudSite.resx">
+      <DependentUpon>FormCrudSite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGM.resx">
+      <DependentUpon>FormGM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormHome.resx">
       <DependentUpon>FormHome.cs</DependentUpon>
     </EmbeddedResource>

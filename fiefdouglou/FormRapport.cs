@@ -14,8 +14,8 @@ namespace fiefdouglou
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-            Connection connect = new Connection();
-            bool isFormOpen = connect.isAlreadyOpen(typeof(FormSite));
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormSite));
             if (isFormOpen == false)
             {
                 FormSite formSite = new FormSite();
@@ -26,21 +26,20 @@ namespace fiefdouglou
 
         private void FormRapport_Load(object sender, EventArgs e)
         {
-            Connection connect = new Connection();
-            connect.getConnectionString();
+            Connection.getConnectionString();
             SqlDataReader drSQLSite, drSQLInterv, drSQLMat = null;
             string strSQLSite, strSQLInterv, strSQLMat = "";
 
             try
             {
                 strSQLSite = "SELECT * FROM site";
-                drSQLSite = connect.openConnection(strSQLSite);
+                drSQLSite = Connection.openConnection(strSQLSite);
 
                 strSQLInterv = "SELECT * FROM intervention";
-                drSQLInterv = connect.openConnection(strSQLInterv);
+                drSQLInterv = Connection.openConnection(strSQLInterv);
 
                 strSQLMat = "SELECT * FROM materiel";
-                drSQLMat = connect.openConnection(strSQLMat);
+                drSQLMat = Connection.openConnection(strSQLMat);
 
                 textBoxSite.Clear();
                 textBoxDate.Clear();
@@ -77,7 +76,7 @@ namespace fiefdouglou
             }
             finally
             {
-                connect.closeConnection();
+                Connection.closeConnection();
             }
         }
     }

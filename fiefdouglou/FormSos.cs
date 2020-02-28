@@ -14,8 +14,8 @@ namespace fiefdouglou
         private void back_Click(object sender, System.EventArgs e)
         {
             this.Close();
-            Connection connect = new Connection();
-            bool isFormOpen = connect.isAlreadyOpen(typeof(FormSite));
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormSite));
             if (isFormOpen == false)
             {
                 FormSite formSite = new FormSite();
@@ -27,8 +27,8 @@ namespace fiefdouglou
         private void confirm_Click(object sender, System.EventArgs e)
         {
             this.Close();
-            Connection connect = new Connection();
-            bool isFormOpen = connect.isAlreadyOpen(typeof(FormRapport));
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormRapport));
             if (isFormOpen == false)
             {
                 FormRapport formRapport = new FormRapport();
@@ -39,8 +39,7 @@ namespace fiefdouglou
 
         private void buttonValider_Click(object sender, System.EventArgs e)
         {
-            Connection connection = new Connection();
-            connection.getConnectionString();
+            Connection.getConnectionString();
             string strSQLInterv;
 
             try
@@ -49,7 +48,7 @@ namespace fiefdouglou
                 if (dr == DialogResult.Yes)
                 {
                     strSQLInterv = string.Format("INSERT INTO intervention(id_technicien, materiel_concerne, commentaire, date_intervention, valide) VALUES ({0}, '{1}', '{2}', '{3}', 0)", textBoxTech.Text, textBoxMat.Text, richTextBoxCom.Text, dateTimePickerInterv.Value);
-                    connection.executeQuery(strSQLInterv);
+                    Connection.executeQuery(strSQLInterv);
                 }
             }
             catch (SqlException excep)
@@ -62,7 +61,7 @@ namespace fiefdouglou
             }
             finally
             {
-                connection.closeConnection();
+                Connection.closeConnection();
             }
         }
     }
