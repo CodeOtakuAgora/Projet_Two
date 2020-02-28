@@ -68,17 +68,23 @@
     <Compile Include="FormCrudClient.Designer.cs">
       <DependentUpon>FormCrudClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCrudMatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrudMatos.Designer.cs">
+      <DependentUpon>FormCrudMatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCrudSite.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormCrudSite.Designer.cs">
       <DependentUpon>FormCrudSite.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormGM.cs">
+    <Compile Include="FormCrud.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormGM.Designer.cs">
-      <DependentUpon>FormGM.cs</DependentUpon>
+    <Compile Include="FormCrud.Designer.cs">
+      <DependentUpon>FormCrud.cs</DependentUpon>
     </Compile>
     <Compile Include="FormHome.cs">
       <SubType>Form</SubType>
@@ -121,11 +127,14 @@
     <EmbeddedResource Include="FormCrudClient.resx">
       <DependentUpon>FormCrudClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCrudMatos.resx">
+      <DependentUpon>FormCrudMatos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCrudSite.resx">
       <DependentUpon>FormCrudSite.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormGM.resx">
-      <DependentUpon>FormGM.cs</DependentUpon>
+    <EmbeddedResource Include="FormCrud.resx">
+      <DependentUpon>FormCrud.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormHome.resx">
       <DependentUpon>FormHome.cs</DependentUpon>

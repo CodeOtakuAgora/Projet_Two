@@ -53,7 +53,7 @@ namespace fiefdouglou
 
         private void consultationToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            FormGM formgm = new FormGM();
+            FormCrud formgm = new FormCrud();
             formgm.Show();
         }
     }

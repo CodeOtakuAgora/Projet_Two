@@ -19,7 +19,7 @@ namespace fiefdouglou
             Close();
         }
 
-        private void FormSite_Load(object sender, EventArgs e)
+        private void FormCrudSite_Load(object sender, EventArgs e)
         {
             chargeSite();
         }

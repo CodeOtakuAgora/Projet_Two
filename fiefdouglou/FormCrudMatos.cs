@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace fiefdouglou
 {
-    public partial class FormCrudClient : Form
+    public partial class FormCrudMatos : Form
     {
         private string mode;
 
-        public FormCrudClient()
+        public FormCrudMatos()
         {
             InitializeComponent();
             Connection.getConnectionString();
@@ -19,24 +19,24 @@ namespace fiefdouglou
             Close();
         }
 
-        private void FormCrudClient_Load(object sender, EventArgs e)
+        private void FormCrudMatos_Load(object sender, EventArgs e)
         {
             chargeClient();
         }
 
         private void chargeClient()
         {
-            listBoxClient.Items.Clear();
+            listBoxMatos.Items.Clear();
             SqlDataReader drSQLClient = null;
             string strSQLClient = "";
             try
             {
-                strSQLClient = "SELECT * FROM client";
+                strSQLClient = "SELECT * FROM materiel";
                 drSQLClient = Connection.openConnection(strSQLClient);
 
                 while (drSQLClient.Read())
                 {
-                    listBoxClient.Items.Add(drSQLClient["login"].ToString());
+                    listBoxMatos.Items.Add(drSQLClient["nom"].ToString());
                 };
             }
             catch (SqlException ex)
@@ -56,13 +56,15 @@ namespace fiefdouglou
 
         private void EnableClient(bool b)
         {
-            textBoxIntervClient.Enabled = b;
-            textBoxSiteClient.Enabled = b;
-            textBoxLoginClient.Enabled = b;
-            textBoxPassClient.Enabled = b;
-            textBoxTelClient.Enabled = b;
-            textBoxMailClient.Enabled = b;
-            listBoxClient.Enabled = !b;
+            textBoxClientMatos.Enabled = b;
+            textBoxSiteMatos.Enabled = b;
+            textBoxNomMatos.Enabled = b;
+            textBoxDescMatos.Enabled = b;
+            textBoxTypeMatos.Enabled = b;
+            textBoxIntervMatos.Enabled = b;
+            textBoxDelaisMatos.Enabled = b;
+            textBoxMtbfMatos.Enabled = b;
+            listBoxMatos.Enabled = !b;
             buttonAjouterClient.Enabled = !b;
             buttonValider.Enabled = b;
             buttonModifierClient.Enabled = !b;
@@ -72,23 +74,25 @@ namespace fiefdouglou
 
         private void listBoxClient_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string strNomCLient = listBoxClient.SelectedItem.ToString();
+            string strNomCLient = listBoxMatos.SelectedItem.ToString();
 
 
             SqlDataReader drSQLClient = null;
             string strSQLClient = "";
 
-            strSQLClient = "SELECT * FROM client where login = '" + strNomCLient + "'";
+            strSQLClient = "SELECT * FROM materiel where nom = '" + strNomCLient + "'";
             drSQLClient = Connection.openConnection(strSQLClient);
 
             drSQLClient.Read();
 
-            textBoxIntervClient.Text = drSQLClient["id_intervention"].ToString();
-            textBoxSiteClient.Text = drSQLClient["site"].ToString();
-            textBoxLoginClient.Text = drSQLClient["login"].ToString();
-            textBoxPassClient.Text = drSQLClient["password"].ToString();
-            textBoxMailClient.Text = drSQLClient["mail"].ToString();
-            textBoxTelClient.Text = drSQLClient["telephone"].ToString();
+            textBoxClientMatos.Text = drSQLClient["id_client"].ToString();
+            textBoxSiteMatos.Text = drSQLClient["id_site"].ToString();
+            textBoxNomMatos.Text = drSQLClient["nom"].ToString();
+            textBoxDescMatos.Text = drSQLClient["description"].ToString();
+            textBoxTypeMatos.Text = drSQLClient["type"].ToString();
+            textBoxIntervMatos.Text = drSQLClient["date_intervention_faite"].ToString();
+            textBoxDelaisMatos.Text = drSQLClient["date_intervention_pas_faite"].ToString();
+            textBoxMtbfMatos.Text = drSQLClient["mtbf"].ToString();
         }
 
         private void buttonAjouterClient_Click(object sender, EventArgs e)
@@ -97,29 +101,33 @@ namespace fiefdouglou
 
             EnableClient(true);
 
-            textBoxIntervClient.Focus();
+            textBoxClientMatos.Focus();
             mode = "Ajouter";
         }
 
         private void EffaceInformationsClient()
         {
-            textBoxIntervClient.Text = "";
-            textBoxSiteClient.Text = "";
-            textBoxLoginClient.Text = "";
-            textBoxPassClient.Text = "";
-            textBoxTelClient.Text = "";
-            textBoxMailClient.Text = "";
+            textBoxClientMatos.Text = "";
+            textBoxSiteMatos.Text = "";
+            textBoxNomMatos.Text = "";
+            textBoxDescMatos.Text = "";
+            textBoxIntervMatos.Text = "";
+            textBoxTypeMatos.Text = "";
+            textBoxDelaisMatos.Text = "";
+            textBoxMtbfMatos.Text = "";
         }
 
         private void buttonValider_Click(object sender, EventArgs e)
         {
             string strSQL = "";
-            string sternom = textBoxIntervClient.Text;
-            string stradr = textBoxSiteClient.Text;
-            string strlgn = textBoxLoginClient.Text;
-            string strpwd = textBoxPassClient.Text;
-            string strtel = textBoxTelClient.Text;
-            string strmail = textBoxMailClient.Text;
+            string sternom = textBoxClientMatos.Text;
+            string stradr = textBoxSiteMatos.Text;
+            string strlgn = textBoxNomMatos.Text;
+            string strpwd = textBoxDescMatos.Text;
+            string strtel = textBoxIntervMatos.Text;
+            string strmail = textBoxTypeMatos.Text;
+            string strdls = textBoxDelaisMatos.Text;
+            string strmtbf = textBoxMtbfMatos.Text;
 
             if (sternom == string.Empty)
             {
@@ -131,24 +139,26 @@ namespace fiefdouglou
             // ajout
             if (mode == "Ajouter")
             {
-                strSQL = string.Format("INSERT INTO client(id_intervention, site, login, password, mail, telephone) " +
-                    "VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}')", 
-                    sternom, stradr, strlgn, strpwd, strmail, strtel);
+                strSQL = string.Format("INSERT INTO materiel (id_client, id_site, nom, description, type, " +
+                    "date_intervention_faite, date_intervention_pas_faite, mtbf) " +
+                    "VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', {7})",
+                    sternom, stradr, strlgn, strpwd, strmail, strtel, strdls, strmtbf);
             }
             else if (mode == "Modifier")
             {
                 // id du site
-                int idclient;
-                string sql2 = "select * from client  where login = '" + listBoxClient.SelectedItem.ToString() + "'";
+                int idmat;
+                string sql2 = "select * from materiel  where nom = '" + listBoxMatos.SelectedItem.ToString() + "'";
                 SqlDataReader drSQLInterv = Connection.openConnection(sql2);
                 drSQLInterv.Read();
-                idclient = Convert.ToInt32(drSQLInterv["id_client"]);
+                idmat = Convert.ToInt32(drSQLInterv["id_mat"]);
                 drSQLInterv.Close();
 
                 // modification des informations
-                strSQL = string.Format("UPDATE client SET id_intervention = {0}, site = {1}, login = '{2}', " +
-                    "password = '{3}', mail = '{4}', telephone = '{5}' where id_client = {6}",
-                    sternom, stradr, strlgn, strpwd, strmail, strtel, idclient);
+                strSQL = string.Format("UPDATE materiel SET id_client = {0}, id_site = {1}, nom = '{2}', " +
+                    "description = '{3}', type = '{4}', date_intervention_faite = '{5}', " +
+                    "date_intervention_pas_faite = '{6}', mtbf = {7} where id_mat = {8}",
+                    sternom, stradr, strlgn, strpwd, strmail, strtel, strdls, strmtbf, idmat);
             }
             else
             {
@@ -163,19 +173,19 @@ namespace fiefdouglou
 
         private void buttonSupprimerClient_Click(object sender, EventArgs e)
         {
-            if (listBoxClient.SelectedItem == null)
+            if (listBoxMatos.SelectedItem == null)
             {
                 MessageBox.Show("Veuillez sélectionner un client !",
                     "Avertissement", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                listBoxClient.Focus();
+                listBoxMatos.Focus();
                 return;
             }
 
-            string sternom = textBoxLoginClient.Text;
+            string sternom = textBoxNomMatos.Text;
             string strSQLClient = "";
 
-            strSQLClient = "delete from client where login = '" + sternom + "'";
+            strSQLClient = "delete from materiel where nom = '" + sternom + "'";
             Connection.openConnection(strSQLClient);
 
             chargeClient();
@@ -185,18 +195,18 @@ namespace fiefdouglou
 
         private void buttonModifierClient_Click(object sender, EventArgs e)
         {
-            if (listBoxClient.SelectedItem == null)
+            if (listBoxMatos.SelectedItem == null)
             {
                 MessageBox.Show("Veuillez sélectionner un client !",
                     "Avertissement", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                listBoxClient.Focus();
+                listBoxMatos.Focus();
                 return;
             }
 
             EnableClient(true);
 
-            textBoxIntervClient.Focus();
+            textBoxClientMatos.Focus();
             mode = "Modifier";
         }
 

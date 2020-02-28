@@ -254,8 +254,8 @@
             this.MinimizeBox = false;
             this.Name = "FormCrudSite";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Site";
-            this.Load += new System.EventHandler(this.FormSite_Load);
+            this.Text = "Crud Site";
+            this.Load += new System.EventHandler(this.FormCrudSite_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
