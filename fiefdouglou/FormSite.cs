@@ -61,10 +61,11 @@ namespace fiefdouglou
                 strSQLSite = "SELECT * FROM site";
                 drSQLSite = Connection.openConnection(strSQLSite);
 
-                strSQLInterv = "SELECT * FROM intervention";
+                strSQLInterv = "SELECT * FROM intervention where id_intervention < 8";
                 drSQLInterv = Connection.openConnection(strSQLInterv);
 
                 comboBoxSiteNom.Items.Clear();
+                listViewInterv.Items.Clear();
 
                 while (drSQLSite.Read())
                 {
@@ -214,5 +215,6 @@ namespace fiefdouglou
                 Connection.closeConnection();
             }
         }
+
     }
 }

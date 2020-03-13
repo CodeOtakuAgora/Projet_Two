@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace fiefdouglou
 {
@@ -49,9 +52,45 @@ namespace fiefdouglou
         {
             FormLogin formLogin = new FormLogin();
             formLogin.ShowDialog();
+
+            Connection.getConnectionString();
+            SqlDataReader drSQLInterv = null;
+            string strSQLInterv = "";
+            DateTime dateNow = DateTime.Now;
+            string toto = dateNow.ToString("yyyy-MM-dd").Substring(0, 10);
+
+            try
+            {
+                strSQLInterv = "SELECT * FROM intervention WHERE date_intervention > " + toto.ToString() + " ORDER BY date_intervention DESC";
+                drSQLInterv = Connection.openConnection(strSQLInterv);
+
+                listBoxInterv.Items.Clear();
+
+                while (drSQLInterv.Read())
+                {
+                    listBoxInterv.Items.Add(drSQLInterv["materiel_concerne"].ToString() + " / " + drSQLInterv["commentaire"].ToString() + " / " + drSQLInterv["date_intervention"].ToString());
+                    listBoxInterv.BackColor = Color.Gray;
+                }
+
+            }
+            catch (SqlException excep)
+            {
+                MessageBox.Show(excep.Message, "Érreur SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            catch (Exception excep)
+            {
+                MessageBox.Show(excep.Message, "Érreur Générale", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Connection.closeConnection();
+            }
+
+
         }
 
-        private void consultationToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void gestionToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             FormCrud formgm = new FormCrud();
             formgm.Show();

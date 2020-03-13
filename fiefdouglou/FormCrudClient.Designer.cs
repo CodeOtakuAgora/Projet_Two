@@ -116,9 +116,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(12, 167);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 17);
+            this.label6.Size = new System.Drawing.Size(57, 17);
             this.label6.TabIndex = 99;
-            this.label6.Text = "Password";
+            this.label6.Text = "Prénom";
             // 
             // textBoxLoginClient
             // 
@@ -132,9 +132,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(22, 126);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 17);
+            this.label7.Size = new System.Drawing.Size(37, 17);
             this.label7.TabIndex = 99;
-            this.label7.Text = "Login";
+            this.label7.Text = "Nom";
             // 
             // textBoxMailClient
             // 

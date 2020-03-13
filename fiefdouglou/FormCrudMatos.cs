@@ -91,6 +91,7 @@ namespace fiefdouglou
             textBoxDescMatos.Text = drSQLClient["description"].ToString();
             textBoxTypeMatos.Text = drSQLClient["type"].ToString();
             textBoxIntervMatos.Text = drSQLClient["date_intervention_faite"].ToString();
+            textBoxIntervMatos.Text = textBoxIntervMatos.Text.Substring(0, 10);
             textBoxDelaisMatos.Text = drSQLClient["date_intervention_pas_faite"].ToString();
             textBoxMtbfMatos.Text = drSQLClient["mtbf"].ToString();
         }
@@ -124,7 +125,7 @@ namespace fiefdouglou
             string stradr = textBoxSiteMatos.Text;
             string strlgn = textBoxNomMatos.Text;
             string strpwd = textBoxDescMatos.Text;
-            string strtel = textBoxIntervMatos.Text;
+            string strtel = textBoxIntervMatos.Text.Substring(0, 10);
             string strmail = textBoxTypeMatos.Text;
             string strdls = textBoxDelaisMatos.Text;
             string strmtbf = textBoxMtbfMatos.Text;
@@ -141,7 +142,7 @@ namespace fiefdouglou
             {
                 strSQL = string.Format("INSERT INTO materiel (id_client, id_site, nom, description, type, " +
                     "date_intervention_faite, date_intervention_pas_faite, mtbf) " +
-                    "VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', {7})",
+                    "VALUES({0}, '{1}', '{2}', '{3}', '{4}', {5}, '{6}', {7})",
                     sternom, stradr, strlgn, strpwd, strmail, strtel, strdls, strmtbf);
             }
             else if (mode == "Modifier")
@@ -156,7 +157,7 @@ namespace fiefdouglou
 
                 // modification des informations
                 strSQL = string.Format("UPDATE materiel SET id_client = {0}, id_site = {1}, nom = '{2}', " +
-                    "description = '{3}', type = '{4}', date_intervention_faite = '{5}', " +
+                    "description = '{3}', type = '{4}', date_intervention_faite = {5}, " +
                     "date_intervention_pas_faite = '{6}', mtbf = {7} where id_mat = {8}",
                     sternom, stradr, strlgn, strpwd, strmail, strtel, strdls, strmtbf, idmat);
             }
@@ -164,7 +165,6 @@ namespace fiefdouglou
             {
                 throw new Exception("Mode invalide");
             }
-
             Connection.executeQuery(strSQL);
             Connection.closeConnection();
             chargeClient();

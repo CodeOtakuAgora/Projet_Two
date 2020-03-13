@@ -44,6 +44,10 @@
             this.consultationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.interventionToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.etatMaterielToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listBoxInterv = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -88,7 +92,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem,
-            this.consultationToolStripMenuItem});
+            this.consultationToolStripMenuItem,
+            this.crudToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 28);
@@ -148,25 +153,62 @@
             this.consultationToolStripMenuItem.Name = "consultationToolStripMenuItem";
             this.consultationToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
             this.consultationToolStripMenuItem.Text = "Consultation";
-            this.consultationToolStripMenuItem.Click += new System.EventHandler(this.consultationToolStripMenuItem_Click);
             // 
             // interventionToolStripMenuItem2
             // 
             this.interventionToolStripMenuItem2.Name = "interventionToolStripMenuItem2";
-            this.interventionToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.interventionToolStripMenuItem2.Size = new System.Drawing.Size(186, 26);
             this.interventionToolStripMenuItem2.Text = "Intervention...";
             // 
             // etatMaterielToolStripMenuItem
             // 
             this.etatMaterielToolStripMenuItem.Name = "etatMaterielToolStripMenuItem";
-            this.etatMaterielToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.etatMaterielToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
             this.etatMaterielToolStripMenuItem.Text = "Etat Materiel...";
+            // 
+            // crudToolStripMenuItem
+            // 
+            this.crudToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestionToolStripMenuItem});
+            this.crudToolStripMenuItem.Name = "crudToolStripMenuItem";
+            this.crudToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
+            this.crudToolStripMenuItem.Text = "Crud";
+            // 
+            // gestionToolStripMenuItem
+            // 
+            this.gestionToolStripMenuItem.Name = "gestionToolStripMenuItem";
+            this.gestionToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
+            this.gestionToolStripMenuItem.Text = "Gestion";
+            this.gestionToolStripMenuItem.Click += new System.EventHandler(this.gestionToolStripMenuItem_Click);
+            // 
+            // listBoxInterv
+            // 
+            this.listBoxInterv.FormattingEnabled = true;
+            this.listBoxInterv.ItemHeight = 16;
+            this.listBoxInterv.Location = new System.Drawing.Point(186, 124);
+            this.listBoxInterv.Name = "listBoxInterv";
+            this.listBoxInterv.Size = new System.Drawing.Size(404, 116);
+            this.listBoxInterv.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label1.Location = new System.Drawing.Point(211, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(344, 36);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Prochaines Interventions";
             // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.listBoxInterv);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormHome";
@@ -197,6 +239,10 @@
         private System.Windows.Forms.ToolStripMenuItem consultationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem interventionToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem etatMaterielToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem crudToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionToolStripMenuItem;
+        private System.Windows.Forms.ListBox listBoxInterv;
+        private System.Windows.Forms.Label label1;
     }
 }
 

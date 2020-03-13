@@ -23,7 +23,7 @@ namespace fiefdouglou
 
             try
             {
-                string countUser = string.Format("SELECT COUNT(*) FROM client WHERE login = '{0}'", textBoxLogin.Text.Trim());
+                string countUser = string.Format("SELECT COUNT(*) FROM login WHERE login = '{0}'", textBoxLogin.Text.Trim());
                 int res = Connection.executeCountQuery(countUser);
 
                 if (res == 0)
@@ -34,7 +34,7 @@ namespace fiefdouglou
 
                 if (res == 1)
                 {
-                    string strSQLPassword = "SELECT * FROM client WHERE login = '" + textBoxLogin.Text.Trim() + "'";
+                    string strSQLPassword = "SELECT * FROM login WHERE login = '" + textBoxLogin.Text.Trim() + "'";
                     string inputPassword = "";
                     SqlDataReader drSQLPassword = Connection.openConnection(strSQLPassword);
                     while (drSQLPassword.Read())
@@ -42,7 +42,6 @@ namespace fiefdouglou
                         inputPassword = drSQLPassword["password"].ToString();
                     }
                     bool matches = BCrypt.CheckPassword(textBoxPassword.Text.Trim(), inputPassword);
-
                     if (matches == true)
                     {
                         MessageBox.Show("connection Solved", "Log de Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);

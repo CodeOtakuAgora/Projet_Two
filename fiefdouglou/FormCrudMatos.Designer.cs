@@ -32,13 +32,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxMtbfMatos = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxDelaisMatos = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.textBoxDescMatos = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxNomMatos = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxTypeMatos = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBoxIntervMatos = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxSiteMatos = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,10 +52,7 @@
             this.buttonSupprimerClient = new System.Windows.Forms.Button();
             this.buttonModifierClient = new System.Windows.Forms.Button();
             this.buttonAnnuler = new System.Windows.Forms.Button();
-            this.textBoxDelaisMatos = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBoxMtbfMatos = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxIntervMatos = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +89,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBoxIntervMatos);
             this.groupBox1.Controls.Add(this.textBoxMtbfMatos);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.textBoxDelaisMatos);
@@ -99,7 +100,6 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.textBoxTypeMatos);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBoxIntervMatos);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBoxSiteMatos);
             this.groupBox1.Controls.Add(this.label3);
@@ -111,6 +111,38 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informations";
+            // 
+            // textBoxMtbfMatos
+            // 
+            this.textBoxMtbfMatos.Location = new System.Drawing.Point(85, 304);
+            this.textBoxMtbfMatos.Name = "textBoxMtbfMatos";
+            this.textBoxMtbfMatos.Size = new System.Drawing.Size(175, 22);
+            this.textBoxMtbfMatos.TabIndex = 15;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(25, 304);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(45, 17);
+            this.label9.TabIndex = 99;
+            this.label9.Text = "MTBF";
+            // 
+            // textBoxDelaisMatos
+            // 
+            this.textBoxDelaisMatos.Location = new System.Drawing.Point(85, 266);
+            this.textBoxDelaisMatos.Name = "textBoxDelaisMatos";
+            this.textBoxDelaisMatos.Size = new System.Drawing.Size(175, 22);
+            this.textBoxDelaisMatos.TabIndex = 14;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(25, 270);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(45, 17);
+            this.label8.TabIndex = 99;
+            this.label8.Text = "delais";
             // 
             // textBoxDescMatos
             // 
@@ -159,13 +191,6 @@
             this.label4.Size = new System.Drawing.Size(40, 17);
             this.label4.TabIndex = 99;
             this.label4.Text = "Type";
-            // 
-            // textBoxIntervMatos
-            // 
-            this.textBoxIntervMatos.Location = new System.Drawing.Point(85, 223);
-            this.textBoxIntervMatos.Name = "textBoxIntervMatos";
-            this.textBoxIntervMatos.Size = new System.Drawing.Size(175, 22);
-            this.textBoxIntervMatos.TabIndex = 13;
             // 
             // label5
             // 
@@ -263,37 +288,12 @@
             this.buttonAnnuler.UseVisualStyleBackColor = true;
             this.buttonAnnuler.Click += new System.EventHandler(this.buttonAnnuler_Click);
             // 
-            // textBoxDelaisMatos
+            // textBoxIntervMatos
             // 
-            this.textBoxDelaisMatos.Location = new System.Drawing.Point(85, 266);
-            this.textBoxDelaisMatos.Name = "textBoxDelaisMatos";
-            this.textBoxDelaisMatos.Size = new System.Drawing.Size(175, 22);
-            this.textBoxDelaisMatos.TabIndex = 14;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(25, 270);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 17);
-            this.label8.TabIndex = 99;
-            this.label8.Text = "delais";
-            // 
-            // textBoxMtbfMatos
-            // 
-            this.textBoxMtbfMatos.Location = new System.Drawing.Point(85, 304);
-            this.textBoxMtbfMatos.Name = "textBoxMtbfMatos";
-            this.textBoxMtbfMatos.Size = new System.Drawing.Size(175, 22);
-            this.textBoxMtbfMatos.TabIndex = 15;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(25, 304);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(45, 17);
-            this.label9.TabIndex = 99;
-            this.label9.Text = "MTBF";
+            this.textBoxIntervMatos.Location = new System.Drawing.Point(85, 221);
+            this.textBoxIntervMatos.Name = "textBoxIntervMatos";
+            this.textBoxIntervMatos.Size = new System.Drawing.Size(175, 22);
+            this.textBoxIntervMatos.TabIndex = 101;
             // 
             // FormCrudMatos
             // 
@@ -332,7 +332,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBoxTypeMatos;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxIntervMatos;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxSiteMatos;
         private System.Windows.Forms.Label label3;
@@ -351,5 +350,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxMtbfMatos;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBoxIntervMatos;
     }
 }

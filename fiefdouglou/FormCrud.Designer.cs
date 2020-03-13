@@ -45,6 +45,7 @@
             this.columnHeaderSite = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderClient = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonMatos = new System.Windows.Forms.Button();
+            this.buttonTech = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             this.buttonFermer.Location = new System.Drawing.Point(972, 628);
             this.buttonFermer.Name = "buttonFermer";
             this.buttonFermer.Size = new System.Drawing.Size(135, 43);
-            this.buttonFermer.TabIndex = 7;
+            this.buttonFermer.TabIndex = 8;
             this.buttonFermer.Text = "Fermer";
             this.buttonFermer.UseVisualStyleBackColor = true;
             this.buttonFermer.Click += new System.EventHandler(this.buttonFermer_Click);
@@ -92,7 +93,7 @@
             this.groupBox1.Location = new System.Drawing.Point(45, 120);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1093, 307);
-            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rechercher";
             // 
@@ -104,7 +105,7 @@
             this.comboBoxSite.Location = new System.Drawing.Point(506, 35);
             this.comboBoxSite.Name = "comboBoxSite";
             this.comboBoxSite.Size = new System.Drawing.Size(207, 39);
-            this.comboBoxSite.TabIndex = 5;
+            this.comboBoxSite.TabIndex = 6;
             // 
             // label2
             // 
@@ -124,7 +125,7 @@
             this.comboBoxClient.Location = new System.Drawing.Point(135, 35);
             this.comboBoxClient.Name = "comboBoxClient";
             this.comboBoxClient.Size = new System.Drawing.Size(207, 39);
-            this.comboBoxClient.TabIndex = 4;
+            this.comboBoxClient.TabIndex = 5;
             // 
             // label1
             // 
@@ -142,7 +143,7 @@
             this.buttonRechercher.Location = new System.Drawing.Point(867, 35);
             this.buttonRechercher.Name = "buttonRechercher";
             this.buttonRechercher.Size = new System.Drawing.Size(185, 48);
-            this.buttonRechercher.TabIndex = 6;
+            this.buttonRechercher.TabIndex = 7;
             this.buttonRechercher.Text = "Chercher";
             this.buttonRechercher.UseVisualStyleBackColor = true;
             this.buttonRechercher.Click += new System.EventHandler(this.buttonRechercher_Click);
@@ -209,11 +210,23 @@
             this.buttonMatos.UseVisualStyleBackColor = true;
             this.buttonMatos.Click += new System.EventHandler(this.buttonMatos_Click);
             // 
+            // buttonTech
+            // 
+            this.buttonTech.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTech.Location = new System.Drawing.Point(588, 38);
+            this.buttonTech.Name = "buttonTech";
+            this.buttonTech.Size = new System.Drawing.Size(160, 59);
+            this.buttonTech.TabIndex = 3;
+            this.buttonTech.Text = "Tech ...";
+            this.buttonTech.UseVisualStyleBackColor = true;
+            this.buttonTech.Click += new System.EventHandler(this.buttonTech_Click);
+            // 
             // FormCrud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1209, 692);
+            this.Controls.Add(this.buttonTech);
             this.Controls.Add(this.buttonMatos);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonSite);
@@ -251,6 +264,7 @@
         private System.Windows.Forms.ComboBox comboBoxClient;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonMatos;
+        private System.Windows.Forms.Button buttonTech;
     }
 }
 

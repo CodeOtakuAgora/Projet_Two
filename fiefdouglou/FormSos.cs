@@ -64,5 +64,40 @@ namespace fiefdouglou
                 Connection.closeConnection();
             }
         }
+
+        private void FormSos_Load(object sender, EventArgs e)
+        {
+            Connection.getConnectionString();
+            string strSQLSite = "";
+            SqlDataReader drsqlSite = null;
+
+            try
+            {
+                strSQLSite = "SELECT * FROM site";
+                drsqlSite = Connection.openConnection(strSQLSite);
+
+                comboBox1.Items.Clear();
+
+                while (drsqlSite.Read())
+                {
+                    comboBox1.Items.Add(drsqlSite["nom"].ToString());
+                }
+
+            }
+            catch (SqlException excep)
+            {
+                MessageBox.Show(excep.Message, "Érreur SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception excep)
+            {
+                MessageBox.Show(excep.Message, "Érreur Générale", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Connection.closeConnection();
+            }
+
+
+        }
     }
 }

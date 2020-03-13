@@ -36,7 +36,7 @@ namespace fiefdouglou
 
                 while (drSQLClient.Read())
                 {
-                    listBoxClient.Items.Add(drSQLClient["login"].ToString());
+                    listBoxClient.Items.Add(drSQLClient["nom"].ToString());
                 };
             }
             catch (SqlException ex)
@@ -78,15 +78,15 @@ namespace fiefdouglou
             SqlDataReader drSQLClient = null;
             string strSQLClient = "";
 
-            strSQLClient = "SELECT * FROM client where login = '" + strNomCLient + "'";
+            strSQLClient = "SELECT * FROM client where nom = '" + strNomCLient + "'";
             drSQLClient = Connection.openConnection(strSQLClient);
 
             drSQLClient.Read();
 
             textBoxIntervClient.Text = drSQLClient["id_intervention"].ToString();
             textBoxSiteClient.Text = drSQLClient["site"].ToString();
-            textBoxLoginClient.Text = drSQLClient["login"].ToString();
-            textBoxPassClient.Text = drSQLClient["password"].ToString();
+            textBoxLoginClient.Text = drSQLClient["nom"].ToString();
+            textBoxPassClient.Text = drSQLClient["prenom"].ToString();
             textBoxMailClient.Text = drSQLClient["mail"].ToString();
             textBoxTelClient.Text = drSQLClient["telephone"].ToString();
         }
@@ -131,7 +131,7 @@ namespace fiefdouglou
             // ajout
             if (mode == "Ajouter")
             {
-                strSQL = string.Format("INSERT INTO client(id_intervention, site, login, password, mail, telephone) " +
+                strSQL = string.Format("INSERT INTO client(id_intervention, site, nom, prenom, mail, telephone) " +
                     "VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}')", 
                     sternom, stradr, strlgn, strpwd, strmail, strtel);
             }
@@ -139,15 +139,15 @@ namespace fiefdouglou
             {
                 // id du site
                 int idclient;
-                string sql2 = "select * from client  where login = '" + listBoxClient.SelectedItem.ToString() + "'";
+                string sql2 = "select * from client  where nom = '" + listBoxClient.SelectedItem.ToString() + "'";
                 SqlDataReader drSQLInterv = Connection.openConnection(sql2);
                 drSQLInterv.Read();
                 idclient = Convert.ToInt32(drSQLInterv["id_client"]);
                 drSQLInterv.Close();
 
                 // modification des informations
-                strSQL = string.Format("UPDATE client SET id_intervention = {0}, site = {1}, login = '{2}', " +
-                    "password = '{3}', mail = '{4}', telephone = '{5}' where id_client = {6}",
+                strSQL = string.Format("UPDATE client SET id_intervention = {0}, site = {1}, nom = '{2}', " +
+                    "prenom = '{3}', mail = '{4}', telephone = '{5}' where id_client = {6}",
                     sternom, stradr, strlgn, strpwd, strmail, strtel, idclient);
             }
             else
@@ -175,7 +175,7 @@ namespace fiefdouglou
             string sternom = textBoxLoginClient.Text;
             string strSQLClient = "";
 
-            strSQLClient = "delete from client where login = '" + sternom + "'";
+            strSQLClient = "delete from client where nom = '" + sternom + "'";
             Connection.openConnection(strSQLClient);
 
             chargeClient();

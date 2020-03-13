@@ -47,7 +47,7 @@ namespace fiefdouglou
             string clientchoisi = comboBoxClient.SelectedItem.ToString();
             string sitechoisi = comboBoxSite.SelectedItem.ToString();
 
-            strfilter += " and (c.login = '" + clientchoisi + "' )";
+            strfilter += " and (c.nom = '" + clientchoisi + "' )";
             strfilter += " and (s.nom = '" + sitechoisi + "' )";
 
             SqlDataReader drSQLInterv = null;
@@ -58,7 +58,7 @@ namespace fiefdouglou
             {
                 strSQLInterv = "SELECT m.nom as matnom, m.description as matserie, " +
                     "m.date_intervention_faite as matdate, m.mtbf as matmtbf, " +
-                    "c.login clientnom, s.nom as sitenom FROM materiel " +
+                    "c.nom clientnom, s.nom as sitenom FROM materiel " +
                     "m inner join client c on m.id_client = c.id_client " +
                     "inner join site s on m.id_site = s.id_site " + strfilter;
                 
@@ -109,7 +109,7 @@ namespace fiefdouglou
             comboBoxClient.Items.Add("");
             while (drSQLClient.Read())
             {
-                comboBoxClient.Items.Add(drSQLClient["login"].ToString());
+                comboBoxClient.Items.Add(drSQLClient["nom"].ToString());
             };
             Connection.closeConnection();
 
@@ -132,6 +132,12 @@ namespace fiefdouglou
         {
             FormCrudMatos lematos = new FormCrudMatos();
             lematos.ShowDialog();
+        }
+
+        private void buttonTech_Click(object sender, EventArgs e)
+        {
+            FormCrudTech letech = new FormCrudTech();
+            letech.ShowDialog();
         }
     }
 }
