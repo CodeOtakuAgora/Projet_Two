@@ -1,4 +1,13 @@
-﻿// Copyright (c) 2006 Damien Miller <djm@mindrot.org>
+﻿/*
+IMPORTANT A LIRE SVP
+cette classe est en faite une petite bibliothèque qui s'occupe de gérer tout le hashage et de 
+sécuriser notre password afin de protéger et de sécuriser l'utilisation du logiciel
+
+il y a dans cette classe Bcrypt seulement 3 méthodes que vous devez connaitre :
+hashPassword, checkPassword, generateSalt
+*/
+
+// Copyright (c) 2006 Damien Miller <djm@mindrot.org>
 // Copyright (c) 2007 Derek Slager
 //
 // Permission to use, copy, modify, and distribute this software for any
@@ -644,6 +653,12 @@ public class BCrypt {
     /// <param name="salt">The salt to hash with (perhaps generated
     /// using <c>BCrypt.GenerateSalt</c>).</param>
     /// <returns>The hashed password.</returns>
+    /*
+    * A lire svp
+    * cette méthode permet de nous hashé un password à partir d'une chaine de charatère
+    * et d'une clé de hashage qui à été généré grace à la méthode generateSalt
+    * afin d'avoir un pasword hashé qui est sécurisé et dur à cracker
+    */
     public static string HashPassword(string password, string salt) {
         if (password == null) {
             throw new ArgumentNullException("password");
@@ -735,6 +750,11 @@ public class BCrypt {
     /// rounds to apply.
     /// </summary>
     /// <returns>An encoded salt value.</returns>
+    /*
+    * A lire svp
+    * cette méthode permet de nous générer une clé de hashage que l'on devra préciser
+    * pour hasher notre password
+    */
     public static string GenerateSalt() {
         return GenerateSalt(GENSALT_DEFAULT_LOG2_ROUNDS);
     }
@@ -747,6 +767,11 @@ public class BCrypt {
     /// <param name="hashed">The previously hashed password.</param>
     /// <returns><c>true</c> if the passwords, <c>false</c>
     /// otherwise.</returns>
+    /*
+    * A lire svp
+    * cette méthode permet de vérifier si le password qui à été saise correspond avec le
+    * hash qui à été définit généralement depuis la database
+    */
     public static bool CheckPassword(string plaintext, string hashed) {
         return StringComparer.Ordinal.Compare(hashed, HashPassword(plaintext, hashed)) == 0;
     }

@@ -53,6 +53,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonSearch = new System.Windows.Forms.Button();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.buttonUndo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fiefdouglouDataSet1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -182,7 +183,7 @@
             // 
             // ButtonNewIntervention
             // 
-            this.ButtonNewIntervention.Location = new System.Drawing.Point(263, 356);
+            this.ButtonNewIntervention.Location = new System.Drawing.Point(219, 354);
             this.ButtonNewIntervention.Name = "ButtonNewIntervention";
             this.ButtonNewIntervention.Size = new System.Drawing.Size(95, 67);
             this.ButtonNewIntervention.TabIndex = 4;
@@ -192,7 +193,7 @@
             // 
             // buttonValiderSite
             // 
-            this.buttonValiderSite.Location = new System.Drawing.Point(490, 383);
+            this.buttonValiderSite.Location = new System.Drawing.Point(521, 383);
             this.buttonValiderSite.Name = "buttonValiderSite";
             this.buttonValiderSite.Size = new System.Drawing.Size(95, 38);
             this.buttonValiderSite.TabIndex = 5;
@@ -242,11 +243,22 @@
             this.textBoxSearch.Size = new System.Drawing.Size(118, 22);
             this.textBoxSearch.TabIndex = 7;
             // 
+            // buttonUndo
+            // 
+            this.buttonUndo.Location = new System.Drawing.Point(404, 383);
+            this.buttonUndo.Name = "buttonUndo";
+            this.buttonUndo.Size = new System.Drawing.Size(95, 38);
+            this.buttonUndo.TabIndex = 21;
+            this.buttonUndo.Text = "Annuler";
+            this.buttonUndo.UseVisualStyleBackColor = true;
+            this.buttonUndo.Click += new System.EventHandler(this.buttonUndo_Click);
+            // 
             // FormSite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonUndo);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.listViewInterv);
@@ -297,5 +309,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Button buttonUndo;
     }
 }
