@@ -1,7 +1,9 @@
-# PROJET TWO BTS SIO SLAM E4 : SITE DE GESTION DE STOCK FIEFDOUGLOU
+# PROJET TWO BTS SIO SLAM E4 : LOGICIEL DE GESTION DE STOCK FIEFDOUGLOU
+
+## ***Développé par Hugo Fief / Thomas Oussoultzoglou / Victor Pandourangane***
 
 ```
-## TODO : 
+! TODO : ! 
 
 - Faire toute les docs du ppe2 qu'il faudra fournir lors de l'épreuve e4 
 
