@@ -46,8 +46,21 @@
             this.etatMaterielToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listBoxInterv = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.listViewInterv = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewTest = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label2 = new System.Windows.Forms.Label();
+            this.listViewRetest = new System.Windows.Forms.ListView();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label3 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -181,34 +194,100 @@
             this.gestionToolStripMenuItem.Text = "Gestion";
             this.gestionToolStripMenuItem.Click += new System.EventHandler(this.gestionToolStripMenuItem_Click);
             // 
-            // listBoxInterv
-            // 
-            this.listBoxInterv.FormattingEnabled = true;
-            this.listBoxInterv.ItemHeight = 16;
-            this.listBoxInterv.Location = new System.Drawing.Point(186, 124);
-            this.listBoxInterv.Name = "listBoxInterv";
-            this.listBoxInterv.Size = new System.Drawing.Size(404, 116);
-            this.listBoxInterv.TabIndex = 2;
-            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label1.Location = new System.Drawing.Point(211, 58);
+            this.label1.Location = new System.Drawing.Point(242, 43);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(344, 36);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Prochaines Interventions";
+            this.label1.Size = new System.Drawing.Size(299, 36);
+            this.label1.TabIndex = 99;
+            this.label1.Text = "Matériels Fonctionnel";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // listViewInterv
+            // 
+            this.listViewInterv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listViewInterv.HideSelection = false;
+            this.listViewInterv.LabelWrap = false;
+            this.listViewInterv.Location = new System.Drawing.Point(47, 220);
+            this.listViewInterv.Name = "listViewInterv";
+            this.listViewInterv.Size = new System.Drawing.Size(659, 67);
+            this.listViewInterv.TabIndex = 3;
+            this.listViewInterv.UseCompatibleStateImageBehavior = false;
+            this.listViewInterv.View = System.Windows.Forms.View.List;
+            // 
+            // listViewTest
+            // 
+            this.listViewTest.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.listViewTest.HideSelection = false;
+            this.listViewTest.LabelWrap = false;
+            this.listViewTest.Location = new System.Drawing.Point(47, 82);
+            this.listViewTest.Name = "listViewTest";
+            this.listViewTest.Size = new System.Drawing.Size(659, 75);
+            this.listViewTest.TabIndex = 2;
+            this.listViewTest.UseCompatibleStateImageBehavior = false;
+            this.listViewTest.View = System.Windows.Forms.View.List;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label2.Location = new System.Drawing.Point(251, 173);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(250, 36);
+            this.label2.TabIndex = 99;
+            this.label2.Text = "Matériels Périmés";
+            // 
+            // listViewRetest
+            // 
+            this.listViewRetest.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9});
+            this.listViewRetest.HideSelection = false;
+            this.listViewRetest.LabelWrap = false;
+            this.listViewRetest.Location = new System.Drawing.Point(56, 356);
+            this.listViewRetest.Name = "listViewRetest";
+            this.listViewRetest.Size = new System.Drawing.Size(643, 77);
+            this.listViewRetest.TabIndex = 4;
+            this.listViewRetest.UseCompatibleStateImageBehavior = false;
+            this.listViewRetest.View = System.Windows.Forms.View.List;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label3.Location = new System.Drawing.Point(242, 303);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(344, 36);
+            this.label3.TabIndex = 99;
+            this.label3.Text = "Prochaines Interventions";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listViewRetest);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.listViewTest);
+            this.Controls.Add(this.listViewInterv);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBoxInterv);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormHome";
@@ -241,8 +320,21 @@
         private System.Windows.Forms.ToolStripMenuItem etatMaterielToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crudToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionToolStripMenuItem;
-        private System.Windows.Forms.ListBox listBoxInterv;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListView listViewInterv;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ListView listViewTest;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListView listViewRetest;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.Label label3;
     }
 }
 

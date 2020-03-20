@@ -1,6 +1,7 @@
 ﻿// on définit toutes les librairies (assembly) dont on a besoins 
 // dans le fichiers en les important
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -84,6 +85,26 @@ namespace fiefdouglou
             cmSQL = new SqlCommand(strSQL, cnSQL);
             int res = (int)cmSQL.ExecuteScalar();
             return res;
+        }
+
+        // cette méthode est a apellé dés qu'on souhaite éxécuter une procédure stockée contenu dans notre database
+        // une procédure stockée est un ensemble d'instructions SQL déjà configurés, stockées dans une base de données 
+        // et pretes à etre exécutées sur la demande de Sql server
+        /*
+         * on utilise le type static car : une classe statique ne peut pas être instanciée. En d’autres termes, 
+         *  vous ne pouvez pas utiliser l’opérateur new pour créer une variable du type classe.
+         * Étant donné qu’il n’y a aucune variable d’instance, vous accédez aux membres d’une classe statique
+         * en utilisant le nom de classe lui-même
+        */
+        public static SqlDataReader executeProcedure(string procedure)
+        {
+            cnSQL = new SqlConnection(connString);
+            cnSQL.Open();
+            cmSQL = new SqlCommand(procedure, cnSQL);
+
+            cmSQL.CommandType = CommandType.StoredProcedure;
+            drSQL = cmSQL.ExecuteReader();
+            return drSQL;
         }
 
         // cette méthode est a apellé dés qu'on sohaite éxécuter une requete autre que SELECT tels que

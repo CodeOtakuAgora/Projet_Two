@@ -63,41 +63,152 @@ namespace fiefdouglou
             }
         }
 
-        private void FormHome_Load(object sender, System.EventArgs e)
+        private void nextIntervention()
         {
-            // on charge la FormLogin
-            FormLogin formLogin = new FormLogin();
-            formLogin.ShowDialog();
-
             // on récupère les identifiants de connection à la database
             Connection.getConnectionString();
             SqlDataReader drSQLInterv = null;
             string strSQLInterv = "";
             // on récupère la date actuelle et on la convertie dans le format adéquat avec 
-            // l'anné puis un tirret puis le mois puis un tirret et le jour
+            // l'anné, le mois et le jour car sinon notre requete sql ne sera pas éxécuté
             DateTime dateNow = DateTime.Now;
-            string toto = dateNow.ToString("yyyy-MM-dd").Substring(0, 10);
+            string toto = dateNow.ToString("yyyyMMdd");
+
+            // on définit un compteur afin que lorsque que l'on va surligner une intervention (rouge, vert)
+            // pour fficher de manière graphique si elle est validé ou pas, on a alors beosin d'un compteur qui commence à 0
+            // pour que le surlignage ne ce fasse que un élemnt précis de notre listView
+            int i = 0;
+
+            // on récupère toutes les prochaines interventions dont la date est supérieur à la date actuelle
+            strSQLInterv = "SELECT * FROM intervention inner join materiel " +
+                "ON intervention.date_intervention < materiel.date_intervention_faite WHERE date_intervention " +
+                "BETWEEN '" + toto.ToString() + "' AND '20220105' ";
+            drSQLInterv = Connection.openConnection(strSQLInterv);
+
+            // on vide notre listBox avant de la remplir juste au cas où
+            listViewRetest.Items.Clear();
+
+            // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
+            // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
+            // on remplit la listview et ensuite on définit une largueur pour chaque colonne de notre listview ainsi qu'une
+            // couleur de fond pour chaque élément de notre listView
+            while (drSQLInterv.Read())
+            {            
+                listViewRetest.Items.Add(drSQLInterv["materiel_concerne"].ToString() + " / " + drSQLInterv["commentaire"].ToString() + " / " + drSQLInterv["date_intervention"].ToString());
+                listViewRetest.Columns[i].Width = 1000;
+                listViewRetest.Items[i].BackColor = Color.Gray;
+                // on incrémente notre compteur
+                i++;
+            }
+        }
+
+        private void EpiredMmaterial()
+        {
+            // on récupère les identifiants de connection à la database
+            Connection.getConnectionString();
+
+            // on définit un compteur afin que lorsque que l'on va surligner une intervention (rouge, vert)
+            // pour fficher de manière graphique si elle est validé ou pas, on a alors beosin d'un compteur qui commence à 0
+            // pour que le surlignage ne ce fasse que un élemnt précis de notre listView
+            int i = 0;
+            // on récupère notre procédure stockée qui permet de récupérer tout les matériel périmés dont la date de 
+            // leur prochaines intervention - mtbf (exprimé en nombre de jour) est inférieur à la date actuelle
+            SqlDataReader md = Connection.executeProcedure("MatosPerimer");
+            
+            // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
+            // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
+            // on remplit la listview et ensuite on définit une largueur pour chaque colonne de notre listview ainsi qu'une
+            // couleur de fond pour chaque élément de notre listView
+            while (md.Read())
+            {
+                listViewInterv.Items.Add(" Le matériel " + md["nom"].ToString() + " / n° " + md["id_mat"].ToString() + " a bien été changé / date : "
+                    + md["date_intervention_faite"].ToString());
+                listViewInterv.Columns[i].Width = 1000;
+                listViewInterv.Items[i].BackColor = Color.Red;
+                // on incrémente notre compteur
+                i++;
+            }
+        }
+
+        private void FunctionnalMmaterial()
+        {
+            // on récupère les identifiants de connection à la database
+            Connection.getConnectionString();
+
+            // on définit un compteur afin que lorsque que l'on va surligner une intervention (rouge, vert)
+            // pour fficher de manière graphique si elle est validé ou pas, on a alors beosin d'un compteur qui commence à 0
+            // pour que le surlignage ne ce fasse que un élemnt précis de notre listView
+            int i = 0;
+            // on récupère notre procédure stockée qui permet de récupérer tout les matériel fonctionnel dont la date de 
+            // leur prochaines intervention - mtbf (exprimé en nombre de jour) est supérieur à la date actuelle
+            SqlDataReader md = Connection.executeProcedure("MatosFonctionnel");
+
+            // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
+            // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
+            // on remplit la listview et ensuite on définit une largueur pour chaque colonne de notre listview ainsi qu'une
+            // couleur de fond pour chaque élément de notre listView
+            while (md.Read())
+            {
+                listViewTest.Items.Add(" Le matériel " + md["nom"].ToString() + " / n° " + md["id_mat"].ToString() + " a bien été changé / date : "
+                    + md["date_intervention_faite"].ToString());
+                listViewTest.Columns[i].Width = 1000;
+                listViewTest.Items[i].BackColor = Color.Green;
+                // on incrémente notre compteur
+                i++;
+            }
+        }
+
+
+        private void FormHome_Load(object sender, System.EventArgs e)
+        {
+            // on charge la FormLogin en premier lieu pour sécuriser le logiciel et 
+            // afin d'empecher que n'importe qui puisse utiliser le logiciel
+            FormLogin formLogin = new FormLogin();
+            formLogin.ShowDialog();
+
+            // on récupère les identifiants de connection à la database
+            Connection.getConnectionString();
 
             try
             {
-                // on essaye d'éxecuter un bout de code
-                // on récupère toutes les prochaines interventions dont la date est supérieur à la date actuelle
-                strSQLInterv = "SELECT * FROM intervention WHERE date_intervention > " + toto.ToString() + " ORDER BY date_intervention DESC";
-                drSQLInterv = Connection.openConnection(strSQLInterv);
+                // on récupère la date actuelle et on la convertie dans le format adéquat avec 
+                // l'anné, le mois et le jour car sinon notre requete sql ne sera pas éxécuté
+                DateTime dateNow = DateTime.Now;
+                string toto = dateNow.ToString("yyyyMMdd");
 
-                // on vide notre listBox avant de la remplir juste au cas où
-                listBoxInterv.Items.Clear();
+                // on va vérifier si il éxiste dans notre database un matériel défectueux c'est à dire un matériel
+                // dont sa date de péremption - son mtbf (exprimer en jour) est égale à la date actuelle
+                // celà nous permettra d'enclencher une intervention sans qu'il y ait eu une demande externe
+                // afin de garder pour nos clients un parc informatique de leur site fonctionnel et à jour
 
-                // on boucle sur les valeurs dans la database et on les remplit une par une dans la listbox
-                // en précisant unqiuement les colonnes de la databse que l'on souhaite afficher dans la listbox
-                while (drSQLInterv.Read())
+                // pour que cette vérification se fasse tout les jours le logiciel devra être lancé tout les jours pour vérifier
+                // qu'aucun ne tombe en panne subitemment, on pourra alors optimiser tout celà avec un fichier .bat
+                // qui se lance tout les jour à une heure précise afin d'éxécuter le logiciel automatiquement
+                string test = string.Format("SELECT COUNT(*) FROM Materiel WHERE DATEADD(DAY, -mtbf, date_intervention_faite) " +
+                    " = '{0}'", toto.ToString());
+                int res = Connection.executeCountQuery(test);
+                // si le résultat retourné par le requete est 0 donc il n'a rien trouvé 
+                // alors aucun matétriel défectueux n'a été trouvé
+                if (res == 0)
                 {
-                    listBoxInterv.Items.Add(drSQLInterv["materiel_concerne"].ToString() + " / " + drSQLInterv["commentaire"].ToString() + " / " + drSQLInterv["date_intervention"].ToString());
-                    listBoxInterv.BackColor = Color.Gray;
+                    MessageBox.Show("Aucun matériel défectueux n'a été détecté", "INFOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                // si le résultat retourné par le requete est 1 donc il a trouvé un résultat 
+                // alors celà veut dire qu'un matériel défectueux à été trouvé et donc une intervention se doit d'etre réalisé
+                // de toute urgence sur ce matériel
+                else if (res == 1)
+                {
+                    MessageBox.Show("Un matériel défectueux à été détecté \n une intervention doit alors être effectué de toute urgence", "IMPORTANT", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                // on récupère tout les matériels qui sont périmés
+                EpiredMmaterial();
+                // on récupère tout les matériels qui sont encore fonctionnels
+                FunctionnalMmaterial();
+                // on récupère toute les prochaines intervention à venir
+                nextIntervention();
 
             }
-             // si une requete sql qui n'a pas fonctionné dans le bout de code qu'on essaye d'éxécuté 
+            // si une requete sql qui n'a pas fonctionné dans le bout de code qu'on essaye d'éxécuté 
             // alors on attrape l'exception et on affiche l'erreur
             catch (SqlException excep)
             {
@@ -114,8 +225,6 @@ namespace fiefdouglou
             {
                 Connection.closeConnection();
             }
-
-
         }
 
         private void gestionToolStripMenuItem_Click(object sender, System.EventArgs e)
