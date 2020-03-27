@@ -68,6 +68,12 @@
     <Compile Include="FormCrudClient.Designer.cs">
       <DependentUpon>FormCrudClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCrudInterv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrudInterv.Designer.cs">
+      <DependentUpon>FormCrudInterv.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCrudMatos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,11 +104,17 @@
     <Compile Include="FormHome.Designer.cs">
       <DependentUpon>FormHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormIntervention.cs">
+    <Compile Include="FormListInterv.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormIntervention.Designer.cs">
-      <DependentUpon>FormIntervention.cs</DependentUpon>
+    <Compile Include="FormListInterv.Designer.cs">
+      <DependentUpon>FormListInterv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormListMat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormListMat.Designer.cs">
+      <DependentUpon>FormListMat.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
@@ -110,28 +122,13 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRapport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormRapport.Designer.cs">
-      <DependentUpon>FormRapport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormSite.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormSite.Designer.cs">
-      <DependentUpon>FormSite.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormSos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormSos.Designer.cs">
-      <DependentUpon>FormSos.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCrudClient.resx">
       <DependentUpon>FormCrudClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCrudInterv.resx">
+      <DependentUpon>FormCrudInterv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCrudMatos.resx">
       <DependentUpon>FormCrudMatos.cs</DependentUpon>
@@ -148,20 +145,14 @@
     <EmbeddedResource Include="FormHome.resx">
       <DependentUpon>FormHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormIntervention.resx">
-      <DependentUpon>FormIntervention.cs</DependentUpon>
+    <EmbeddedResource Include="FormListInterv.resx">
+      <DependentUpon>FormListInterv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormListMat.resx">
+      <DependentUpon>FormListMat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormRapport.resx">
-      <DependentUpon>FormRapport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormSite.resx">
-      <DependentUpon>FormSite.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormSos.resx">
-      <DependentUpon>FormSos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

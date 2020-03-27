@@ -23,43 +23,15 @@ namespace fiefdouglou
 
         private void siteToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            // on charge la FormSite en vérifiant si elle est pas déjà ouverte 
+            // on charge la FormCrudInterv en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormSite));
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormCrudInterv));
             if (isFormOpen == false)
             {
-                FormSite formSite = new FormSite();
-                formSite.StartPosition = FormStartPosition.CenterScreen;
-                formSite.Show();
-            }
-        }
-
-        private void interventionToolStripMenuItem1_Click(object sender, System.EventArgs e)
-        {
-            // on charge la FormIntervention en vérifiant si elle est pas déjà ouverte 
-            // afin d'éviter d'ouvrir un doublon
-            Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormIntervention));
-            if (isFormOpen == false)
-            {
-                FormIntervention formInterv = new FormIntervention();
+                FormCrudInterv formInterv = new FormCrudInterv();
                 formInterv.StartPosition = FormStartPosition.CenterScreen;
                 formInterv.Show();
-            }
-        }
-
-        private void clientToolStripMenuItem1_Click(object sender, System.EventArgs e)
-        {
-             // on charge la FormSos en vérifiant si elle est pas déjà ouverte 
-            // afin d'éviter d'ouvrir un doublon
-            Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormSos));
-            if (isFormOpen == false)
-            {
-                FormSos formSos = new FormSos();
-                formSos.StartPosition = FormStartPosition.CenterScreen;
-                formSos.Show();
             }
         }
 
@@ -86,7 +58,7 @@ namespace fiefdouglou
             drSQLInterv = Connection.openConnection(strSQLInterv);
 
             // on vide notre listBox avant de la remplir juste au cas où
-            listViewRetest.Items.Clear();
+            //listViewRetest.Items.Clear();
 
             // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
             // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
@@ -94,9 +66,9 @@ namespace fiefdouglou
             // couleur de fond pour chaque élément de notre listView
             while (drSQLInterv.Read())
             {            
-                listViewRetest.Items.Add(drSQLInterv["materiel_concerne"].ToString() + " / " + drSQLInterv["commentaire"].ToString() + " / " + drSQLInterv["date_intervention"].ToString());
-                listViewRetest.Columns[i].Width = 1000;
-                listViewRetest.Items[i].BackColor = Color.Gray;
+                //listViewRetest.Items.Add(drSQLInterv["materiel_concerne"].ToString() + " / " + drSQLInterv["commentaire"].ToString() + " / " + drSQLInterv["date_intervention"].ToString());
+                //listViewRetest.Columns[i].Width = 1000;
+                //listViewRetest.Items[i].BackColor = Color.Gray;
                 // on incrémente notre compteur
                 i++;
             }
@@ -121,10 +93,9 @@ namespace fiefdouglou
             // couleur de fond pour chaque élément de notre listView
             while (md.Read())
             {
-                listViewInterv.Items.Add(" Le matériel " + md["nom"].ToString() + " / n° " + md["id_mat"].ToString() + " a bien été changé / date : "
-                    + md["date_intervention_faite"].ToString());
-                listViewInterv.Columns[i].Width = 1000;
-                listViewInterv.Items[i].BackColor = Color.Red;
+                listBoxMat.Items.Add(" Le matériel " + md["nom"].ToString() + " / n° " + md["id_mat"].ToString() + " / date : "
+                    + md["date_intervention_faite"].ToString().Substring(0, 10));
+                listBoxMat.BackColor = Color.Red;
                 // on incrémente notre compteur
                 i++;
             }
@@ -149,10 +120,10 @@ namespace fiefdouglou
             // couleur de fond pour chaque élément de notre listView
             while (md.Read())
             {
-                listViewTest.Items.Add(" Le matériel " + md["nom"].ToString() + " / n° " + md["id_mat"].ToString() + " a bien été changé / date : "
-                    + md["date_intervention_faite"].ToString());
-                listViewTest.Columns[i].Width = 1000;
-                listViewTest.Items[i].BackColor = Color.Green;
+                //listViewTest.Items.Add(" Le matériel " + md["nom"].ToString() + " / n° " + md["id_mat"].ToString() + " a bien été changé / date : "
+                 //   + md["date_intervention_faite"].ToString() + " / MTBF : " + md["mtbf"].ToString());
+                //listViewTest.Columns[i].Width = 1000;
+                //listViewTest.Items[i].BackColor = Color.Green;
                 // on incrémente notre compteur
                 i++;
             }
@@ -185,20 +156,20 @@ namespace fiefdouglou
                 // qu'aucun ne tombe en panne subitemment, on pourra alors optimiser tout celà avec un fichier .bat
                 // qui se lance tout les jour à une heure précise afin d'éxécuter le logiciel automatiquement
                 string test = string.Format("SELECT COUNT(*) FROM Materiel WHERE DATEADD(DAY, -mtbf, date_intervention_faite) " +
-                    " = '{0}'", toto.ToString());
+                    " <= '{0}'", toto.ToString());
                 int res = Connection.executeCountQuery(test);
                 // si le résultat retourné par le requete est 0 donc il n'a rien trouvé 
                 // alors aucun matétriel défectueux n'a été trouvé
                 if (res == 0)
                 {
-                    MessageBox.Show("Aucun matériel défectueux n'a été détecté", "INFOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Aucun matériel périmés n'a été détecté", "INFOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 // si le résultat retourné par le requete est 1 donc il a trouvé un résultat 
                 // alors celà veut dire qu'un matériel défectueux à été trouvé et donc une intervention se doit d'etre réalisé
                 // de toute urgence sur ce matériel
                 else if (res == 1)
                 {
-                    MessageBox.Show("Un matériel défectueux à été détecté \n une intervention doit alors être effectué de toute urgence", "IMPORTANT", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Un matériel périmé à été détecté \n une intervention doit alors être effectué de toute urgence", "IMPORTANT", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 // on récupère tout les matériels qui sont périmés
                 EpiredMmaterial();
@@ -238,6 +209,76 @@ namespace fiefdouglou
                 FormCrud formgm = new FormCrud();
                 formgm.StartPosition = FormStartPosition.CenterScreen;
                 formgm.Show();
+            }
+        }
+
+        private void buttonAddInterv_Click(object sender, EventArgs e)
+        {
+            // on charge la FormCrudInterv en vérifiant si elle est pas déjà ouverte 
+            // afin d'éviter d'ouvrir un doublon
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormCrudInterv));
+            if (isFormOpen == false)
+            {
+                FormCrudInterv formInterv = new FormCrudInterv();
+                formInterv.StartPosition = FormStartPosition.CenterScreen;
+                formInterv.Show();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // on charge la FormListInterv en vérifiant si elle est pas déjà ouverte 
+            // afin d'éviter d'ouvrir un doublon
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormListInterv));
+            if (isFormOpen == false)
+            {
+                FormListInterv formInterv = new FormListInterv();
+                formInterv.StartPosition = FormStartPosition.CenterScreen;
+                formInterv.Show();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // on charge la FormListMat en vérifiant si elle est pas déjà ouverte 
+            // afin d'éviter d'ouvrir un doublon
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormListMat));
+            if (isFormOpen == false)
+            {
+                FormListMat formMat = new FormListMat();
+                formMat.StartPosition = FormStartPosition.CenterScreen;
+                formMat.Show();
+            }
+        }
+
+        private void clientToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            // on charge la FormListInterv en vérifiant si elle est pas déjà ouverte 
+            // afin d'éviter d'ouvrir un doublon
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormListInterv));
+            if (isFormOpen == false)
+            {
+                FormListInterv formInterv = new FormListInterv();
+                formInterv.StartPosition = FormStartPosition.CenterScreen;
+                formInterv.Show();
+            }
+        }
+
+        private void matérielToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            // on charge la FormListMat en vérifiant si elle est pas déjà ouverte 
+            // afin d'éviter d'ouvrir un doublon
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormListMat));
+            if (isFormOpen == false)
+            {
+                FormListMat formMat = new FormListMat();
+                formMat.StartPosition = FormStartPosition.CenterScreen;
+                formMat.Show();
             }
         }
     }

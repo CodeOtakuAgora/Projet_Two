@@ -39,28 +39,14 @@
             this.siteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.matérielToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.interventionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.technicienToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.interventionToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.etatMaterielToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consulterLesOpérationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.listViewInterv = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listViewTest = new System.Windows.Forms.ListView();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label2 = new System.Windows.Forms.Label();
-            this.listViewRetest = new System.Windows.Forms.ListView();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label3 = new System.Windows.Forms.Label();
+            this.buttonAddInterv = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.listBoxMat = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -105,11 +91,10 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem,
-            this.consultationToolStripMenuItem,
             this.crudToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(848, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -119,8 +104,7 @@
             this.siteToolStripMenuItem,
             this.clientToolStripMenuItem1,
             this.matérielToolStripMenuItem1,
-            this.interventionToolStripMenuItem1,
-            this.technicienToolStripMenuItem});
+            this.consulterLesOpérationsToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
             this.menuToolStripMenuItem.Text = "Menu";
@@ -128,56 +112,29 @@
             // siteToolStripMenuItem
             // 
             this.siteToolStripMenuItem.Name = "siteToolStripMenuItem";
-            this.siteToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
-            this.siteToolStripMenuItem.Text = "Site...";
+            this.siteToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
+            this.siteToolStripMenuItem.Text = "Ajouter Intervention...";
             this.siteToolStripMenuItem.Click += new System.EventHandler(this.siteToolStripMenuItem_Click);
             // 
             // clientToolStripMenuItem1
             // 
             this.clientToolStripMenuItem1.Name = "clientToolStripMenuItem1";
-            this.clientToolStripMenuItem1.Size = new System.Drawing.Size(171, 26);
-            this.clientToolStripMenuItem1.Text = "Client...";
+            this.clientToolStripMenuItem1.Size = new System.Drawing.Size(252, 26);
+            this.clientToolStripMenuItem1.Text = "Consulter interventions...";
             this.clientToolStripMenuItem1.Click += new System.EventHandler(this.clientToolStripMenuItem1_Click);
             // 
             // matérielToolStripMenuItem1
             // 
             this.matérielToolStripMenuItem1.Name = "matérielToolStripMenuItem1";
-            this.matérielToolStripMenuItem1.Size = new System.Drawing.Size(171, 26);
-            this.matérielToolStripMenuItem1.Text = "Matériel";
+            this.matérielToolStripMenuItem1.Size = new System.Drawing.Size(252, 26);
+            this.matérielToolStripMenuItem1.Text = "Consulter les matériels";
+            this.matérielToolStripMenuItem1.Click += new System.EventHandler(this.matérielToolStripMenuItem1_Click);
             // 
-            // interventionToolStripMenuItem1
+            // consulterLesOpérationsToolStripMenuItem
             // 
-            this.interventionToolStripMenuItem1.Name = "interventionToolStripMenuItem1";
-            this.interventionToolStripMenuItem1.Size = new System.Drawing.Size(171, 26);
-            this.interventionToolStripMenuItem1.Text = "Intervention";
-            this.interventionToolStripMenuItem1.Click += new System.EventHandler(this.interventionToolStripMenuItem1_Click);
-            // 
-            // technicienToolStripMenuItem
-            // 
-            this.technicienToolStripMenuItem.Name = "technicienToolStripMenuItem";
-            this.technicienToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
-            this.technicienToolStripMenuItem.Text = "Technicien";
-            // 
-            // consultationToolStripMenuItem
-            // 
-            this.consultationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.interventionToolStripMenuItem2,
-            this.etatMaterielToolStripMenuItem});
-            this.consultationToolStripMenuItem.Name = "consultationToolStripMenuItem";
-            this.consultationToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
-            this.consultationToolStripMenuItem.Text = "Consultation";
-            // 
-            // interventionToolStripMenuItem2
-            // 
-            this.interventionToolStripMenuItem2.Name = "interventionToolStripMenuItem2";
-            this.interventionToolStripMenuItem2.Size = new System.Drawing.Size(186, 26);
-            this.interventionToolStripMenuItem2.Text = "Intervention...";
-            // 
-            // etatMaterielToolStripMenuItem
-            // 
-            this.etatMaterielToolStripMenuItem.Name = "etatMaterielToolStripMenuItem";
-            this.etatMaterielToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
-            this.etatMaterielToolStripMenuItem.Text = "Etat Materiel...";
+            this.consulterLesOpérationsToolStripMenuItem.Name = "consulterLesOpérationsToolStripMenuItem";
+            this.consulterLesOpérationsToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
+            this.consulterLesOpérationsToolStripMenuItem.Text = "Consulter les opérations";
             // 
             // crudToolStripMenuItem
             // 
@@ -194,100 +151,64 @@
             this.gestionToolStripMenuItem.Text = "Gestion";
             this.gestionToolStripMenuItem.Click += new System.EventHandler(this.gestionToolStripMenuItem_Click);
             // 
-            // label1
+            // buttonAddInterv
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label1.Location = new System.Drawing.Point(242, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(299, 36);
-            this.label1.TabIndex = 99;
-            this.label1.Text = "Matériels Fonctionnel";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.buttonAddInterv.Location = new System.Drawing.Point(372, 138);
+            this.buttonAddInterv.Name = "buttonAddInterv";
+            this.buttonAddInterv.Size = new System.Drawing.Size(137, 59);
+            this.buttonAddInterv.TabIndex = 2;
+            this.buttonAddInterv.Text = "Ajouter une Intervention";
+            this.buttonAddInterv.UseVisualStyleBackColor = true;
+            this.buttonAddInterv.Click += new System.EventHandler(this.buttonAddInterv_Click);
             // 
-            // listViewInterv
+            // button2
             // 
-            this.listViewInterv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.listViewInterv.HideSelection = false;
-            this.listViewInterv.LabelWrap = false;
-            this.listViewInterv.Location = new System.Drawing.Point(47, 220);
-            this.listViewInterv.Name = "listViewInterv";
-            this.listViewInterv.Size = new System.Drawing.Size(659, 67);
-            this.listViewInterv.TabIndex = 3;
-            this.listViewInterv.UseCompatibleStateImageBehavior = false;
-            this.listViewInterv.View = System.Windows.Forms.View.List;
+            this.button2.Location = new System.Drawing.Point(578, 138);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(137, 59);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Consulter les Interventions";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // listViewTest
+            // button3
             // 
-            this.listViewTest.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
-            this.listViewTest.HideSelection = false;
-            this.listViewTest.LabelWrap = false;
-            this.listViewTest.Location = new System.Drawing.Point(47, 82);
-            this.listViewTest.Name = "listViewTest";
-            this.listViewTest.Size = new System.Drawing.Size(659, 75);
-            this.listViewTest.TabIndex = 2;
-            this.listViewTest.UseCompatibleStateImageBehavior = false;
-            this.listViewTest.View = System.Windows.Forms.View.List;
+            this.button3.Location = new System.Drawing.Point(578, 240);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(137, 59);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Consulter les opérations";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // button4
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label2.Location = new System.Drawing.Point(251, 173);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(250, 36);
-            this.label2.TabIndex = 99;
-            this.label2.Text = "Matériels Périmés";
+            this.button4.Location = new System.Drawing.Point(372, 240);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(137, 59);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Consulter les matériels";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // listViewRetest
+            // listBoxMat
             // 
-            this.listViewRetest.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9});
-            this.listViewRetest.HideSelection = false;
-            this.listViewRetest.LabelWrap = false;
-            this.listViewRetest.Location = new System.Drawing.Point(56, 356);
-            this.listViewRetest.Name = "listViewRetest";
-            this.listViewRetest.Size = new System.Drawing.Size(643, 77);
-            this.listViewRetest.TabIndex = 4;
-            this.listViewRetest.UseCompatibleStateImageBehavior = false;
-            this.listViewRetest.View = System.Windows.Forms.View.List;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label3.Location = new System.Drawing.Point(242, 303);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(344, 36);
-            this.label3.TabIndex = 99;
-            this.label3.Text = "Prochaines Interventions";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.listBoxMat.FormattingEnabled = true;
+            this.listBoxMat.ItemHeight = 16;
+            this.listBoxMat.Location = new System.Drawing.Point(25, 54);
+            this.listBoxMat.Name = "listBoxMat";
+            this.listBoxMat.Size = new System.Drawing.Size(298, 372);
+            this.listBoxMat.TabIndex = 6;
             // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listViewRetest);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.listViewTest);
-            this.Controls.Add(this.listViewInterv);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(848, 482);
+            this.Controls.Add(this.listBoxMat);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonAddInterv);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormHome";
@@ -313,28 +234,14 @@
         private System.Windows.Forms.ToolStripMenuItem siteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem matérielToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem interventionToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem technicienToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consultationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem interventionToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem etatMaterielToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crudToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listViewInterv;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ListView listViewTest;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListView listViewRetest;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button buttonAddInterv;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ListBox listBoxMat;
+        private System.Windows.Forms.ToolStripMenuItem consulterLesOpérationsToolStripMenuItem;
     }
 }
 
