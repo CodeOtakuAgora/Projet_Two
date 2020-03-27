@@ -281,5 +281,33 @@ namespace fiefdouglou
                 formMat.Show();
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // on charge la FormUpdateInterv en vérifiant si elle est pas déjà ouverte 
+            // afin d'éviter d'ouvrir un doublon
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormUpdateInterv));
+            if (isFormOpen == false)
+            {
+                FormUpdateInterv formMat = new FormUpdateInterv();
+                formMat.StartPosition = FormStartPosition.CenterScreen;
+                formMat.Show();
+            }
+        }
+
+        private void consulterLesOpérationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // on charge la FormUpdateInterv en vérifiant si elle est pas déjà ouverte 
+            // afin d'éviter d'ouvrir un doublon
+            Connection connection = new Connection();
+            bool isFormOpen = connection.isAlreadyOpen(typeof(FormUpdateInterv));
+            if (isFormOpen == false)
+            {
+                FormUpdateInterv formMat = new FormUpdateInterv();
+                formMat.StartPosition = FormStartPosition.CenterScreen;
+                formMat.Show();
+            }
+        }
     }
 }

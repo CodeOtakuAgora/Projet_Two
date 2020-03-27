@@ -135,6 +135,7 @@
             this.consulterLesOpérationsToolStripMenuItem.Name = "consulterLesOpérationsToolStripMenuItem";
             this.consulterLesOpérationsToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
             this.consulterLesOpérationsToolStripMenuItem.Text = "Consulter les opérations";
+            this.consulterLesOpérationsToolStripMenuItem.Click += new System.EventHandler(this.consulterLesOpérationsToolStripMenuItem_Click);
             // 
             // crudToolStripMenuItem
             // 
@@ -179,6 +180,7 @@
             this.button3.TabIndex = 4;
             this.button3.Text = "Consulter les opérations";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 

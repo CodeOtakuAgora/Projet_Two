@@ -34,25 +34,23 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxMtbfMatos = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBoxDelaisMatos = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.textBoxDescMatos = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxNomMatos = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBoxTypeMatos = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBoxSiteMatos = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxClientMatos = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonAjouterClient = new System.Windows.Forms.Button();
             this.buttonValider = new System.Windows.Forms.Button();
             this.buttonSupprimerClient = new System.Windows.Forms.Button();
             this.buttonModifierClient = new System.Windows.Forms.Button();
             this.buttonAnnuler = new System.Windows.Forms.Button();
-            this.textBoxIntervMatos = new System.Windows.Forms.TextBox();
+            this.comboBoxTypeMatos = new System.Windows.Forms.ComboBox();
+            this.DateTimePickerIntervMatos = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxClientMatos = new System.Windows.Forms.ComboBox();
+            this.comboBoxSiteMatos = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,32 +87,30 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBoxIntervMatos);
+            this.groupBox1.Controls.Add(this.comboBoxSiteMatos);
+            this.groupBox1.Controls.Add(this.comboBoxClientMatos);
+            this.groupBox1.Controls.Add(this.DateTimePickerIntervMatos);
+            this.groupBox1.Controls.Add(this.comboBoxTypeMatos);
             this.groupBox1.Controls.Add(this.textBoxMtbfMatos);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.textBoxDelaisMatos);
-            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.textBoxDescMatos);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.textBoxNomMatos);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.textBoxTypeMatos);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBoxSiteMatos);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBoxClientMatos);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(231, 53);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(287, 336);
+            this.groupBox1.Size = new System.Drawing.Size(287, 308);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informations";
             // 
             // textBoxMtbfMatos
             // 
-            this.textBoxMtbfMatos.Location = new System.Drawing.Point(85, 304);
+            this.textBoxMtbfMatos.Location = new System.Drawing.Point(85, 260);
             this.textBoxMtbfMatos.Name = "textBoxMtbfMatos";
             this.textBoxMtbfMatos.Size = new System.Drawing.Size(175, 22);
             this.textBoxMtbfMatos.TabIndex = 15;
@@ -122,27 +118,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(25, 304);
+            this.label9.Location = new System.Drawing.Point(25, 260);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(45, 17);
             this.label9.TabIndex = 99;
             this.label9.Text = "MTBF";
-            // 
-            // textBoxDelaisMatos
-            // 
-            this.textBoxDelaisMatos.Location = new System.Drawing.Point(85, 266);
-            this.textBoxDelaisMatos.Name = "textBoxDelaisMatos";
-            this.textBoxDelaisMatos.Size = new System.Drawing.Size(175, 22);
-            this.textBoxDelaisMatos.TabIndex = 14;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(25, 270);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 17);
-            this.label8.TabIndex = 99;
-            this.label8.Text = "delais";
             // 
             // textBoxDescMatos
             // 
@@ -176,13 +156,6 @@
             this.label7.TabIndex = 99;
             this.label7.Text = "Nom";
             // 
-            // textBoxTypeMatos
-            // 
-            this.textBoxTypeMatos.Location = new System.Drawing.Point(85, 185);
-            this.textBoxTypeMatos.Name = "textBoxTypeMatos";
-            this.textBoxTypeMatos.Size = new System.Drawing.Size(175, 22);
-            this.textBoxTypeMatos.TabIndex = 12;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -201,13 +174,6 @@
             this.label5.TabIndex = 99;
             this.label5.Text = "Interv ";
             // 
-            // textBoxSiteMatos
-            // 
-            this.textBoxSiteMatos.Location = new System.Drawing.Point(89, 72);
-            this.textBoxSiteMatos.Name = "textBoxSiteMatos";
-            this.textBoxSiteMatos.Size = new System.Drawing.Size(175, 22);
-            this.textBoxSiteMatos.TabIndex = 9;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -216,13 +182,6 @@
             this.label3.Size = new System.Drawing.Size(32, 17);
             this.label3.TabIndex = 99;
             this.label3.Text = "Site";
-            // 
-            // textBoxClientMatos
-            // 
-            this.textBoxClientMatos.Location = new System.Drawing.Point(90, 30);
-            this.textBoxClientMatos.Name = "textBoxClientMatos";
-            this.textBoxClientMatos.Size = new System.Drawing.Size(175, 22);
-            this.textBoxClientMatos.TabIndex = 8;
             // 
             // label2
             // 
@@ -288,12 +247,36 @@
             this.buttonAnnuler.UseVisualStyleBackColor = true;
             this.buttonAnnuler.Click += new System.EventHandler(this.buttonAnnuler_Click);
             // 
-            // textBoxIntervMatos
+            // comboBoxTypeMatos
             // 
-            this.textBoxIntervMatos.Location = new System.Drawing.Point(85, 221);
-            this.textBoxIntervMatos.Name = "textBoxIntervMatos";
-            this.textBoxIntervMatos.Size = new System.Drawing.Size(175, 22);
-            this.textBoxIntervMatos.TabIndex = 101;
+            this.comboBoxTypeMatos.FormattingEnabled = true;
+            this.comboBoxTypeMatos.Location = new System.Drawing.Point(85, 187);
+            this.comboBoxTypeMatos.Name = "comboBoxTypeMatos";
+            this.comboBoxTypeMatos.Size = new System.Drawing.Size(175, 24);
+            this.comboBoxTypeMatos.TabIndex = 100;
+            // 
+            // DateTimePickerIntervMatos
+            // 
+            this.DateTimePickerIntervMatos.Location = new System.Drawing.Point(86, 226);
+            this.DateTimePickerIntervMatos.Name = "DateTimePickerIntervMatos";
+            this.DateTimePickerIntervMatos.Size = new System.Drawing.Size(174, 22);
+            this.DateTimePickerIntervMatos.TabIndex = 100;
+            // 
+            // comboBoxClientMatos
+            // 
+            this.comboBoxClientMatos.FormattingEnabled = true;
+            this.comboBoxClientMatos.Location = new System.Drawing.Point(86, 31);
+            this.comboBoxClientMatos.Name = "comboBoxClientMatos";
+            this.comboBoxClientMatos.Size = new System.Drawing.Size(175, 24);
+            this.comboBoxClientMatos.TabIndex = 100;
+            // 
+            // comboBoxSiteMatos
+            // 
+            this.comboBoxSiteMatos.FormattingEnabled = true;
+            this.comboBoxSiteMatos.Location = new System.Drawing.Point(86, 72);
+            this.comboBoxSiteMatos.Name = "comboBoxSiteMatos";
+            this.comboBoxSiteMatos.Size = new System.Drawing.Size(175, 24);
+            this.comboBoxSiteMatos.TabIndex = 101;
             // 
             // FormCrudMatos
             // 
@@ -330,12 +313,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBoxTypeMatos;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBoxSiteMatos;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxClientMatos;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonAjouterClient;
         private System.Windows.Forms.Button buttonValider;
@@ -346,10 +326,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxNomMatos;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBoxDelaisMatos;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxMtbfMatos;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBoxIntervMatos;
+        private System.Windows.Forms.ComboBox comboBoxTypeMatos;
+        private System.Windows.Forms.DateTimePicker DateTimePickerIntervMatos;
+        private System.Windows.Forms.ComboBox comboBoxSiteMatos;
+        private System.Windows.Forms.ComboBox comboBoxClientMatos;
     }
 }

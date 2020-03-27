@@ -57,10 +57,11 @@
   <ItemGroup>
     <Compile Include="Bcrypt.cs" />
     <Compile Include="Connection.cs" />
-    <Compile Include="fiefdouglouDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>fiefdouglouDataSet.xsd</DependentUpon>
+    <Compile Include="FormUpdateInterv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdateInterv.Designer.cs">
+      <DependentUpon>FormUpdateInterv.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCrudClient.cs">
       <SubType>Form</SubType>
@@ -154,6 +155,9 @@
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormUpdateInterv.resx">
+      <DependentUpon>FormUpdateInterv.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -163,19 +167,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include=".editorconfig" />
-    <None Include="fiefdouglouDataSet.xsc">
-      <DependentUpon>fiefdouglouDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="fiefdouglouDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>fiefdouglouDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="fiefdouglouDataSet.xss">
-      <DependentUpon>fiefdouglouDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

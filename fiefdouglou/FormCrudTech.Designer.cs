@@ -35,12 +35,12 @@
             this.buttonAjouterSite = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBoxIntervTech = new System.Windows.Forms.TextBox();
             this.textBoxNomTech = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.listBoxTech = new System.Windows.Forms.ListBox();
+            this.comboBoxIntervTech = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,8 +101,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboBoxIntervTech);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBoxIntervTech);
             this.groupBox1.Controls.Add(this.textBoxNomTech);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(189, 70);
@@ -120,13 +120,6 @@
             this.label4.Size = new System.Drawing.Size(43, 17);
             this.label4.TabIndex = 99;
             this.label4.Text = "Interv";
-            // 
-            // textBoxIntervTech
-            // 
-            this.textBoxIntervTech.Location = new System.Drawing.Point(85, 89);
-            this.textBoxIntervTech.Name = "textBoxIntervTech";
-            this.textBoxIntervTech.Size = new System.Drawing.Size(175, 22);
-            this.textBoxIntervTech.TabIndex = 9;
             // 
             // textBoxNomTech
             // 
@@ -175,6 +168,14 @@
             this.listBoxTech.TabIndex = 0;
             this.listBoxTech.SelectedIndexChanged += new System.EventHandler(this.listBoxSite_SelectedIndexChanged);
             // 
+            // comboBoxIntervTech
+            // 
+            this.comboBoxIntervTech.FormattingEnabled = true;
+            this.comboBoxIntervTech.Location = new System.Drawing.Point(85, 92);
+            this.comboBoxIntervTech.Name = "comboBoxIntervTech";
+            this.comboBoxIntervTech.Size = new System.Drawing.Size(175, 24);
+            this.comboBoxIntervTech.TabIndex = 100;
+            // 
             // FormCrudTech
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -211,12 +212,12 @@
         private System.Windows.Forms.Button buttonValiderSite;
         private System.Windows.Forms.Button buttonAjouterSite;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBoxIntervTech;
         private System.Windows.Forms.TextBox textBoxNomTech;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBoxTech;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBoxIntervTech;
     }
 }

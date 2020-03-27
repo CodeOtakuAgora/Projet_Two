@@ -41,7 +41,7 @@
             // buttonFermer
             // 
             this.buttonFermer.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFermer.Location = new System.Drawing.Point(996, 533);
+            this.buttonFermer.Location = new System.Drawing.Point(599, 492);
             this.buttonFermer.Name = "buttonFermer";
             this.buttonFermer.Size = new System.Drawing.Size(135, 43);
             this.buttonFermer.TabIndex = 8;
@@ -111,7 +111,7 @@
             this.groupBoxCrud.Controls.Add(this.buttonSite);
             this.groupBoxCrud.Controls.Add(this.buttonTech);
             this.groupBoxCrud.Controls.Add(this.buttonMatos);
-            this.groupBoxCrud.Location = new System.Drawing.Point(239, 116);
+            this.groupBoxCrud.Location = new System.Drawing.Point(40, 44);
             this.groupBoxCrud.Name = "groupBoxCrud";
             this.groupBoxCrud.Size = new System.Drawing.Size(694, 366);
             this.groupBoxCrud.TabIndex = 9;
@@ -122,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1209, 692);
+            this.ClientSize = new System.Drawing.Size(780, 564);
             this.Controls.Add(this.groupBoxCrud);
             this.Controls.Add(this.buttonFermer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;

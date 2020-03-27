@@ -85,7 +85,7 @@ namespace fiefdouglou
         private void EnableSite(bool b)
         {
             textBoxNomTech.Enabled = b;
-            textBoxIntervTech.Enabled = b;
+            comboBoxIntervTech.Enabled = b;
             listBoxTech.Enabled = !b;
             buttonAjouterSite.Enabled = !b;
             buttonValiderSite.Enabled = b;
@@ -108,7 +108,7 @@ namespace fiefdouglou
             drSQLClient.Read();
 
             textBoxNomTech.Text = drSQLClient["nom"].ToString();
-            textBoxIntervTech.Text = drSQLClient["id_intervention"].ToString();
+            comboBoxIntervTech.Items.Add(drSQLClient["id_intervention"].ToString());
 
             // et on ferme toute les connection à la database
             Connection.closeConnection();
@@ -144,7 +144,7 @@ namespace fiefdouglou
         {
             // on vide tout les éléments visuels de notre form (textbox, listbox...)
             textBoxNomTech.Text = "";
-            textBoxIntervTech.Text = "";
+            comboBoxIntervTech.Items.Clear();
         }
 
         private void buttonAnnulerSite_Click(object sender, EventArgs e)
@@ -161,6 +161,24 @@ namespace fiefdouglou
         {
             // on vide tout ce qui est contenu dans tout nos éléments visuels (textbox, listbox...)
             EffaceInformationsSite();
+
+            SqlDataReader drSQLClient = null;
+            string strSQLClient = "";
+
+            // une fois qu'un éléments de notre listbox à été clické et donc définit en sql on précise dans notre requete les informations précise 
+            // que l'on souhaite récupéreré et afficher depuis la database
+            strSQLClient = "SELECT * FROM technicien";
+            drSQLClient = Connection.openConnection(strSQLClient);
+
+            // puis on boucle sur le site selectionné et on remplit nos textbox 
+            while (drSQLClient.Read())
+            {
+                comboBoxIntervTech.Items.Add(drSQLClient["id_intervention"].ToString());
+            }
+
+            // et on ferme toute les connection à la database
+            Connection.closeConnection();
+
             // on rend toute nos textbox enable donc clickable (non grisée)
             EnableSite(true);
             // et on définit notre mode pour qu'il soit égale à Ajouter celà veut dire que le bouton ajouter à été clické
@@ -193,7 +211,7 @@ namespace fiefdouglou
             // on récupère dans des variables tout ce qui à été saisie dans les textbox
             string strSQL = "";
             string sternom = textBoxNomTech.Text;
-            string stradr = textBoxIntervTech.Text;
+            string stradr = comboBoxIntervTech.Text;
 
             // on vérifie que la textbox pour le nom n'est pas vide
             if (sternom == string.Empty)

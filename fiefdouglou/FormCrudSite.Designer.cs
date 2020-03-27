@@ -34,7 +34,6 @@
             this.buttonValiderSite = new System.Windows.Forms.Button();
             this.buttonAjouterSite = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBoxIdInterv = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxPostalSite = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.listBoxSite = new System.Windows.Forms.ListBox();
+            this.comboBoxIdInterv = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,7 +107,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBoxIdInterv);
+            this.groupBox1.Controls.Add(this.comboBoxIdInterv);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.textBoxPostalSite);
             this.groupBox1.Controls.Add(this.label5);
@@ -123,13 +123,6 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informations";
-            // 
-            // textBoxIdInterv
-            // 
-            this.textBoxIdInterv.Location = new System.Drawing.Point(85, 210);
-            this.textBoxIdInterv.Name = "textBoxIdInterv";
-            this.textBoxIdInterv.Size = new System.Drawing.Size(175, 22);
-            this.textBoxIdInterv.TabIndex = 12;
             // 
             // label6
             // 
@@ -235,6 +228,14 @@
             this.listBoxSite.TabIndex = 0;
             this.listBoxSite.SelectedIndexChanged += new System.EventHandler(this.listBoxSite_SelectedIndexChanged);
             // 
+            // comboBoxIdInterv
+            // 
+            this.comboBoxIdInterv.FormattingEnabled = true;
+            this.comboBoxIdInterv.Location = new System.Drawing.Point(85, 207);
+            this.comboBoxIdInterv.Name = "comboBoxIdInterv";
+            this.comboBoxIdInterv.Size = new System.Drawing.Size(175, 24);
+            this.comboBoxIdInterv.TabIndex = 101;
+            // 
             // FormCrudSite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -282,7 +283,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxPostalSite;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBoxIdInterv;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBoxIdInterv;
     }
 }

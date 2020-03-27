@@ -87,7 +87,7 @@ namespace fiefdouglou
             textBoxAdresseSite.Enabled = b;
             textBoxPostalSite.Enabled = b;
             textBoxVilleSite.Enabled = b;
-            textBoxIdInterv.Enabled = b;
+            comboBoxIdInterv.Enabled = b;
             listBoxSite.Enabled = !b;
             buttonAjouterSite.Enabled = !b;
             buttonValiderSite.Enabled = b;
@@ -113,7 +113,7 @@ namespace fiefdouglou
             textBoxAdresseSite.Text = drSQLClient["adresse"].ToString();
             textBoxPostalSite.Text = drSQLClient["code_postal"].ToString();
             textBoxVilleSite.Text = drSQLClient["ville"].ToString();
-            textBoxIdInterv.Text = drSQLClient["id_intervention"].ToString();
+            comboBoxIdInterv.Items.Add(drSQLClient["id_intervention"].ToString());
 
             // et on ferme toute les connections à la database
             Connection.closeConnection();
@@ -152,7 +152,7 @@ namespace fiefdouglou
             textBoxAdresseSite.Text = "";
             textBoxPostalSite.Text = "";
             textBoxVilleSite.Text = "";
-            textBoxIdInterv.Text = "";
+            comboBoxIdInterv.Items.Clear();
         }
 
         private void buttonAnnulerSite_Click(object sender, EventArgs e)
@@ -169,6 +169,24 @@ namespace fiefdouglou
         {
             // on vide tout ce qui est contenu dans tout nos éléments visuels (textbox, listbox...)
             EffaceInformationsSite();
+
+            SqlDataReader drSQLClient = null;
+            string strSQLClient = "";
+
+            // une fois qu'un éléments de notre listbox à été clické et donc définit en sql on précise dans notre requete les informations précise 
+            // que l'on souhaite récupéreré et afficher depuis la database
+            strSQLClient = "SELECT * FROM site";
+            drSQLClient = Connection.openConnection(strSQLClient);
+
+            // puis on boucle sur le site selectionné et on remplit nos textbox 
+            while (drSQLClient.Read())
+            {
+                comboBoxIdInterv.Items.Add(drSQLClient["id_intervention"].ToString());
+            }
+
+            // et on ferme toute les connection à la database
+            Connection.closeConnection();
+
             // on rend toute nos textbox enable donc clickable (non grisée)
             EnableSite(true);
             // et on définit notre mode pour qu'il soit égale à Ajouter celà veut dire que le bouton ajouter à été clické
@@ -204,7 +222,7 @@ namespace fiefdouglou
             string stradr = textBoxAdresseSite.Text;
             string strpst = textBoxPostalSite.Text;
             string strvle = textBoxVilleSite.Text;
-            string strinterv = textBoxIdInterv.Text;
+            string strinterv = comboBoxIdInterv.Text;
 
             // on vérifie que la textbox pour le nom n'est pas vide
             if (sternom == string.Empty)

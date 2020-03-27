@@ -81,13 +81,12 @@ namespace fiefdouglou
         // l'inverse de ce qui à été passé en paramêtre
         private void EnableClient(bool b)
         {
-            textBoxClientMatos.Enabled = b;
-            textBoxSiteMatos.Enabled = b;
+            comboBoxClientMatos.Enabled = b;
+            comboBoxSiteMatos.Enabled = b;
             textBoxNomMatos.Enabled = b;
             textBoxDescMatos.Enabled = b;
-            textBoxTypeMatos.Enabled = b;
-            textBoxIntervMatos.Enabled = b;
-            textBoxDelaisMatos.Enabled = b;
+            comboBoxTypeMatos.Enabled = b;
+            DateTimePickerIntervMatos.Enabled = b;
             textBoxMtbfMatos.Enabled = b;
             listBoxMatos.Enabled = !b;
             buttonAjouterClient.Enabled = !b;
@@ -111,53 +110,71 @@ namespace fiefdouglou
             drSQLClient = Connection.openConnection(strSQLClient);
 
             // puis on boucle sur le site selectionné et on remplit nos textbox 
-            drSQLClient.Read();
-
-            textBoxClientMatos.Text = drSQLClient["id_client"].ToString();
-            textBoxSiteMatos.Text = drSQLClient["id_site"].ToString();
-            textBoxNomMatos.Text = drSQLClient["nom"].ToString();
-            textBoxDescMatos.Text = drSQLClient["description"].ToString();
-            textBoxTypeMatos.Text = drSQLClient["type"].ToString();
-            textBoxIntervMatos.Text = drSQLClient["date_intervention_faite"].ToString();
-            textBoxIntervMatos.Text = textBoxIntervMatos.Text.Substring(0, 10);
-            textBoxDelaisMatos.Text = drSQLClient["date_intervention_pas_faite"].ToString();
-            textBoxMtbfMatos.Text = drSQLClient["mtbf"].ToString();
+            while (drSQLClient.Read())
+            {
+                comboBoxClientMatos.Items.Add(drSQLClient["id_client"].ToString());
+                comboBoxSiteMatos.Items.Add(drSQLClient["id_site"].ToString());
+                textBoxNomMatos.Text = drSQLClient["nom"].ToString();
+                textBoxDescMatos.Text = drSQLClient["description"].ToString();
+                comboBoxTypeMatos.Items.Add(drSQLClient["type"].ToString());
+                DateTimePickerIntervMatos.Text = drSQLClient["date_intervention_faite"].ToString().Substring(0, 10);
+                textBoxMtbfMatos.Text = drSQLClient["mtbf"].ToString();
+            } 
         }
 
         private void buttonAjouterClient_Click(object sender, EventArgs e)
         {
             // on vide tout ce qui est contenu dans tout nos éléments visuels (textbox, listbox...)
             EffaceInformationsClient();
+
+            SqlDataReader drSQLClient = null;
+            string strSQLClient = "";
+
+            // une fois qu'un éléments de notre listbox à été clické et donc définit en sql on précise dans notre requete les informations précise 
+            // que l'on souhaite récupéreré et afficher depuis la database
+            strSQLClient = "SELECT m.type as type_matos, s.id_site as liste_site, c.id_client as list_client " +
+                " FROM materiel m inner join site s on s.id_site = m.id_site inner join client c " +
+                " on c.id_client = m.id_client";
+            drSQLClient = Connection.openConnection(strSQLClient);
+
+            // puis on boucle sur le site selectionné et on remplit nos textbox 
+            while (drSQLClient.Read())
+            {
+                if (!comboBoxClientMatos.Items.Contains("2"))
+                    comboBoxClientMatos.Items.Add(drSQLClient["list_client"].ToString());
+                if (!comboBoxSiteMatos.Items.Contains("1"))
+                    comboBoxSiteMatos.Items.Add(drSQLClient["liste_site"].ToString());
+                if (!comboBoxTypeMatos.Items.Contains("informatique"))
+                    comboBoxTypeMatos.Items.Add(drSQLClient["type_matos"].ToString());
+            }
+
             // on rend toute nos textbox enable donc clickable (non grisée)
             EnableClient(true);
 
-            textBoxClientMatos.Focus();
+            comboBoxClientMatos.Focus();
             mode = "Ajouter";
         }
 
         private void EffaceInformationsClient()
         {
             // on vide tout les éléments visuels de notre form (textbox, listbox...)
-            textBoxClientMatos.Text = "";
-            textBoxSiteMatos.Text = "";
+            comboBoxClientMatos.Items.Clear();
+            comboBoxSiteMatos.Items.Clear();
             textBoxNomMatos.Text = "";
             textBoxDescMatos.Text = "";
-            textBoxIntervMatos.Text = "";
-            textBoxTypeMatos.Text = "";
-            textBoxDelaisMatos.Text = "";
+            DateTimePickerIntervMatos.Text = "";
+            comboBoxTypeMatos.Items.Clear();
             textBoxMtbfMatos.Text = "";
         }
 
         private void buttonValider_Click(object sender, EventArgs e)
         {
             string strSQL = "";
-            string sternom = textBoxClientMatos.Text;
-            string stradr = textBoxSiteMatos.Text;
+            string sternom = comboBoxClientMatos.Text;
+            string stradr = comboBoxSiteMatos.Text;
             string strlgn = textBoxNomMatos.Text;
             string strpwd = textBoxDescMatos.Text;
-            string strtel = textBoxIntervMatos.Text.Substring(0, 10);
-            string strmail = textBoxTypeMatos.Text;
-            string strdls = textBoxDelaisMatos.Text;
+            string strmail = comboBoxTypeMatos.Text;
             string strmtbf = textBoxMtbfMatos.Text;
 
             // on vérifie que la textbox pour le nom n'est pas vide
@@ -174,9 +191,9 @@ namespace fiefdouglou
             {
                 // on définit ensuite notre requete de modifcation en filtrant pour modifier uniquement l'élément selectionné
                 strSQL = string.Format("INSERT INTO materiel (id_client, id_site, nom, description, type, " +
-                    "date_intervention_faite, date_intervention_pas_faite, mtbf) " +
-                    "VALUES({0}, '{1}', '{2}', '{3}', '{4}', {5}, '{6}', {7})",
-                    sternom, stradr, strlgn, strpwd, strmail, strtel, strdls, strmtbf);
+                    "date_intervention_faite, mtbf) " +
+                    "VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}', {6})",
+                    sternom, stradr, strlgn, strpwd, strmail, DateTimePickerIntervMatos.Value, strmtbf);
             }
             // si on a clické sur modifier le mode définit est alors égale à Modifier 
             // on peut alors éxécuter notre requete de modifiquation de données dans la database
@@ -192,9 +209,9 @@ namespace fiefdouglou
 
                 // on définit ensuite notre requete de modifcation en filtrant pour modifier uniquement l'élément selectionné
                 strSQL = string.Format("UPDATE materiel SET id_client = {0}, id_site = {1}, nom = '{2}', " +
-                    "description = '{3}', type = '{4}', date_intervention_faite = {5}, " +
-                    "date_intervention_pas_faite = '{6}', mtbf = {7} where id_mat = {8}",
-                    sternom, stradr, strlgn, strpwd, strmail, strtel, strdls, strmtbf, idmat);
+                    "description = '{3}', type = '{4}', date_intervention_faite = '{5}', " +
+                    "mtbf = {6} where id_mat = {7}",
+                    sternom, stradr, strlgn, strpwd, strmail, DateTimePickerIntervMatos.Value, strmtbf, idmat);
             }
             // si un mode différent à été définit on la gère en retournant une exception
             else
@@ -249,7 +266,7 @@ namespace fiefdouglou
             EnableClient(true);
 
             // et on définit notre mode pour qu'il soit égale à Modifier celà veut dire que le bouton modifier à été clické
-            textBoxClientMatos.Focus();
+            comboBoxClientMatos.Focus();
             mode = "Modifier";
         }
 

@@ -42,8 +42,6 @@ namespace fiefdouglou
         {
             // on commence par vider notre listbox au chargement juste au cas où aisi que nos combobox
             listBoxClient.Items.Clear();
-            comboBoxIntervClient.Items.Clear();
-            comboBoxSiteClient.Items.Clear();
 
             SqlDataReader drSQLClient = null;
             string strSQLClient = "";
@@ -113,17 +111,18 @@ namespace fiefdouglou
             drSQLClient = Connection.openConnection(strSQLClient);
 
             // puis on boucle sur le site selectionné et on remplit nos textbox 
-            drSQLClient.Read();
+            while (drSQLClient.Read())
+            {
+                // au chargement de la form on remplit nos comboBox de tout nos sites
+                // notre comboBox de tout les nom de nos sites, interventions de la database
+                comboBoxIntervClient.Items.Add(drSQLClient["id_intervention"].ToString());
+                comboBoxSiteClient.Items.Add(drSQLClient["site"].ToString());
 
-            // au chargement de la form on remplit nos comboBox de tout nos sites
-            // notre comboBox de tout les nom de nos sites, interventions de la database
-            comboBoxIntervClient.Items.Add(drSQLClient["id_intervention"].ToString());
-            comboBoxSiteClient.Items.Add(drSQLClient["site"].ToString());
-
-            textBoxLoginClient.Text = drSQLClient["nom"].ToString();
-            textBoxPassClient.Text = drSQLClient["prenom"].ToString();
-            textBoxMailClient.Text = drSQLClient["mail"].ToString();
-            textBoxTelClient.Text = drSQLClient["telephone"].ToString();
+                textBoxLoginClient.Text = drSQLClient["nom"].ToString();
+                textBoxPassClient.Text = drSQLClient["prenom"].ToString();
+                textBoxMailClient.Text = drSQLClient["mail"].ToString();
+                textBoxTelClient.Text = drSQLClient["telephone"].ToString();
+            }           
         }
 
         private void buttonAjouterClient_Click(object sender, EventArgs e)
@@ -136,7 +135,7 @@ namespace fiefdouglou
             // une fois qu'un éléments de notre listbox à été clické et donc définit en sql on précise dans notre requete 
             // les informations précise que l'on souhaite récupéreré et afficher depuis la database
             strSQLClient = "SELECT c.nom as nom_client, c.prenom as prenom_client, c.mail as mail_client, " +
-                " c.telephone as tel_client, s.nom as nom_du_site, i.id_intervention as id_de_intervention FROM client c" +
+                " c.telephone as tel_client, s.id_site as id_du_site, i.id_intervention as id_de_intervention FROM client c" +
                 " inner join site s on s.id_site = c.site inner join intervention i on " +
                 " i.id_intervention = c.id_intervention ";
             drSQLClient = Connection.openConnection(strSQLClient);
@@ -144,10 +143,8 @@ namespace fiefdouglou
             // puis on boucle sur le site selectionné et on remplit nos textbox 
             while (drSQLClient.Read())
             {
-                if (!comboBoxIntervClient.Items.Contains("2") || !comboBoxIntervClient.Items.Contains("3") || !comboBoxIntervClient.Items.Contains("6"))
                     comboBoxIntervClient.Items.Add(drSQLClient["id_de_intervention"].ToString());
-                if (!comboBoxSiteClient.Items.Contains("site fif"))
-                    comboBoxSiteClient.Items.Add(drSQLClient["nom_du_site"].ToString());
+                    comboBoxSiteClient.Items.Add(drSQLClient["id_du_site"].ToString());
             }
 
             // on rend toute nos textbox enable donc clickable (non grisée)
@@ -261,28 +258,6 @@ namespace fiefdouglou
                 listBoxClient.Focus();
                 return;
             }
-
-            comboBoxIntervClient.Items.Clear();
-            comboBoxSiteClient.Items.Clear();
-
-            string strNomCLient = listBoxClient.SelectedItem.ToString();
-
-
-            SqlDataReader drSQLClient = null;
-            string strSQLClient = "";
-
-            // une fois qu'un éléments de notre listbox à été clické et donc définit en sql on précise dans notre requete 
-            // les informations précise que l'on souhaite récupéreré et afficher depuis la database
-            strSQLClient = "SELECT * FROM client where nom = '" + strNomCLient + "'";
-            drSQLClient = Connection.openConnection(strSQLClient);
-
-            // puis on boucle sur le site selectionné et on remplit nos textbox 
-            drSQLClient.Read();
-
-            // au chargement de la form on remplit nos comboBox de tout nos sites
-            // notre comboBox de tout les nom de nos sites, client, techniciens, matériels de la database
-            comboBoxIntervClient.Items.Add(drSQLClient["id_intervention"].ToString());
-            comboBoxSiteClient.Items.Add(drSQLClient["site"].ToString());
 
             // on rend toute nos textbox enable donc clickable (non grisée)
             EnableClient(true);
