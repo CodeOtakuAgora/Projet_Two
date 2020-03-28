@@ -29,7 +29,6 @@ namespace fiefdouglou
         private static SqlConnection cnSQL = null;
         private static SqlCommand cmSQL = null;
         private static SqlDataReader drSQL = null;
-        private static string strSQL = "";
         private static string connString = "";
         private bool isOpen = false;
 
@@ -59,10 +58,9 @@ namespace fiefdouglou
         */
         public static SqlDataReader openConnection(string sqlQuery)
         {
-            strSQL = sqlQuery;
             cnSQL = new SqlConnection(connString);
             cnSQL.Open();
-            cmSQL = new SqlCommand(strSQL, cnSQL);
+            cmSQL = new SqlCommand(sqlQuery, cnSQL);
             drSQL = cmSQL.ExecuteReader();
             return drSQL;
         }
@@ -79,10 +77,9 @@ namespace fiefdouglou
         */
         public static int executeCountQuery(string sqlQuery)
         {
-            strSQL = sqlQuery;
             cnSQL = new SqlConnection(connString);
             cnSQL.Open();
-            cmSQL = new SqlCommand(strSQL, cnSQL);
+            cmSQL = new SqlCommand(sqlQuery, cnSQL);
             int res = (int)cmSQL.ExecuteScalar();
             return res;
         }
@@ -119,10 +116,9 @@ namespace fiefdouglou
         */
         public static void executeQuery(string sqlQuery)
         {
-            strSQL = sqlQuery;
             cnSQL = new SqlConnection(connString);
             cnSQL.Open();
-            cmSQL = new SqlCommand(strSQL, cnSQL);
+            cmSQL = new SqlCommand(sqlQuery, cnSQL);
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.UpdateCommand = new SqlCommand(sqlQuery, cnSQL);
             adapter.UpdateCommand.ExecuteNonQuery();

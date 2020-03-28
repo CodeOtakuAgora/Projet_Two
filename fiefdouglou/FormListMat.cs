@@ -37,27 +37,27 @@ namespace fiefdouglou
 
             while (drSQLsmc.Read())
             {
-                if (!comboBoxSite.Items.Contains("site fif")) 
+                if (!comboBoxSite.Items.Contains("site fif"))
                     comboBoxSite.Items.Add(drSQLsmc["filtre_par_site"].ToString());
                 if (!comboBoxClient.Items.Contains("test"))
                     comboBoxClient.Items.Add(drSQLsmc["filtre_par_client"].ToString());
                 if (!comboBoxType.Items.Contains("informatique"))
                     comboBoxType.Items.Add(drSQLsmc["filtre_par_type"].ToString());
             }
-            Connection.closeConnection(); 
+            Connection.closeConnection();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-                // on récupère ce qui à été définit dans nos comboBox
-                string sitechoisi = comboBoxSite.SelectedItem.ToString();
-                string param = "hasJointure";
+            // on récupère ce qui à été définit dans nos comboBox
+            string sitechoisi = comboBoxSite.SelectedItem.ToString();
+            string param = "hasJointure";
 
-                string strfilter = " WHERE (s.nom = '" + sitechoisi + "' )";
-                string query = "SELECT m.nom as nom_matos, m.description as desc_matos, " +
-                    " m.date_intervention_faite as date_matos, m.mtbf as mtbf_matos, s.nom as nom_du_param " +
-                    " FROM materiel m inner join site s on m.id_site = s.id_site " + strfilter;
-                remplirListViewMat(query, param);
+            string strfilter = " WHERE (s.nom = '" + sitechoisi + "' )";
+            string query = "SELECT m.nom as nom_matos, m.description as desc_matos, " +
+                " m.date_intervention_faite as date_matos, m.mtbf as mtbf_matos, s.nom as nom_du_param " +
+                " FROM materiel m inner join site s on m.id_site = s.id_site " + strfilter;
+            remplirListViewMat(query, param);
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -72,10 +72,10 @@ namespace fiefdouglou
             string param = "hasJointure";
 
             string strfilter = " WHERE (c.nom = '" + clientchoisi + "' )";
-            string  query = "SELECT m.nom as nom_matos, m.description as desc_matos, m.date_intervention_faite " +
+            string query = "SELECT m.nom as nom_matos, m.description as desc_matos, m.date_intervention_faite " +
                     " as date_matos, m.mtbf as mtbf_matos, c.nom as nom_du_param FROM materiel m inner join client c " +
                     " on m.id_client = c.id_client " + strfilter;
-            remplirListViewMat(query, param);              
+            remplirListViewMat(query, param);
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -92,7 +92,7 @@ namespace fiefdouglou
         {
             // on commence par vider notre listView juste au cas où
             listViewMat.Items.Clear();
-            
+
             SqlDataReader drSQL = null;
             string strSQL = "";
             int i = 0;
@@ -123,7 +123,7 @@ namespace fiefdouglou
                     string NoSerie = drSQL["desc_matos"].ToString();
                     string DateInstallation = drSQL["date_matos"].ToString();
                     string mtbf = drSQL["mtbf_matos"].ToString();
-                    if (param == "hasJointure") 
+                    if (param == "hasJointure")
                         site = drSQL["nom_du_param"].ToString();
                     if (param == "type")
                         site = drSQL["type_matos"].ToString();
@@ -195,7 +195,7 @@ namespace fiefdouglou
             string queryCount = string.Format("SELECT COUNT(*) FROM intervention WHERE materiel_concerne LIKE '%{0}%' " +
                 " AND id_intervention > 2", textBox1.Text);
             int res = Connection.executeCountQuery(queryCount);
-            
+
             // si aucune intervention n'a été trouvé dans le recherche qui à été saisie on affiche un message d'erreur
             if (res == 0)
             {

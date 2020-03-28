@@ -25,7 +25,7 @@ namespace fiefdouglou
             Connection.getConnectionString();
         }
 
-        private void buttonOK_Click(object sender, EventArgs e)
+        private void ButtonOK_Click(object sender, EventArgs e)
         {
             // on propose à l'utiisateur de quitter la FormCrudSite si il le souhaite
             Close();
@@ -34,23 +34,21 @@ namespace fiefdouglou
         private void FormCrudClient_Load(object sender, EventArgs e)
         {
             // au chargement de notre form, on apelle la méthode chargeSite pour tout initialiser 
-            chargeClient();
+            ChargeClient();
         }
 
         // on initialise notre form en définissant tout ce qui a besoin d'etre définit au chargement de la form
-        private void chargeClient()
+        private void ChargeClient()
         {
             // on commence par vider notre listbox au chargement juste au cas où
             listBoxInterv.Items.Clear();
 
-            SqlDataReader drSQLClient = null;
-            string strSQLClient = "";
             try
             {
                 // on récupère tout nos clients depuis la databse et on remplit notre listbox avec tout ce que notre 
                 // requete nous a retourné comme donnée
-                strSQLClient = "SELECT * FROM intervention";
-                drSQLClient = Connection.openConnection(strSQLClient);
+                string strSQLClient = "SELECT * FROM intervention";
+                SqlDataReader drSQLClient = Connection.openConnection(strSQLClient);
 
                 // une fois la requete executé, on ferme tout nos connection à la database que l'on a définit
                 while (drSQLClient.Read())
@@ -98,18 +96,14 @@ namespace fiefdouglou
             buttonAnnuler.Enabled = b;
         }
 
-        private void listBoxClient_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListBoxClient_SelectedIndexChanged(object sender, EventArgs e)
         {
             string strNomCLient = listBoxInterv.SelectedItem.ToString();
 
-
-            SqlDataReader drSQLClient = null;
-            string strSQLClient = "";
-
             // une fois qu'un éléments de notre listbox à été clické et donc définit en sql on précise dans notre requete 
             // les informations précise que l'on souhaite récupéreré et afficher depuis la database
-            strSQLClient = "SELECT * FROM intervention WHERE materiel_concerne = '" + strNomCLient + "'";
-            drSQLClient = Connection.openConnection(strSQLClient);
+            string strSQLClient = "SELECT * FROM intervention WHERE materiel_concerne = '" + strNomCLient + "'";
+            SqlDataReader drSQLClient = Connection.openConnection(strSQLClient);
 
             // puis on boucle sur le site selectionné et on remplit nos textbox 
             while (drSQLClient.Read())
@@ -127,22 +121,20 @@ namespace fiefdouglou
 
         }
 
-        private void buttonAjouterClient_Click(object sender, EventArgs e)
+        private void ButtonAjouterClient_Click(object sender, EventArgs e)
         {
             // on vide tout ce qui est contenu dans tout nos éléments visuels (textbox, listbox...)
             EffaceInformationsClient();
 
-            SqlDataReader drSQLClient = null;
-            string strSQLClient = "";
             // une fois qu'un éléments de notre listbox à été clické et donc définit en sql on précise dans notre requete 
             // les informations précise que l'on souhaite récupéreré et afficher depuis la database
-            strSQLClient = "SELECT i.id_intervention as id_interv, i.materiel_concerne as materiel_concerne_intervention, " +
+            string strSQLClient = "SELECT i.id_intervention as id_interv, i.materiel_concerne as materiel_concerne_intervention, " +
                 " i.commentaire as interv_com, i.date_intervention as interv_date, i.valide as interv_val, s.id_site " +
                 " as id_du_site, c.id_client as id_du_client, m.nom as nom_du_materiel, t.id_technicien " +
                 " as id_du_technicien FROM intervention i inner join site s on s.id_site = i.id_site inner join " +
                     " client c on c.id_client = i.id_client inner join materiel m on m.nom = i.materiel_concerne" +
                     " inner join technicien t on t.id_intervention = i.id_intervention";
-            drSQLClient = Connection.openConnection(strSQLClient);
+            SqlDataReader drSQLClient = Connection.openConnection(strSQLClient);
 
             // puis on boucle sur le site selectionné et on remplit nos textbox 
             while (drSQLClient.Read())
@@ -152,7 +144,7 @@ namespace fiefdouglou
                 if (!comboBoxClientId.Items.Contains("2"))
                     comboBoxClientId.Items.Add(drSQLClient["id_du_client"].ToString());
                 comboBoxMatId.Items.Add(drSQLClient["nom_du_materiel"].ToString());
-                comboBoxTechId.Items.Add(drSQLClient["id_du_technicien"].ToString());      
+                comboBoxTechId.Items.Add(drSQLClient["id_du_technicien"].ToString());
             }
 
             // on rend toute nos textbox enable donc clickable (non grisée)
@@ -173,13 +165,13 @@ namespace fiefdouglou
             dateTimePickerDate.Text = "";
         }
 
-        private void buttonValider_Click(object sender, EventArgs e)
+        private void ButtonValider_Click(object sender, EventArgs e)
         {
-            string strSQL = "";
             string sternomId1 = comboBoxSitetId.Text;
             string sternomId2 = comboBoxClientId.Text;
             string stradr = comboBoxTechId.Text;
             string sternom = comboBoxMatId.Text;
+            string strSQL = "";
 
             string strlgn = textBoxLoginClient.Text;
             string strpwd = dateTimePickerDate.Value.ToString();
@@ -217,11 +209,6 @@ namespace fiefdouglou
                     "date_intervention = '{5}' where id_intervention = {6}",
                     sternomId1, sternomId2, sternom, stradr, strlgn, strpwd, idclient);
             }
-            // si un mode différent à été définit on la gère en retournant une exception
-            else
-            {
-                throw new Exception("Mode invalide");
-            }
 
             // on éxécute notre requete sql
             Connection.executeQuery(strSQL);
@@ -229,12 +216,12 @@ namespace fiefdouglou
             Connection.closeConnection();
             // puis une fois la requete executé, on apelle la méthode chargeSite pour tout réinitialiser 
             // et recharger notre form automatiquement avec les modifcation que l'on iven de saisir 
-            chargeClient();
+            ChargeClient();
             // et on vide tout ce qui est contenu dans tout nos éléments visuels (textbox, listbox...)
             EffaceInformationsClient();
         }
 
-        private void buttonSupprimerClient_Click(object sender, EventArgs e)
+        private void ButtonSupprimerClient_Click(object sender, EventArgs e)
         {
             // si aucun élément de la listbox n'a été selectionné il faut empecher l'utilisateur de pouvoir agir sur la database
             // c'est pourquoi on lui retourne une erreur si il click sur ajouter ou modifier alors qu'aucun éléments n'a été selectionné 
@@ -257,14 +244,14 @@ namespace fiefdouglou
             MessageBox.Show(strSQLClient.ToString());
             Connection.openConnection(strSQLClient);
 
-            chargeClient();
+            ChargeClient();
 
             EffaceInformationsClient();
         }
 
-        private void buttonModifierClient_Click(object sender, EventArgs e)
+        private void ButtonModifierClient_Click(object sender, EventArgs e)
         {
-   
+
             // si aucun élément de la listbox n'a été selectionné il faut empecher l'utilisateur de pouvoir agir sur la database
             // c'est pourquoi on lui retourne une erreur si il click sur ajouter ou modifier alors qu'aucun éléments n'a été selectionné 
             if (listBoxInterv.SelectedItem == null)
@@ -282,7 +269,7 @@ namespace fiefdouglou
             mode = "Modifier";
         }
 
-        private void buttonAnnuler_Click(object sender, EventArgs e)
+        private void ButtonAnnuler_Click(object sender, EventArgs e)
         {
             // on vide tout ce qui est contenu dans tout nos éléments visuels (textbox, listbox...)
             EffaceInformationsClient();

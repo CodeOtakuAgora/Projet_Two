@@ -100,7 +100,7 @@ namespace fiefdouglou
         {
             SqlDataReader drSQLClient = null;
             string strSQLClient = "";
-            
+
             // une fois qu'un éléments de notre listbox à été clické et donc définit en sql on précise dans notre requete les informations précise 
             // que l'on souhaite récupéreré et afficher depuis la database
             strSQLClient = "SELECT * FROM site where nom = '" + listBoxSite.SelectedItem.ToString() + "'";

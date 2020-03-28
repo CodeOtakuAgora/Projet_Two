@@ -43,14 +43,12 @@ namespace fiefdouglou
             // on commence par vider notre listbox au chargement juste au cas où aisi que nos combobox
             listBoxClient.Items.Clear();
 
-            SqlDataReader drSQLClient = null;
-            string strSQLClient = "";
             try
             {
-                 // on récupère tout nos clients depuis la databse et on remplit notre listbox avec tout ce que notre 
+                // on récupère tout nos clients depuis la databse et on remplit notre listbox avec tout ce que notre 
                 // requete nous a retourné comme donnée
-                strSQLClient = "SELECT * FROM client";
-                drSQLClient = Connection.openConnection(strSQLClient);
+                string strSQLClient = "SELECT * FROM client";
+                SqlDataReader drSQLClient = Connection.openConnection(strSQLClient);
 
                 // une fois la requete executé, on ferme tout nos connection à la database que l'on a définit
                 while (drSQLClient.Read())
@@ -101,14 +99,10 @@ namespace fiefdouglou
         {
             string strNomCLient = listBoxClient.SelectedItem.ToString();
 
-
-            SqlDataReader drSQLClient = null;
-            string strSQLClient = "";
-
             // une fois qu'un éléments de notre listbox à été clické et donc définit en sql on précise dans notre requete 
             // les informations précise que l'on souhaite récupéreré et afficher depuis la database
-            strSQLClient = "SELECT * FROM client where nom = '" + strNomCLient + "'";
-            drSQLClient = Connection.openConnection(strSQLClient);
+            string strSQLClient = "SELECT * FROM client where nom = '" + strNomCLient + "'";
+            SqlDataReader drSQLClient = Connection.openConnection(strSQLClient);
 
             // puis on boucle sur le site selectionné et on remplit nos textbox 
             while (drSQLClient.Read())
@@ -122,7 +116,7 @@ namespace fiefdouglou
                 textBoxPassClient.Text = drSQLClient["prenom"].ToString();
                 textBoxMailClient.Text = drSQLClient["mail"].ToString();
                 textBoxTelClient.Text = drSQLClient["telephone"].ToString();
-            }           
+            }
         }
 
         private void buttonAjouterClient_Click(object sender, EventArgs e)
@@ -130,21 +124,19 @@ namespace fiefdouglou
             // on vide tout ce qui est contenu dans tout nos éléments visuels (textbox, listbox...)
             EffaceInformationsClient();
 
-            SqlDataReader drSQLClient = null;
-            string strSQLClient = "";
             // une fois qu'un éléments de notre listbox à été clické et donc définit en sql on précise dans notre requete 
             // les informations précise que l'on souhaite récupéreré et afficher depuis la database
-            strSQLClient = "SELECT c.nom as nom_client, c.prenom as prenom_client, c.mail as mail_client, " +
+            string strSQLClient = "SELECT c.nom as nom_client, c.prenom as prenom_client, c.mail as mail_client, " +
                 " c.telephone as tel_client, s.id_site as id_du_site, i.id_intervention as id_de_intervention FROM client c" +
                 " inner join site s on s.id_site = c.site inner join intervention i on " +
                 " i.id_intervention = c.id_intervention ";
-            drSQLClient = Connection.openConnection(strSQLClient);
+            SqlDataReader drSQLClient = Connection.openConnection(strSQLClient);
 
             // puis on boucle sur le site selectionné et on remplit nos textbox 
             while (drSQLClient.Read())
             {
-                    comboBoxIntervClient.Items.Add(drSQLClient["id_de_intervention"].ToString());
-                    comboBoxSiteClient.Items.Add(drSQLClient["id_du_site"].ToString());
+                comboBoxIntervClient.Items.Add(drSQLClient["id_de_intervention"].ToString());
+                comboBoxSiteClient.Items.Add(drSQLClient["id_du_site"].ToString());
             }
 
             // on rend toute nos textbox enable donc clickable (non grisée)
@@ -167,13 +159,14 @@ namespace fiefdouglou
 
         private void buttonValider_Click(object sender, EventArgs e)
         {
-            string strSQL = "";
             string sternom = comboBoxIntervClient.Text;
             string stradr = comboBoxSiteClient.Text;
             string strlgn = textBoxLoginClient.Text;
             string strpwd = textBoxPassClient.Text;
             string strtel = textBoxTelClient.Text;
             string strmail = textBoxMailClient.Text;
+            string strSQL = "";
+
             // on vérifie que la textbox pour le nom n'est pas vide
             if (sternom == string.Empty)
             {
@@ -187,7 +180,7 @@ namespace fiefdouglou
             if (mode == "Ajouter")
             {
                 strSQL = string.Format("INSERT INTO client(id_intervention, site, nom, prenom, mail, telephone) " +
-                    "VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}')", 
+                    "VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}')",
                     sternom, stradr, strlgn, strpwd, strmail, strtel);
             }
             // si on a clické sur modifier le mode définit est alors égale à Modifier 
@@ -206,11 +199,6 @@ namespace fiefdouglou
                 strSQL = string.Format("UPDATE client SET id_intervention = {0}, site = {1}, nom = '{2}', " +
                     "prenom = '{3}', mail = '{4}', telephone = '{5}' where id_client = {6}",
                     sternom, stradr, strlgn, strpwd, strmail, strtel, idclient);
-            }
-            // si un mode différent à été définit on la gère en retournant une exception
-            else
-            {
-                throw new Exception("Mode invalide");
             }
 
             // on éxécute notre requete sql
@@ -237,10 +225,9 @@ namespace fiefdouglou
 
             // on récupère le nom du client selectionné
             string sternom = textBoxLoginClient.Text;
-            string strSQLClient = "";
 
             // on définit notre requete de supression en filtrant sur son nom et on l'éxécute
-            strSQLClient = "delete from client where nom = '" + sternom + "'";
+            string strSQLClient = "delete from client where nom = '" + sternom + "'";
             Connection.openConnection(strSQLClient);
 
             chargeClient();

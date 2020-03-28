@@ -73,7 +73,7 @@ namespace fiefdouglou
                     }
                     // on check si le password qui a été saisie correspond au hash de la database
                     bool matches = BCrypt.CheckPassword(textBoxPassword.Text.Trim(), inputPassword);
-                    if (matches == true)
+                    if (matches)
                     {
                         // on affiche un message de succès et on cache la formLogin
                         // puis on charge la formHome en vérifiant si elle est pas déjà ouverte 
@@ -82,7 +82,7 @@ namespace fiefdouglou
                         this.Hide();
                         Connection connection = new Connection();
                         bool isFormOpen = connection.isAlreadyOpen(typeof(FormHome));
-                        if (isFormOpen == false)
+                        if (!isFormOpen)
                         {
                             FormHome formHome = new FormHome();
                             formHome.StartPosition = FormStartPosition.CenterScreen;
@@ -96,7 +96,7 @@ namespace fiefdouglou
                 }
             }
 
-             // si une requete sql qui n'a pas fonctionné dans le bout de code qu'on essaye d'éxécuté 
+            // si une requete sql qui n'a pas fonctionné dans le bout de code qu'on essaye d'éxécuté 
             // alors on attrape l'exception et on affiche l'erreur
             catch (SqlException excep)
             {

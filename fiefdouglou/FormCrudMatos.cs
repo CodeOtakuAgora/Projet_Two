@@ -119,7 +119,7 @@ namespace fiefdouglou
                 comboBoxTypeMatos.Items.Add(drSQLClient["type"].ToString());
                 DateTimePickerIntervMatos.Text = drSQLClient["date_intervention_faite"].ToString().Substring(0, 10);
                 textBoxMtbfMatos.Text = drSQLClient["mtbf"].ToString();
-            } 
+            }
         }
 
         private void buttonAjouterClient_Click(object sender, EventArgs e)

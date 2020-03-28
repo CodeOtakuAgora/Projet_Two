@@ -25,53 +25,7 @@ namespace fiefdouglou
         {
             // on charge la FormCrudInterv en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
-            Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormCrudInterv));
-            if (isFormOpen == false)
-            {
-                FormCrudInterv formInterv = new FormCrudInterv();
-                formInterv.StartPosition = FormStartPosition.CenterScreen;
-                formInterv.Show();
-            }
-        }
-
-        private void nextIntervention()
-        {
-            // on récupère les identifiants de connection à la database
-            Connection.getConnectionString();
-            SqlDataReader drSQLInterv = null;
-            string strSQLInterv = "";
-            // on récupère la date actuelle et on la convertie dans le format adéquat avec 
-            // l'anné, le mois et le jour car sinon notre requete sql ne sera pas éxécuté
-            DateTime dateNow = DateTime.Now;
-            string toto = dateNow.ToString("yyyyMMdd");
-
-            // on définit un compteur afin que lorsque que l'on va surligner une intervention (rouge, vert)
-            // pour fficher de manière graphique si elle est validé ou pas, on a alors beosin d'un compteur qui commence à 0
-            // pour que le surlignage ne ce fasse que un élemnt précis de notre listView
-            int i = 0;
-
-            // on récupère toutes les prochaines interventions dont la date est supérieur à la date actuelle
-            strSQLInterv = "SELECT * FROM intervention inner join materiel " +
-                "ON intervention.date_intervention < materiel.date_intervention_faite WHERE date_intervention " +
-                "BETWEEN '" + toto.ToString() + "' AND '20220105' ";
-            drSQLInterv = Connection.openConnection(strSQLInterv);
-
-            // on vide notre listBox avant de la remplir juste au cas où
-            //listViewRetest.Items.Clear();
-
-            // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
-            // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
-            // on remplit la listview et ensuite on définit une largueur pour chaque colonne de notre listview ainsi qu'une
-            // couleur de fond pour chaque élément de notre listView
-            while (drSQLInterv.Read())
-            {            
-                //listViewRetest.Items.Add(drSQLInterv["materiel_concerne"].ToString() + " / " + drSQLInterv["commentaire"].ToString() + " / " + drSQLInterv["date_intervention"].ToString());
-                //listViewRetest.Columns[i].Width = 1000;
-                //listViewRetest.Items[i].BackColor = Color.Gray;
-                // on incrémente notre compteur
-                i++;
-            }
+            buttonAddInterv_Click(sender, e);
         }
 
         private void EpiredMmaterial()
@@ -86,7 +40,7 @@ namespace fiefdouglou
             // on récupère notre procédure stockée qui permet de récupérer tout les matériel périmés dont la date de 
             // leur prochaines intervention - mtbf (exprimé en nombre de jour) est inférieur à la date actuelle
             SqlDataReader md = Connection.executeProcedure("MatosPerimer");
-            
+
             // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
             // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
             // on remplit la listview et ensuite on définit une largueur pour chaque colonne de notre listview ainsi qu'une
@@ -100,35 +54,6 @@ namespace fiefdouglou
                 i++;
             }
         }
-
-        private void FunctionnalMmaterial()
-        {
-            // on récupère les identifiants de connection à la database
-            Connection.getConnectionString();
-
-            // on définit un compteur afin que lorsque que l'on va surligner une intervention (rouge, vert)
-            // pour fficher de manière graphique si elle est validé ou pas, on a alors beosin d'un compteur qui commence à 0
-            // pour que le surlignage ne ce fasse que un élemnt précis de notre listView
-            int i = 0;
-            // on récupère notre procédure stockée qui permet de récupérer tout les matériel fonctionnel dont la date de 
-            // leur prochaines intervention - mtbf (exprimé en nombre de jour) est supérieur à la date actuelle
-            SqlDataReader md = Connection.executeProcedure("MatosFonctionnel");
-
-            // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
-            // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
-            // on remplit la listview et ensuite on définit une largueur pour chaque colonne de notre listview ainsi qu'une
-            // couleur de fond pour chaque élément de notre listView
-            while (md.Read())
-            {
-                //listViewTest.Items.Add(" Le matériel " + md["nom"].ToString() + " / n° " + md["id_mat"].ToString() + " a bien été changé / date : "
-                 //   + md["date_intervention_faite"].ToString() + " / MTBF : " + md["mtbf"].ToString());
-                //listViewTest.Columns[i].Width = 1000;
-                //listViewTest.Items[i].BackColor = Color.Green;
-                // on incrémente notre compteur
-                i++;
-            }
-        }
-
 
         private void FormHome_Load(object sender, System.EventArgs e)
         {
@@ -173,10 +98,6 @@ namespace fiefdouglou
                 }
                 // on récupère tout les matériels qui sont périmés
                 EpiredMmaterial();
-                // on récupère tout les matériels qui sont encore fonctionnels
-                FunctionnalMmaterial();
-                // on récupère toute les prochaines intervention à venir
-                nextIntervention();
 
             }
             // si une requete sql qui n'a pas fonctionné dans le bout de code qu'on essaye d'éxécuté 
@@ -204,7 +125,7 @@ namespace fiefdouglou
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
             bool isFormOpen = connection.isAlreadyOpen(typeof(FormCrud));
-            if (isFormOpen == false)
+            if (!isFormOpen)
             {
                 FormCrud formgm = new FormCrud();
                 formgm.StartPosition = FormStartPosition.CenterScreen;
@@ -218,7 +139,7 @@ namespace fiefdouglou
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
             bool isFormOpen = connection.isAlreadyOpen(typeof(FormCrudInterv));
-            if (isFormOpen == false)
+            if (!isFormOpen)
             {
                 FormCrudInterv formInterv = new FormCrudInterv();
                 formInterv.StartPosition = FormStartPosition.CenterScreen;
@@ -232,7 +153,7 @@ namespace fiefdouglou
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
             bool isFormOpen = connection.isAlreadyOpen(typeof(FormListInterv));
-            if (isFormOpen == false)
+            if (!isFormOpen)
             {
                 FormListInterv formInterv = new FormListInterv();
                 formInterv.StartPosition = FormStartPosition.CenterScreen;
@@ -246,7 +167,7 @@ namespace fiefdouglou
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
             bool isFormOpen = connection.isAlreadyOpen(typeof(FormListMat));
-            if (isFormOpen == false)
+            if (!isFormOpen)
             {
                 FormListMat formMat = new FormListMat();
                 formMat.StartPosition = FormStartPosition.CenterScreen;
@@ -258,28 +179,14 @@ namespace fiefdouglou
         {
             // on charge la FormListInterv en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
-            Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormListInterv));
-            if (isFormOpen == false)
-            {
-                FormListInterv formInterv = new FormListInterv();
-                formInterv.StartPosition = FormStartPosition.CenterScreen;
-                formInterv.Show();
-            }
+            button2_Click(sender, e);
         }
 
         private void matérielToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             // on charge la FormListMat en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
-            Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormListMat));
-            if (isFormOpen == false)
-            {
-                FormListMat formMat = new FormListMat();
-                formMat.StartPosition = FormStartPosition.CenterScreen;
-                formMat.Show();
-            }
+            button4_Click(sender, e);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -288,7 +195,7 @@ namespace fiefdouglou
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
             bool isFormOpen = connection.isAlreadyOpen(typeof(FormUpdateInterv));
-            if (isFormOpen == false)
+            if (!isFormOpen)
             {
                 FormUpdateInterv formMat = new FormUpdateInterv();
                 formMat.StartPosition = FormStartPosition.CenterScreen;
@@ -300,14 +207,7 @@ namespace fiefdouglou
         {
             // on charge la FormUpdateInterv en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
-            Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormUpdateInterv));
-            if (isFormOpen == false)
-            {
-                FormUpdateInterv formMat = new FormUpdateInterv();
-                formMat.StartPosition = FormStartPosition.CenterScreen;
-                formMat.Show();
-            }
+            button3_Click(sender, e);
         }
     }
 }

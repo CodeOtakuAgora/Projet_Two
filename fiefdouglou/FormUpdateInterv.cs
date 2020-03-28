@@ -63,8 +63,8 @@ namespace fiefdouglou
                         site = "Intervention en cours";
 
                     // on définit notre listView et on la remplit en lui ajoutant tout ce dont on a besoin d'afficher
-                    listViewInterv.Items.Add(drSQL["id_matos"].ToString() + " | " + drSQL["nom_matos"].ToString() 
-                        + " | " + drSQL["com_matos"].ToString() + " | " + drSQL["date_com"].ToString() + " | " + 
+                    listViewInterv.Items.Add(drSQL["id_matos"].ToString() + " | " + drSQL["nom_matos"].ToString()
+                        + " | " + drSQL["com_matos"].ToString() + " | " + drSQL["date_com"].ToString() + " | " +
                         drSQL["val_com"].ToString() + " | " + site);
 
                     // on définit une variable i qu'on va incrémenter afin de cibler à chaque chaque élments de notre listView afin de 
@@ -143,14 +143,14 @@ namespace fiefdouglou
             finally
             {
                 Connection.closeConnection();
-                if (validate == true)
+                if (validate)
                 {
                     this.Close();
                     // on charge la FormUpdateInterv en vérifiant si elle est pas déjà ouverte 
                     // afin d'éviter d'ouvrir un doublon
                     Connection connection = new Connection();
                     bool isFormOpen = connection.isAlreadyOpen(typeof(FormUpdateInterv));
-                    if (isFormOpen == false)
+                    if (!isFormOpen)
                     {
                         FormUpdateInterv formInterv = new FormUpdateInterv();
                         formInterv.StartPosition = FormStartPosition.CenterScreen;
