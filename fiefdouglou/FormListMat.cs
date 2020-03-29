@@ -45,6 +45,8 @@ namespace fiefdouglou
                     comboBoxType.Items.Add(drSQLsmc["filtre_par_type"].ToString());
             }
             Connection.closeConnection();
+
+            button7_Click(sender, e);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -200,6 +202,72 @@ namespace fiefdouglou
             if (res == 0)
             {
                 MessageBox.Show("Aucun Résultat", "Érreur de Recherche", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            // on commence par vider notre listView juste au cas où
+            listViewMat.Items.Clear();
+
+            // on récupère notre procédure stockée qui permet de récupérer tout les matériel périmés dont la date de 
+            // leur prochaines intervention - mtbf (exprimé en nombre de jour) est inférieur à la date actuelle
+            SqlDataReader md = Connection.executeProcedure("MatosPerimer");
+
+            // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
+            // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
+            // on remplit la listview et ensuite on définit une largueur pour chaque colonne de notre listview ainsi qu'une
+            // couleur de fond pour chaque élément de notre listView
+            while (md.Read())
+            {
+                string nom = md["nom"].ToString();
+                string NoSerie = md["description"].ToString();
+                string DateInstallation = md["date_intervention_faite"].ToString();
+                string mtbf = md["mtbf"].ToString();
+                string site = md["type"].ToString();
+
+                // on définit notre listView et on la remplit en lui ajoutant tout ce dont on a besoin d'afficher
+                ListViewItem lvi = new ListViewItem();
+                lvi.Text = nom;
+                lvi.SubItems.Add(NoSerie);
+                lvi.SubItems.Add(DateInstallation);
+                lvi.SubItems.Add(mtbf);
+                lvi.SubItems.Add(site);
+
+                listViewMat.Items.Add(lvi);
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            // on commence par vider notre listView juste au cas où
+            listViewMat.Items.Clear();
+
+            // on récupère notre procédure stockée qui permet de récupérer tout les matériel périmés dont la date de 
+            // leur prochaines intervention - mtbf (exprimé en nombre de jour) est inférieur à la date actuelle
+            SqlDataReader md = Connection.executeProcedure("MatosFonctionnel");
+
+            // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
+            // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
+            // on remplit la listview et ensuite on définit une largueur pour chaque colonne de notre listview ainsi qu'une
+            // couleur de fond pour chaque élément de notre listView
+            while (md.Read())
+            {
+                string nom = md["nom"].ToString();
+                string NoSerie = md["description"].ToString();
+                string DateInstallation = md["date_intervention_faite"].ToString();
+                string mtbf = md["mtbf"].ToString();
+                string site = md["type"].ToString();
+
+                // on définit notre listView et on la remplit en lui ajoutant tout ce dont on a besoin d'afficher
+                ListViewItem lvi = new ListViewItem();
+                lvi.Text = nom;
+                lvi.SubItems.Add(NoSerie);
+                lvi.SubItems.Add(DateInstallation);
+                lvi.SubItems.Add(mtbf);
+                lvi.SubItems.Add(site);
+
+                listViewMat.Items.Add(lvi);
             }
         }
     }

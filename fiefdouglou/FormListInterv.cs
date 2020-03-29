@@ -46,6 +46,8 @@ namespace fiefdouglou
                     comboBoxType.Items.Add(drSQLSite["filtre_par_type"].ToString());
             }
             Connection.closeConnection();
+
+            button4_Click(sender, e);
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -173,6 +175,76 @@ namespace fiefdouglou
                 " technicien t on i.id_technicien = t.id_technicien inner join materiel m " +
                 " on m.nom = i.materiel_concerne " + strfilter;
             remplirListViewInterv(query);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // on commence par vider notre listView juste au cas où
+            listViewMat.Items.Clear();
+
+            // on récupère notre procédure stockée qui permet de récupérer tout les matériel périmés dont la date de 
+            // leur prochaines intervention - mtbf (exprimé en nombre de jour) est inférieur à la date actuelle
+            SqlDataReader md = Connection.executeProcedure("PrevIntervention");
+
+            // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
+            // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
+            // on remplit la listview et ensuite on définit une largueur pour chaque colonne de notre listview ainsi qu'une
+            // couleur de fond pour chaque élément de notre listView
+            while (md.Read())
+            {
+                string nom = md["materiel_concerne"].ToString();
+                string NoSerie = md["commentaire"].ToString();
+                string DateInstallation = md["date_intervention"].ToString();
+                string mtbf = md["valide"].ToString();
+                string tech = md["id_technicien"].ToString();
+                string site = md["id_site"].ToString();
+
+                // on définit notre listView et on la remplit en lui ajoutant tout ce dont on a besoin d'afficher
+                ListViewItem lvi = new ListViewItem();
+                lvi.Text = nom;
+                lvi.SubItems.Add(NoSerie);
+                lvi.SubItems.Add(DateInstallation);
+                lvi.SubItems.Add(mtbf);
+                lvi.SubItems.Add(tech);
+                lvi.SubItems.Add(site);
+
+                listViewMat.Items.Add(lvi);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // on commence par vider notre listView juste au cas où
+            listViewMat.Items.Clear();
+
+            // on récupère notre procédure stockée qui permet de récupérer tout les matériel périmés dont la date de 
+            // leur prochaines intervention - mtbf (exprimé en nombre de jour) est inférieur à la date actuelle
+            SqlDataReader md = Connection.executeProcedure("NextIntervention");
+
+            // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
+            // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
+            // on remplit la listview et ensuite on définit une largueur pour chaque colonne de notre listview ainsi qu'une
+            // couleur de fond pour chaque élément de notre listView
+            while (md.Read())
+            {
+                string nom = md["materiel_concerne"].ToString();
+                string NoSerie = md["commentaire"].ToString();
+                string DateInstallation = md["date_intervention"].ToString();
+                string mtbf = md["valide"].ToString();
+                string tech = md["id_technicien"].ToString();
+                string site = md["id_site"].ToString();
+
+                // on définit notre listView et on la remplit en lui ajoutant tout ce dont on a besoin d'afficher
+                ListViewItem lvi = new ListViewItem();
+                lvi.Text = nom;
+                lvi.SubItems.Add(NoSerie);
+                lvi.SubItems.Add(DateInstallation);
+                lvi.SubItems.Add(mtbf);
+                lvi.SubItems.Add(tech);
+                lvi.SubItems.Add(site);
+
+                listViewMat.Items.Add(lvi);
+            }
         }
     }
 }

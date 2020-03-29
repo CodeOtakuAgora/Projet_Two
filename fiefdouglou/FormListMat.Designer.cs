@@ -47,6 +47,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.comboBoxClient = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +91,7 @@
             this.listViewMat.HideSelection = false;
             this.listViewMat.Location = new System.Drawing.Point(47, 211);
             this.listViewMat.Name = "listViewMat";
-            this.listViewMat.Size = new System.Drawing.Size(776, 176);
+            this.listViewMat.Size = new System.Drawing.Size(776, 153);
             this.listViewMat.TabIndex = 100;
             this.listViewMat.UseCompatibleStateImageBehavior = false;
             this.listViewMat.View = System.Windows.Forms.View.Details;
@@ -226,11 +228,33 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(194, 382);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(138, 56);
+            this.button7.TabIndex = 111;
+            this.button7.Text = "Matériels Fonctionnels";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(47, 382);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(118, 55);
+            this.button8.TabIndex = 110;
+            this.button8.Text = "Matériels Périmés";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // FormListMat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(876, 450);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.listViewMat);
@@ -265,5 +289,7 @@
         private System.Windows.Forms.ComboBox comboBoxClient;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBoxType;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
     }
 }

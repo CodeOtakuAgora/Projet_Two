@@ -46,6 +46,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.comboBoxSite = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             this.listViewMat.HideSelection = false;
             this.listViewMat.Location = new System.Drawing.Point(12, 249);
             this.listViewMat.Name = "listViewMat";
-            this.listViewMat.Size = new System.Drawing.Size(913, 176);
+            this.listViewMat.Size = new System.Drawing.Size(913, 167);
             this.listViewMat.TabIndex = 105;
             this.listViewMat.UseCompatibleStateImageBehavior = false;
             this.listViewMat.View = System.Windows.Forms.View.Details;
@@ -210,11 +212,33 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(12, 431);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(118, 55);
+            this.button3.TabIndex = 108;
+            this.button3.Text = "Anicennes Inteventions";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(159, 431);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(138, 56);
+            this.button4.TabIndex = 109;
+            this.button4.Text = "Prochaines Interventions";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // FormListInterv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 495);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.listViewMat);
@@ -248,5 +272,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBoxMat;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
