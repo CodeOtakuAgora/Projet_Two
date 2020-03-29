@@ -48,7 +48,7 @@
             this.textBox1.Location = new System.Drawing.Point(127, 70);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(176, 22);
-            this.textBox1.TabIndex = 9;
+            this.textBox1.TabIndex = 99;
             this.textBox1.Text = "1";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -59,7 +59,7 @@
             this.textBox2.Location = new System.Drawing.Point(595, 70);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(176, 22);
-            this.textBox2.TabIndex = 9;
+            this.textBox2.TabIndex = 99;
             this.textBox2.Text = "3";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -80,7 +80,7 @@
             this.textBox4.Location = new System.Drawing.Point(361, 70);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(176, 22);
-            this.textBox4.TabIndex = 9;
+            this.textBox4.TabIndex = 99;
             this.textBox4.Text = "2";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -91,7 +91,7 @@
             this.buttonOK.Location = new System.Drawing.Point(687, 380);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(137, 47);
-            this.buttonOK.TabIndex = 3;
+            this.buttonOK.TabIndex = 4;
             this.buttonOK.Text = "Fermer";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
@@ -100,10 +100,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label2.Location = new System.Drawing.Point(286, 128);
+            this.label2.Location = new System.Drawing.Point(286, 125);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(313, 36);
-            this.label2.TabIndex = 107;
+            this.label2.TabIndex = 1;
             this.label2.Text = "Liste des Interventions";
             // 
             // buttonValider
@@ -112,7 +112,7 @@
             this.buttonValider.Location = new System.Drawing.Point(528, 381);
             this.buttonValider.Name = "buttonValider";
             this.buttonValider.Size = new System.Drawing.Size(137, 46);
-            this.buttonValider.TabIndex = 2;
+            this.buttonValider.TabIndex = 3;
             this.buttonValider.Text = "Valider";
             this.buttonValider.UseVisualStyleBackColor = true;
             this.buttonValider.Click += new System.EventHandler(this.buttonValider_Click);
@@ -126,10 +126,10 @@
             this.listViewInterv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewInterv.HideSelection = false;
             this.listViewInterv.LabelWrap = false;
-            this.listViewInterv.Location = new System.Drawing.Point(12, 167);
+            this.listViewInterv.Location = new System.Drawing.Point(12, 177);
             this.listViewInterv.Name = "listViewInterv";
             this.listViewInterv.Size = new System.Drawing.Size(815, 183);
-            this.listViewInterv.TabIndex = 1;
+            this.listViewInterv.TabIndex = 2;
             this.listViewInterv.UseCompatibleStateImageBehavior = false;
             this.listViewInterv.View = System.Windows.Forms.View.List;
             // 

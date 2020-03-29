@@ -59,7 +59,7 @@
             this.label1.Location = new System.Drawing.Point(325, 164);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(272, 36);
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 11;
             this.label1.Text = "Liste des Matériaux";
             // 
             // comboBoxSite
@@ -68,14 +68,14 @@
             this.comboBoxSite.Location = new System.Drawing.Point(23, 18);
             this.comboBoxSite.Name = "comboBoxSite";
             this.comboBoxSite.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxSite.TabIndex = 4;
+            this.comboBoxSite.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(173, 11);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 40);
-            this.button1.TabIndex = 6;
+            this.button1.TabIndex = 2;
             this.button1.Text = "Site";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -92,7 +92,7 @@
             this.listViewMat.Location = new System.Drawing.Point(47, 211);
             this.listViewMat.Name = "listViewMat";
             this.listViewMat.Size = new System.Drawing.Size(776, 153);
-            this.listViewMat.TabIndex = 100;
+            this.listViewMat.TabIndex = 12;
             this.listViewMat.UseCompatibleStateImageBehavior = false;
             this.listViewMat.View = System.Windows.Forms.View.Details;
             // 
@@ -131,7 +131,7 @@
             this.buttonOK.Location = new System.Drawing.Point(686, 396);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(138, 41);
-            this.buttonOK.TabIndex = 101;
+            this.buttonOK.TabIndex = 15;
             this.buttonOK.Text = "Fermer";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
@@ -151,7 +151,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(833, 149);
-            this.groupBox1.TabIndex = 102;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtres";
             // 
@@ -161,21 +161,21 @@
             this.comboBoxType.Location = new System.Drawing.Point(576, 18);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxType.TabIndex = 18;
+            this.comboBoxType.TabIndex = 5;
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(262, 92);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(121, 22);
-            this.textBox1.TabIndex = 17;
+            this.textBox1.TabIndex = 7;
             // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(710, 83);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(98, 40);
-            this.button4.TabIndex = 16;
+            this.button4.TabIndex = 10;
             this.button4.Text = "MTBF";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -185,7 +185,7 @@
             this.button5.Location = new System.Drawing.Point(576, 83);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(98, 40);
-            this.button5.TabIndex = 14;
+            this.button5.TabIndex = 9;
             this.button5.Text = "Intervention";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -195,7 +195,7 @@
             this.button6.Location = new System.Drawing.Point(714, 11);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(98, 40);
-            this.button6.TabIndex = 12;
+            this.button6.TabIndex = 6;
             this.button6.Text = "Type";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
@@ -205,7 +205,7 @@
             this.button3.Location = new System.Drawing.Point(401, 83);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(98, 40);
-            this.button3.TabIndex = 10;
+            this.button3.TabIndex = 8;
             this.button3.Text = "Materiel";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -216,14 +216,14 @@
             this.comboBoxClient.Location = new System.Drawing.Point(298, 18);
             this.comboBoxClient.Name = "comboBoxClient";
             this.comboBoxClient.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxClient.TabIndex = 7;
+            this.comboBoxClient.TabIndex = 3;
             // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(448, 11);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(98, 40);
-            this.button2.TabIndex = 8;
+            this.button2.TabIndex = 4;
             this.button2.Text = "Client";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -233,7 +233,7 @@
             this.button7.Location = new System.Drawing.Point(194, 382);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(138, 56);
-            this.button7.TabIndex = 111;
+            this.button7.TabIndex = 14;
             this.button7.Text = "Matériels Fonctionnels";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
@@ -243,7 +243,7 @@
             this.button8.Location = new System.Drawing.Point(47, 382);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(118, 55);
-            this.button8.TabIndex = 110;
+            this.button8.TabIndex = 13;
             this.button8.Text = "Matériels Périmés";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);

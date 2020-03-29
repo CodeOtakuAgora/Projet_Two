@@ -32,6 +32,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBoxSiteMatos = new System.Windows.Forms.ComboBox();
+            this.comboBoxClientMatos = new System.Windows.Forms.ComboBox();
+            this.DateTimePickerIntervMatos = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxTypeMatos = new System.Windows.Forms.ComboBox();
             this.textBoxMtbfMatos = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBoxDescMatos = new System.Windows.Forms.TextBox();
@@ -47,10 +51,6 @@
             this.buttonSupprimerClient = new System.Windows.Forms.Button();
             this.buttonModifierClient = new System.Windows.Forms.Button();
             this.buttonAnnuler = new System.Windows.Forms.Button();
-            this.comboBoxTypeMatos = new System.Windows.Forms.ComboBox();
-            this.DateTimePickerIntervMatos = new System.Windows.Forms.DateTimePicker();
-            this.comboBoxClientMatos = new System.Windows.Forms.ComboBox();
-            this.comboBoxSiteMatos = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,12 +108,43 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informations";
             // 
+            // comboBoxSiteMatos
+            // 
+            this.comboBoxSiteMatos.FormattingEnabled = true;
+            this.comboBoxSiteMatos.Location = new System.Drawing.Point(86, 72);
+            this.comboBoxSiteMatos.Name = "comboBoxSiteMatos";
+            this.comboBoxSiteMatos.Size = new System.Drawing.Size(175, 24);
+            this.comboBoxSiteMatos.TabIndex = 9;
+            // 
+            // comboBoxClientMatos
+            // 
+            this.comboBoxClientMatos.FormattingEnabled = true;
+            this.comboBoxClientMatos.Location = new System.Drawing.Point(86, 31);
+            this.comboBoxClientMatos.Name = "comboBoxClientMatos";
+            this.comboBoxClientMatos.Size = new System.Drawing.Size(175, 24);
+            this.comboBoxClientMatos.TabIndex = 8;
+            // 
+            // DateTimePickerIntervMatos
+            // 
+            this.DateTimePickerIntervMatos.Location = new System.Drawing.Point(86, 226);
+            this.DateTimePickerIntervMatos.Name = "DateTimePickerIntervMatos";
+            this.DateTimePickerIntervMatos.Size = new System.Drawing.Size(174, 22);
+            this.DateTimePickerIntervMatos.TabIndex = 13;
+            // 
+            // comboBoxTypeMatos
+            // 
+            this.comboBoxTypeMatos.FormattingEnabled = true;
+            this.comboBoxTypeMatos.Location = new System.Drawing.Point(85, 187);
+            this.comboBoxTypeMatos.Name = "comboBoxTypeMatos";
+            this.comboBoxTypeMatos.Size = new System.Drawing.Size(175, 24);
+            this.comboBoxTypeMatos.TabIndex = 12;
+            // 
             // textBoxMtbfMatos
             // 
             this.textBoxMtbfMatos.Location = new System.Drawing.Point(85, 260);
             this.textBoxMtbfMatos.Name = "textBoxMtbfMatos";
             this.textBoxMtbfMatos.Size = new System.Drawing.Size(175, 22);
-            this.textBoxMtbfMatos.TabIndex = 15;
+            this.textBoxMtbfMatos.TabIndex = 14;
             // 
             // label9
             // 
@@ -246,37 +277,6 @@
             this.buttonAnnuler.Text = "Annuler";
             this.buttonAnnuler.UseVisualStyleBackColor = true;
             this.buttonAnnuler.Click += new System.EventHandler(this.buttonAnnuler_Click);
-            // 
-            // comboBoxTypeMatos
-            // 
-            this.comboBoxTypeMatos.FormattingEnabled = true;
-            this.comboBoxTypeMatos.Location = new System.Drawing.Point(85, 187);
-            this.comboBoxTypeMatos.Name = "comboBoxTypeMatos";
-            this.comboBoxTypeMatos.Size = new System.Drawing.Size(175, 24);
-            this.comboBoxTypeMatos.TabIndex = 100;
-            // 
-            // DateTimePickerIntervMatos
-            // 
-            this.DateTimePickerIntervMatos.Location = new System.Drawing.Point(86, 226);
-            this.DateTimePickerIntervMatos.Name = "DateTimePickerIntervMatos";
-            this.DateTimePickerIntervMatos.Size = new System.Drawing.Size(174, 22);
-            this.DateTimePickerIntervMatos.TabIndex = 100;
-            // 
-            // comboBoxClientMatos
-            // 
-            this.comboBoxClientMatos.FormattingEnabled = true;
-            this.comboBoxClientMatos.Location = new System.Drawing.Point(86, 31);
-            this.comboBoxClientMatos.Name = "comboBoxClientMatos";
-            this.comboBoxClientMatos.Size = new System.Drawing.Size(175, 24);
-            this.comboBoxClientMatos.TabIndex = 100;
-            // 
-            // comboBoxSiteMatos
-            // 
-            this.comboBoxSiteMatos.FormattingEnabled = true;
-            this.comboBoxSiteMatos.Location = new System.Drawing.Point(86, 72);
-            this.comboBoxSiteMatos.Name = "comboBoxSiteMatos";
-            this.comboBoxSiteMatos.Size = new System.Drawing.Size(175, 24);
-            this.comboBoxSiteMatos.TabIndex = 101;
             // 
             // FormCrudMatos
             // 

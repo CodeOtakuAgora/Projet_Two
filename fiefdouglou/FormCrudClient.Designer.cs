@@ -110,7 +110,7 @@
             this.comboBoxIntervClient.Location = new System.Drawing.Point(92, 42);
             this.comboBoxIntervClient.Name = "comboBoxIntervClient";
             this.comboBoxIntervClient.Size = new System.Drawing.Size(173, 24);
-            this.comboBoxIntervClient.TabIndex = 106;
+            this.comboBoxIntervClient.TabIndex = 8;
             // 
             // textBoxPassClient
             // 
@@ -125,7 +125,7 @@
             this.comboBoxSiteClient.Location = new System.Drawing.Point(92, 82);
             this.comboBoxSiteClient.Name = "comboBoxSiteClient";
             this.comboBoxSiteClient.Size = new System.Drawing.Size(173, 24);
-            this.comboBoxSiteClient.TabIndex = 105;
+            this.comboBoxSiteClient.TabIndex = 9;
             // 
             // label6
             // 

@@ -44,7 +44,7 @@
             this.buttonFermer.Location = new System.Drawing.Point(599, 492);
             this.buttonFermer.Name = "buttonFermer";
             this.buttonFermer.Size = new System.Drawing.Size(135, 43);
-            this.buttonFermer.TabIndex = 8;
+            this.buttonFermer.TabIndex = 6;
             this.buttonFermer.Text = "Fermer";
             this.buttonFermer.UseVisualStyleBackColor = true;
             this.buttonFermer.Click += new System.EventHandler(this.buttonFermer_Click);
@@ -55,7 +55,7 @@
             this.buttonClient.Location = new System.Drawing.Point(419, 42);
             this.buttonClient.Name = "buttonClient";
             this.buttonClient.Size = new System.Drawing.Size(160, 59);
-            this.buttonClient.TabIndex = 0;
+            this.buttonClient.TabIndex = 2;
             this.buttonClient.Text = "Client ...";
             this.buttonClient.UseVisualStyleBackColor = true;
             this.buttonClient.Click += new System.EventHandler(this.buttonClient_Click);
@@ -77,7 +77,7 @@
             this.buttonMatos.Location = new System.Drawing.Point(142, 149);
             this.buttonMatos.Name = "buttonMatos";
             this.buttonMatos.Size = new System.Drawing.Size(160, 59);
-            this.buttonMatos.TabIndex = 2;
+            this.buttonMatos.TabIndex = 3;
             this.buttonMatos.Text = "Matos ...";
             this.buttonMatos.UseVisualStyleBackColor = true;
             this.buttonMatos.Click += new System.EventHandler(this.buttonMatos_Click);
@@ -88,7 +88,7 @@
             this.buttonTech.Location = new System.Drawing.Point(419, 149);
             this.buttonTech.Name = "buttonTech";
             this.buttonTech.Size = new System.Drawing.Size(160, 59);
-            this.buttonTech.TabIndex = 3;
+            this.buttonTech.TabIndex = 4;
             this.buttonTech.Text = "Tech ...";
             this.buttonTech.UseVisualStyleBackColor = true;
             this.buttonTech.Click += new System.EventHandler(this.buttonTech_Click);
@@ -99,7 +99,7 @@
             this.buttonInterv.Location = new System.Drawing.Point(280, 261);
             this.buttonInterv.Name = "buttonInterv";
             this.buttonInterv.Size = new System.Drawing.Size(160, 59);
-            this.buttonInterv.TabIndex = 4;
+            this.buttonInterv.TabIndex = 5;
             this.buttonInterv.Text = "Interv ...";
             this.buttonInterv.UseVisualStyleBackColor = true;
             this.buttonInterv.Click += new System.EventHandler(this.buttonInterv_Click);
@@ -114,7 +114,7 @@
             this.groupBoxCrud.Location = new System.Drawing.Point(40, 44);
             this.groupBoxCrud.Name = "groupBoxCrud";
             this.groupBoxCrud.Size = new System.Drawing.Size(694, 366);
-            this.groupBoxCrud.TabIndex = 9;
+            this.groupBoxCrud.TabIndex = 0;
             this.groupBoxCrud.TabStop = false;
             this.groupBoxCrud.Text = "Listes des Crud";
             // 

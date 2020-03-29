@@ -47,6 +47,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.listBoxMat = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -95,7 +96,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(848, 28);
-            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.TabIndex = 99;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // menuToolStripMenuItem
@@ -157,7 +158,7 @@
             this.buttonAddInterv.Location = new System.Drawing.Point(372, 138);
             this.buttonAddInterv.Name = "buttonAddInterv";
             this.buttonAddInterv.Size = new System.Drawing.Size(137, 59);
-            this.buttonAddInterv.TabIndex = 2;
+            this.buttonAddInterv.TabIndex = 1;
             this.buttonAddInterv.Text = "Ajouter une Intervention";
             this.buttonAddInterv.UseVisualStyleBackColor = true;
             this.buttonAddInterv.Click += new System.EventHandler(this.buttonAddInterv_Click);
@@ -167,7 +168,7 @@
             this.button2.Location = new System.Drawing.Point(578, 138);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(137, 59);
-            this.button2.TabIndex = 3;
+            this.button2.TabIndex = 2;
             this.button2.Text = "Consulter les Interventions";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -187,7 +188,7 @@
             this.button4.Location = new System.Drawing.Point(372, 240);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(137, 59);
-            this.button4.TabIndex = 5;
+            this.button4.TabIndex = 3;
             this.button4.Text = "Consulter les matériels";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -201,11 +202,22 @@
             this.listBoxMat.Size = new System.Drawing.Size(298, 372);
             this.listBoxMat.TabIndex = 6;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label1.Location = new System.Drawing.Point(422, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(253, 36);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Forms Principales";
+            // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(848, 482);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxMat);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -244,6 +256,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ListBox listBoxMat;
         private System.Windows.Forms.ToolStripMenuItem consulterLesOpérationsToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -34,6 +34,7 @@
             this.buttonValiderSite = new System.Windows.Forms.Button();
             this.buttonAjouterSite = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBoxIdInterv = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxPostalSite = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,7 +47,6 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.listBoxSite = new System.Windows.Forms.ListBox();
-            this.comboBoxIdInterv = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,6 +123,14 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informations";
+            // 
+            // comboBoxIdInterv
+            // 
+            this.comboBoxIdInterv.FormattingEnabled = true;
+            this.comboBoxIdInterv.Location = new System.Drawing.Point(85, 207);
+            this.comboBoxIdInterv.Name = "comboBoxIdInterv";
+            this.comboBoxIdInterv.Size = new System.Drawing.Size(175, 24);
+            this.comboBoxIdInterv.TabIndex = 12;
             // 
             // label6
             // 
@@ -227,14 +235,6 @@
             this.listBoxSite.Size = new System.Drawing.Size(159, 308);
             this.listBoxSite.TabIndex = 0;
             this.listBoxSite.SelectedIndexChanged += new System.EventHandler(this.listBoxSite_SelectedIndexChanged);
-            // 
-            // comboBoxIdInterv
-            // 
-            this.comboBoxIdInterv.FormattingEnabled = true;
-            this.comboBoxIdInterv.Location = new System.Drawing.Point(85, 207);
-            this.comboBoxIdInterv.Name = "comboBoxIdInterv";
-            this.comboBoxIdInterv.Size = new System.Drawing.Size(175, 24);
-            this.comboBoxIdInterv.TabIndex = 101;
             // 
             // FormCrudSite
             // 

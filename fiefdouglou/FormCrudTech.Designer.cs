@@ -34,13 +34,13 @@
             this.buttonValiderSite = new System.Windows.Forms.Button();
             this.buttonAjouterSite = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBoxIntervTech = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxNomTech = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.listBoxTech = new System.Windows.Forms.ListBox();
-            this.comboBoxIntervTech = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,6 +112,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informations";
             // 
+            // comboBoxIntervTech
+            // 
+            this.comboBoxIntervTech.FormattingEnabled = true;
+            this.comboBoxIntervTech.Location = new System.Drawing.Point(85, 92);
+            this.comboBoxIntervTech.Name = "comboBoxIntervTech";
+            this.comboBoxIntervTech.Size = new System.Drawing.Size(175, 24);
+            this.comboBoxIntervTech.TabIndex = 9;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -167,14 +175,6 @@
             this.listBoxTech.Size = new System.Drawing.Size(159, 308);
             this.listBoxTech.TabIndex = 0;
             this.listBoxTech.SelectedIndexChanged += new System.EventHandler(this.listBoxSite_SelectedIndexChanged);
-            // 
-            // comboBoxIntervTech
-            // 
-            this.comboBoxIntervTech.FormattingEnabled = true;
-            this.comboBoxIntervTech.Location = new System.Drawing.Point(85, 92);
-            this.comboBoxIntervTech.Name = "comboBoxIntervTech";
-            this.comboBoxIntervTech.Size = new System.Drawing.Size(175, 24);
-            this.comboBoxIntervTech.TabIndex = 100;
             // 
             // FormCrudTech
             // 

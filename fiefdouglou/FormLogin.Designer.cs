@@ -45,7 +45,7 @@
             this.labelPassword.Location = new System.Drawing.Point(73, 84);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(98, 25);
-            this.labelPassword.TabIndex = 10;
+            this.labelPassword.TabIndex = 99;
             this.labelPassword.Text = "Password";
             // 
             // textBoxPassword
@@ -54,14 +54,14 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(145, 22);
-            this.textBoxPassword.TabIndex = 1;
+            this.textBoxPassword.TabIndex = 2;
             // 
             // buttonValidate
             // 
             this.buttonValidate.Location = new System.Drawing.Point(103, 129);
             this.buttonValidate.Name = "buttonValidate";
             this.buttonValidate.Size = new System.Drawing.Size(105, 34);
-            this.buttonValidate.TabIndex = 2;
+            this.buttonValidate.TabIndex = 3;
             this.buttonValidate.Text = "Valider";
             this.buttonValidate.UseVisualStyleBackColor = true;
             this.buttonValidate.Click += new System.EventHandler(this.buttonValidate_Click);
@@ -73,7 +73,7 @@
             this.labelLogin.Location = new System.Drawing.Point(111, 27);
             this.labelLogin.Name = "labelLogin";
             this.labelLogin.Size = new System.Drawing.Size(60, 25);
-            this.labelLogin.TabIndex = 10;
+            this.labelLogin.TabIndex = 99;
             this.labelLogin.Text = "Login";
             // 
             // textBoxLogin
@@ -81,7 +81,7 @@
             this.textBoxLogin.Location = new System.Drawing.Point(187, 31);
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(145, 22);
-            this.textBoxLogin.TabIndex = 0;
+            this.textBoxLogin.TabIndex = 1;
             // 
             // groupBoxLogin
             // 
@@ -94,7 +94,7 @@
             this.groupBoxLogin.Location = new System.Drawing.Point(158, 156);
             this.groupBoxLogin.Name = "groupBoxLogin";
             this.groupBoxLogin.Size = new System.Drawing.Size(384, 183);
-            this.groupBoxLogin.TabIndex = 10;
+            this.groupBoxLogin.TabIndex = 0;
             this.groupBoxLogin.TabStop = false;
             this.groupBoxLogin.Text = "Connection";
             // 
@@ -104,7 +104,7 @@
             this.buttonUndo.Location = new System.Drawing.Point(237, 129);
             this.buttonUndo.Name = "buttonUndo";
             this.buttonUndo.Size = new System.Drawing.Size(95, 34);
-            this.buttonUndo.TabIndex = 3;
+            this.buttonUndo.TabIndex = 4;
             this.buttonUndo.Text = "Annuler";
             this.buttonUndo.UseVisualStyleBackColor = true;
             this.buttonUndo.Click += new System.EventHandler(this.buttonUndo_Click);

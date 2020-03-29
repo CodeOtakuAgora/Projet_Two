@@ -122,7 +122,7 @@
             this.comboBoxMatId.Location = new System.Drawing.Point(89, 106);
             this.comboBoxMatId.Name = "comboBoxMatId";
             this.comboBoxMatId.Size = new System.Drawing.Size(201, 24);
-            this.comboBoxMatId.TabIndex = 107;
+            this.comboBoxMatId.TabIndex = 10;
             // 
             // comboBoxTechId
             // 
@@ -130,7 +130,7 @@
             this.comboBoxTechId.Location = new System.Drawing.Point(89, 150);
             this.comboBoxTechId.Name = "comboBoxTechId";
             this.comboBoxTechId.Size = new System.Drawing.Size(201, 24);
-            this.comboBoxTechId.TabIndex = 106;
+            this.comboBoxTechId.TabIndex = 11;
             // 
             // comboBoxClientId
             // 
@@ -138,7 +138,7 @@
             this.comboBoxClientId.Location = new System.Drawing.Point(89, 70);
             this.comboBoxClientId.Name = "comboBoxClientId";
             this.comboBoxClientId.Size = new System.Drawing.Size(201, 24);
-            this.comboBoxClientId.TabIndex = 105;
+            this.comboBoxClientId.TabIndex = 9;
             // 
             // comboBoxSitetId
             // 
@@ -146,7 +146,7 @@
             this.comboBoxSitetId.Location = new System.Drawing.Point(89, 36);
             this.comboBoxSitetId.Name = "comboBoxSitetId";
             this.comboBoxSitetId.Size = new System.Drawing.Size(201, 24);
-            this.comboBoxSitetId.TabIndex = 104;
+            this.comboBoxSitetId.TabIndex = 8;
             // 
             // label8
             // 
@@ -180,7 +180,7 @@
             this.textBoxLoginClient.Location = new System.Drawing.Point(89, 193);
             this.textBoxLoginClient.Name = "textBoxLoginClient";
             this.textBoxLoginClient.Size = new System.Drawing.Size(201, 22);
-            this.textBoxLoginClient.TabIndex = 10;
+            this.textBoxLoginClient.TabIndex = 12;
             // 
             // label7
             // 
@@ -263,9 +263,6 @@
             this.buttonAnnuler.Text = "Annuler";
             this.buttonAnnuler.UseVisualStyleBackColor = true;
             this.buttonAnnuler.Click += new System.EventHandler(this.ButtonAnnuler_Click);
-            // 
-            // fiefdouglouDataSet
-            // 
             // 
             // siteBindingSource
             // 
