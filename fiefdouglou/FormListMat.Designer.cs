@@ -50,6 +50,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.pictureBoxMat = new System.Windows.Forms.PictureBox();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMat)).BeginInit();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.listBoxMat = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
@@ -257,6 +260,14 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // pictureBoxMat
+            // 
+            this.pictureBoxMat.Location = new System.Drawing.Point(904, 258);
+            this.pictureBoxMat.Name = "pictureBoxMat";
+            this.pictureBoxMat.Size = new System.Drawing.Size(217, 153);
+            this.pictureBoxMat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxMat.TabIndex = 16;
+            this.pictureBoxMat.TabStop = false;
             // pictureBox
             // 
             this.pictureBox.Location = new System.Drawing.Point(904, 258);
@@ -270,6 +281,9 @@
             // 
             this.listBoxMat.FormattingEnabled = true;
             this.listBoxMat.ItemHeight = 16;
+            this.listBoxMat.Location = new System.Drawing.Point(928, 179);
+            this.listBoxMat.Name = "listBoxMat";
+            this.listBoxMat.Size = new System.Drawing.Size(166, 68);
             this.listBoxMat.Location = new System.Drawing.Point(928, 195);
             this.listBoxMat.Name = "listBoxMat";
             this.listBoxMat.Size = new System.Drawing.Size(166, 52);
@@ -282,6 +296,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 507);
             this.Controls.Add(this.listBoxMat);
+            this.Controls.Add(this.pictureBoxMat);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button8);
@@ -294,6 +309,7 @@
             this.Load += new System.EventHandler(this.FormListMat_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -323,6 +339,7 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.PictureBox pictureBoxMat;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.ListBox listBoxMat;
     }

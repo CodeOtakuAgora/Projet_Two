@@ -32,6 +32,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBoxPicture = new System.Windows.Forms.TextBox();
+            this.pictureBoxMat = new System.Windows.Forms.PictureBox();
+            this.buttonBrowse = new System.Windows.Forms.Button();
+            this.textBoxToto = new System.Windows.Forms.TextBox();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.comboBoxSiteMatos = new System.Windows.Forms.ComboBox();
             this.comboBoxClientMatos = new System.Windows.Forms.ComboBox();
             this.DateTimePickerIntervMatos = new System.Windows.Forms.DateTimePicker();
@@ -51,11 +58,8 @@
             this.buttonSupprimerClient = new System.Windows.Forms.Button();
             this.buttonModifierClient = new System.Windows.Forms.Button();
             this.buttonAnnuler = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.textBoxToto = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,6 +97,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.textBoxPicture);
+            this.groupBox1.Controls.Add(this.pictureBoxMat);
+            this.groupBox1.Controls.Add(this.buttonBrowse);
             this.groupBox1.Controls.Add(this.textBoxToto);
             this.groupBox1.Controls.Add(this.pictureBox);
             this.groupBox1.Controls.Add(this.button1);
@@ -116,6 +123,65 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informations";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(21, 298);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 17);
+            this.label10.TabIndex = 104;
+            this.label10.Text = "Images";
+            // 
+            // textBoxPicture
+            // 
+            this.textBoxPicture.Location = new System.Drawing.Point(86, 295);
+            this.textBoxPicture.Name = "textBoxPicture";
+            this.textBoxPicture.Size = new System.Drawing.Size(175, 22);
+            this.textBoxPicture.TabIndex = 102;
+            // 
+            // pictureBoxMat
+            // 
+            this.pictureBoxMat.Location = new System.Drawing.Point(279, 72);
+            this.pictureBoxMat.Name = "pictureBoxMat";
+            this.pictureBoxMat.Size = new System.Drawing.Size(137, 176);
+            this.pictureBoxMat.TabIndex = 101;
+            this.pictureBoxMat.TabStop = false;
+            // 
+            // buttonBrowse
+            // 
+            this.buttonBrowse.Location = new System.Drawing.Point(111, 328);
+            this.buttonBrowse.Name = "buttonBrowse";
+            this.buttonBrowse.Size = new System.Drawing.Size(107, 46);
+            this.buttonBrowse.TabIndex = 100;
+            this.buttonBrowse.Text = "Parcourir";
+            this.buttonBrowse.UseVisualStyleBackColor = true;
+            this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
+            // 
+            // textBoxToto
+            // 
+            this.textBoxToto.Location = new System.Drawing.Point(86, 295);
+            this.textBoxToto.Name = "textBoxToto";
+            this.textBoxToto.Size = new System.Drawing.Size(175, 22);
+            this.textBoxToto.TabIndex = 102;
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Location = new System.Drawing.Point(279, 72);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(137, 176);
+            this.pictureBox.TabIndex = 101;
+            this.pictureBox.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(111, 328);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 46);
+            this.button1.TabIndex = 100;
+            this.button1.Text = "Parcourir";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonBrowse_Click);
             // 
             // comboBoxSiteMatos
             // 
@@ -287,40 +353,6 @@
             this.buttonAnnuler.UseVisualStyleBackColor = true;
             this.buttonAnnuler.Click += new System.EventHandler(this.buttonAnnuler_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(111, 328);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 46);
-            this.button1.TabIndex = 100;
-            this.button1.Text = "Parcourir";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.Location = new System.Drawing.Point(279, 72);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(137, 176);
-            this.pictureBox.TabIndex = 101;
-            this.pictureBox.TabStop = false;
-            // 
-            // textBoxToto
-            // 
-            this.textBoxToto.Location = new System.Drawing.Point(86, 295);
-            this.textBoxToto.Name = "textBoxToto";
-            this.textBoxToto.Size = new System.Drawing.Size(175, 22);
-            this.textBoxToto.TabIndex = 102;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(21, 298);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 17);
-            this.label10.TabIndex = 104;
-            this.label10.Text = "Images";
-            // 
             // FormCrudMatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -345,6 +377,7 @@
             this.Load += new System.EventHandler(this.FormCrudMatos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -376,6 +409,9 @@
         private System.Windows.Forms.DateTimePicker DateTimePickerIntervMatos;
         private System.Windows.Forms.ComboBox comboBoxSiteMatos;
         private System.Windows.Forms.ComboBox comboBoxClientMatos;
+        private System.Windows.Forms.Button buttonBrowse;
+        private System.Windows.Forms.PictureBox pictureBoxMat;
+        private System.Windows.Forms.TextBox textBoxPicture;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.TextBox textBoxToto;

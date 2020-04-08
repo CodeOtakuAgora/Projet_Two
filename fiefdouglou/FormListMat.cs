@@ -291,16 +291,16 @@ namespace fiefdouglou
         private void listBoxMat_SelectedIndexChanged(object sender, EventArgs e)
         {
             string destpath = "";
-            string text = listBoxMat.SelectedItems[0].ToString();
+            string matos = listBoxMat.SelectedItems[0].ToString();
+            string sqlQuery = "SELECT * FROM materiel WHERE nom = '" + matos + "'";
 
-            string sqlQuery = "SELECT * FROM materiel WHERE nom = '" + text + "'";
             SqlDataReader drSQL = Connection.openConnection(sqlQuery);
 
             while (drSQL.Read())
             {
                 destpath = Directory.GetCurrentDirectory() + @"\img\" + drSQL["picture"].ToString();
-                pictureBox.Image = Image.FromFile(destpath);
-                pictureBox.Size = new System.Drawing.Size(150, 150);
+                pictureBoxMat.Image = Image.FromFile(destpath);
+                pictureBoxMat.Size = new System.Drawing.Size(150, 150);
             }
             Connection.closeConnection();
         }

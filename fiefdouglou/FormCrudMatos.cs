@@ -96,8 +96,8 @@ namespace fiefdouglou
             buttonModifierClient.Enabled = !b;
             buttonSupprimerClient.Enabled = !b;
             buttonAnnuler.Enabled = b;
-            button1.Enabled = b;
-            textBoxToto.Enabled = b;
+            buttonBrowse.Enabled = b;
+            textBoxPicture.Enabled = b;
         }
 
         private void listBoxClient_SelectedIndexChanged(object sender, EventArgs e)
@@ -123,7 +123,7 @@ namespace fiefdouglou
                 comboBoxTypeMatos.Items.Add(drSQLClient["type"].ToString());
                 DateTimePickerIntervMatos.Text = drSQLClient["date_intervention_faite"].ToString().Substring(0, 10);
                 textBoxMtbfMatos.Text = drSQLClient["mtbf"].ToString();
-                textBoxToto.Text = drSQLClient["picture"].ToString();
+                textBoxPicture.Text = drSQLClient["picture"].ToString();
             }
         }
 
@@ -170,7 +170,7 @@ namespace fiefdouglou
             DateTimePickerIntervMatos.Text = "";
             comboBoxTypeMatos.Items.Clear();
             textBoxMtbfMatos.Text = "";
-            textBoxToto.Text = "";
+            textBoxPicture.Text = "";
         }
 
         private void buttonValider_Click(object sender, EventArgs e)
@@ -182,7 +182,7 @@ namespace fiefdouglou
             string strpwd = textBoxDescMatos.Text;
             string strmail = comboBoxTypeMatos.Text;
             string strmtbf = textBoxMtbfMatos.Text;
-            string avatar = textBoxToto.Text;
+            string avatar = textBoxPicture.Text;
 
             // on vérifie que la textbox pour le nom n'est pas vide
             if (sternom == string.Empty)
@@ -196,7 +196,6 @@ namespace fiefdouglou
             // on peut alors éxécuter notre requete d'insert de données dans la database
             if (mode == "Ajouter")
             {
-                OpenFileDialog opf = new OpenFileDialog();
                 // on définit ensuite notre requete de modifcation en filtrant pour modifier uniquement l'élément selectionné
                 strSQL = string.Format("INSERT INTO materiel (id_client, id_site, nom, description, type, " +
                     "date_intervention_faite, mtbf, picture) " +
@@ -218,8 +217,8 @@ namespace fiefdouglou
                 // on définit ensuite notre requete de modifcation en filtrant pour modifier uniquement l'élément selectionné
                 strSQL = string.Format("UPDATE materiel SET id_client = {0}, id_site = {1}, nom = '{2}', " +
                     "description = '{3}', type = '{4}', date_intervention_faite = '{5}', " +
-                    "mtbf = {6} where id_mat = {7}",
-                    sternom, stradr, strlgn, strpwd, strmail, DateTimePickerIntervMatos.Value, strmtbf, idmat);
+                    "mtbf = {6}, picture = '{7}' where id_mat = {8}",
+                    sternom, stradr, strlgn, strpwd, strmail, DateTimePickerIntervMatos.Value, strmtbf, avatar, idmat);
             }
             // si un mode différent à été définit on la gère en retournant une exception
             else
@@ -289,14 +288,13 @@ namespace fiefdouglou
             // et on vide le contenu de notre variable mode 
             mode = "";
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonBrowse_Click(object sender, EventArgs e)
         {
             OpenFileDialog opf = new OpenFileDialog();
             if (opf.ShowDialog() == DialogResult.OK)
             {
-                pictureBox.Image = Image.FromFile(opf.FileName);
-                pictureBox.Size = new System.Drawing.Size(100, 100);
+                pictureBoxMat.Image = Image.FromFile(opf.FileName);
+                pictureBoxMat.Size = new System.Drawing.Size(100, 100);
 
                 string destpath = Directory.GetCurrentDirectory() + @"\img\";
                 string filename = opf.SafeFileName;
@@ -304,7 +302,7 @@ namespace fiefdouglou
 
                 File.Copy(filepath, destpath + filename);
 
-                textBoxToto.Text = Path.GetFileName(opf.FileName.ToString());
+                textBoxPicture.Text = Path.GetFileName(opf.FileName.ToString());
             }
         }
     }
