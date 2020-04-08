@@ -30,8 +30,8 @@ namespace fiefdouglou
             SqlDataReader drSQLsmc = null;
             string strSQLsmc = "";
 
-            strSQLsmc = "SELECT m.type AS filtre_par_type, c.nom AS filtre_par_client, s.nom AS filtre_par_site" +
-                " FROM materiel m INNER JOIN client c ON c.id_client = m.id_client INNER JOIN site s " +
+            strSQLsmc = "SELECT m.type AS filtre_par_type, c.nom AS filtre_par_client, s.nom AS filtre_par_site," +
+                " m.picture AS picture FROM materiel m INNER JOIN client c ON c.id_client = m.id_client INNER JOIN site s " +
                 " ON s.id_site = m.id_site; ";
             drSQLsmc = Connection.openConnection(strSQLsmc);
 
@@ -264,6 +264,7 @@ namespace fiefdouglou
                 string DateInstallation = md["date_intervention_faite"].ToString();
                 string mtbf = md["mtbf"].ToString();
                 string site = md["type"].ToString();
+                string toto = md["picture"].ToString();
 
                 // on définit notre listView et on la remplit en lui ajoutant tout ce dont on a besoin d'afficher
                 ListViewItem lvi = new ListViewItem();
@@ -272,6 +273,7 @@ namespace fiefdouglou
                 lvi.SubItems.Add(DateInstallation);
                 lvi.SubItems.Add(mtbf);
                 lvi.SubItems.Add(site);
+                lvi.SubItems.Add(toto);
 
                 listViewMat.Items.Add(lvi);
             }

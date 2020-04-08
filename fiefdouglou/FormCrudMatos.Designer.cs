@@ -51,14 +51,19 @@
             this.buttonSupprimerClient = new System.Windows.Forms.Button();
             this.buttonModifierClient = new System.Windows.Forms.Button();
             this.buttonAnnuler = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.textBoxToto = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // listBoxMatos
             // 
             this.listBoxMatos.FormattingEnabled = true;
             this.listBoxMatos.ItemHeight = 16;
-            this.listBoxMatos.Location = new System.Drawing.Point(29, 53);
+            this.listBoxMatos.Location = new System.Drawing.Point(15, 53);
             this.listBoxMatos.Name = "listBoxMatos";
             this.listBoxMatos.Size = new System.Drawing.Size(179, 308);
             this.listBoxMatos.TabIndex = 0;
@@ -67,7 +72,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 21);
+            this.label1.Location = new System.Drawing.Point(15, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 17);
             this.label1.TabIndex = 99;
@@ -77,7 +82,7 @@
             // 
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOK.Location = new System.Drawing.Point(545, 338);
+            this.buttonOK.Location = new System.Drawing.Point(683, 340);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(138, 41);
             this.buttonOK.TabIndex = 6;
@@ -87,6 +92,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.textBoxToto);
+            this.groupBox1.Controls.Add(this.pictureBox);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.comboBoxSiteMatos);
             this.groupBox1.Controls.Add(this.comboBoxClientMatos);
             this.groupBox1.Controls.Add(this.DateTimePickerIntervMatos);
@@ -101,9 +110,9 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(231, 53);
+            this.groupBox1.Location = new System.Drawing.Point(212, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(287, 308);
+            this.groupBox1.Size = new System.Drawing.Size(434, 390);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informations";
@@ -226,7 +235,7 @@
             // buttonAjouterClient
             // 
             this.buttonAjouterClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAjouterClient.Location = new System.Drawing.Point(545, 62);
+            this.buttonAjouterClient.Location = new System.Drawing.Point(683, 64);
             this.buttonAjouterClient.Name = "buttonAjouterClient";
             this.buttonAjouterClient.Size = new System.Drawing.Size(138, 41);
             this.buttonAjouterClient.TabIndex = 1;
@@ -237,7 +246,7 @@
             // buttonValider
             // 
             this.buttonValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonValider.Location = new System.Drawing.Point(545, 279);
+            this.buttonValider.Location = new System.Drawing.Point(683, 281);
             this.buttonValider.Name = "buttonValider";
             this.buttonValider.Size = new System.Drawing.Size(138, 41);
             this.buttonValider.TabIndex = 5;
@@ -248,7 +257,7 @@
             // buttonSupprimerClient
             // 
             this.buttonSupprimerClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSupprimerClient.Location = new System.Drawing.Point(545, 168);
+            this.buttonSupprimerClient.Location = new System.Drawing.Point(683, 170);
             this.buttonSupprimerClient.Name = "buttonSupprimerClient";
             this.buttonSupprimerClient.Size = new System.Drawing.Size(138, 41);
             this.buttonSupprimerClient.TabIndex = 3;
@@ -259,7 +268,7 @@
             // buttonModifierClient
             // 
             this.buttonModifierClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonModifierClient.Location = new System.Drawing.Point(545, 115);
+            this.buttonModifierClient.Location = new System.Drawing.Point(683, 117);
             this.buttonModifierClient.Name = "buttonModifierClient";
             this.buttonModifierClient.Size = new System.Drawing.Size(138, 41);
             this.buttonModifierClient.TabIndex = 2;
@@ -270,7 +279,7 @@
             // buttonAnnuler
             // 
             this.buttonAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAnnuler.Location = new System.Drawing.Point(545, 222);
+            this.buttonAnnuler.Location = new System.Drawing.Point(683, 224);
             this.buttonAnnuler.Name = "buttonAnnuler";
             this.buttonAnnuler.Size = new System.Drawing.Size(138, 41);
             this.buttonAnnuler.TabIndex = 4;
@@ -278,12 +287,46 @@
             this.buttonAnnuler.UseVisualStyleBackColor = true;
             this.buttonAnnuler.Click += new System.EventHandler(this.buttonAnnuler_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(111, 328);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 46);
+            this.button1.TabIndex = 100;
+            this.button1.Text = "Parcourir";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Location = new System.Drawing.Point(279, 72);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(137, 176);
+            this.pictureBox.TabIndex = 101;
+            this.pictureBox.TabStop = false;
+            // 
+            // textBoxToto
+            // 
+            this.textBoxToto.Location = new System.Drawing.Point(86, 295);
+            this.textBoxToto.Name = "textBoxToto";
+            this.textBoxToto.Size = new System.Drawing.Size(175, 22);
+            this.textBoxToto.TabIndex = 102;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(21, 298);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 17);
+            this.label10.TabIndex = 104;
+            this.label10.Text = "Images";
+            // 
             // FormCrudMatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonOK;
-            this.ClientSize = new System.Drawing.Size(695, 391);
+            this.ClientSize = new System.Drawing.Size(849, 435);
             this.Controls.Add(this.buttonAnnuler);
             this.Controls.Add(this.buttonModifierClient);
             this.Controls.Add(this.buttonSupprimerClient);
@@ -302,6 +345,7 @@
             this.Load += new System.EventHandler(this.FormCrudMatos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,5 +376,9 @@
         private System.Windows.Forms.DateTimePicker DateTimePickerIntervMatos;
         private System.Windows.Forms.ComboBox comboBoxSiteMatos;
         private System.Windows.Forms.ComboBox comboBoxClientMatos;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.TextBox textBoxToto;
+        private System.Windows.Forms.Label label10;
     }
 }

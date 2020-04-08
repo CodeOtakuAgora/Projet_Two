@@ -2,6 +2,8 @@
 // dans le fichiers en les important
 using System;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 // on encapsule toute notre form dans un bocal (package) propre au projet
@@ -94,6 +96,8 @@ namespace fiefdouglou
             buttonModifierClient.Enabled = !b;
             buttonSupprimerClient.Enabled = !b;
             buttonAnnuler.Enabled = b;
+            button1.Enabled = b;
+            textBoxToto.Enabled = b;
         }
 
         private void listBoxClient_SelectedIndexChanged(object sender, EventArgs e)
@@ -119,6 +123,7 @@ namespace fiefdouglou
                 comboBoxTypeMatos.Items.Add(drSQLClient["type"].ToString());
                 DateTimePickerIntervMatos.Text = drSQLClient["date_intervention_faite"].ToString().Substring(0, 10);
                 textBoxMtbfMatos.Text = drSQLClient["mtbf"].ToString();
+                textBoxToto.Text = drSQLClient["picture"].ToString();
             }
         }
 
@@ -165,6 +170,7 @@ namespace fiefdouglou
             DateTimePickerIntervMatos.Text = "";
             comboBoxTypeMatos.Items.Clear();
             textBoxMtbfMatos.Text = "";
+            textBoxToto.Text = "";
         }
 
         private void buttonValider_Click(object sender, EventArgs e)
@@ -176,6 +182,7 @@ namespace fiefdouglou
             string strpwd = textBoxDescMatos.Text;
             string strmail = comboBoxTypeMatos.Text;
             string strmtbf = textBoxMtbfMatos.Text;
+            string avatar = textBoxToto.Text;
 
             // on vérifie que la textbox pour le nom n'est pas vide
             if (sternom == string.Empty)
@@ -189,11 +196,12 @@ namespace fiefdouglou
             // on peut alors éxécuter notre requete d'insert de données dans la database
             if (mode == "Ajouter")
             {
+                OpenFileDialog opf = new OpenFileDialog();
                 // on définit ensuite notre requete de modifcation en filtrant pour modifier uniquement l'élément selectionné
                 strSQL = string.Format("INSERT INTO materiel (id_client, id_site, nom, description, type, " +
-                    "date_intervention_faite, mtbf) " +
-                    "VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}', {6})",
-                    sternom, stradr, strlgn, strpwd, strmail, DateTimePickerIntervMatos.Value, strmtbf);
+                    "date_intervention_faite, mtbf, picture) " +
+                    "VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}', {6}, '{7}')",
+                    sternom, stradr, strlgn, strpwd, strmail, DateTimePickerIntervMatos.Value, strmtbf, avatar);
             }
             // si on a clické sur modifier le mode définit est alors égale à Modifier 
             // on peut alors éxécuter notre requete de modifiquation de données dans la database
@@ -265,6 +273,8 @@ namespace fiefdouglou
             // on rend toute nos textbox enable donc clickable (non grisée)
             EnableClient(true);
 
+
+
             // et on définit notre mode pour qu'il soit égale à Modifier celà veut dire que le bouton modifier à été clické
             comboBoxClientMatos.Focus();
             mode = "Modifier";
@@ -278,6 +288,24 @@ namespace fiefdouglou
             EnableClient(false);
             // et on vide le contenu de notre variable mode 
             mode = "";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opf = new OpenFileDialog();
+            if (opf.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox.Image = Image.FromFile(opf.FileName);
+                pictureBox.Size = new System.Drawing.Size(100, 100);
+
+                string path = Directory.GetCurrentDirectory() + @"\img\";
+                string filename = opf.SafeFileName;
+                string filepath = opf.FileName;
+
+                File.Copy(filepath, path + filename);
+
+                textBoxToto.Text = Path.GetFileName(opf.FileName.ToString());
+            }
         }
     }
 }

@@ -136,16 +136,19 @@ namespace fiefdouglou
                     MessageBox.Show("Cette intervention à déjà été validée", "Log d'Infos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
+            // si une requete sql qui n'a pas fonctionné dans le bout de code qu'on essaye d'éxécuté 
+            // alors on attrape l'exception et on affiche l'erreur
             catch (SqlException excep)
             {
                 MessageBox.Show(excep.Message, "Érreur SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+            // si il y a une quelqonque erreur dans le bout de code qu'on essaye d'éxécuté alors attrape l'exception
             catch (Exception excep)
             {
                 MessageBox.Show(excep.Message, "Érreur Générale", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // une fois que le bout de code a fini son éxécution on ferme toute nos connections à la database
             finally
             {
                 Connection.closeConnection();

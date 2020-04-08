@@ -49,6 +49,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,7 +88,8 @@
             this.columnHeaderSerie,
             this.columnHeaderDate,
             this.columnHeaderMTBF,
-            this.columnHeaderClient});
+            this.columnHeaderClient,
+            this.columnHeader1});
             this.listViewMat.HideSelection = false;
             this.listViewMat.Location = new System.Drawing.Point(47, 211);
             this.listViewMat.Name = "listViewMat";
@@ -248,6 +250,10 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Images";
+            // 
             // FormListMat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -291,5 +297,6 @@
         private System.Windows.Forms.ComboBox comboBoxType;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }

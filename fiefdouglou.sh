@@ -1,7 +1,11 @@
 rm -rf .vs
 rm -rf packages
 cd fiefdouglou
-	rm -rf bin
+	cd bin/debug
+		rm fiefdouglou.exe
+		rm fiefdouglou.exe.config
+		rm fiefdouglou.pdb
+	cd ../
 	rm -rf obj
 	cd Properties
 		if test -f Settings.settings; then rm Settings.settings; fi
