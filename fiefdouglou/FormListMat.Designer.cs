@@ -37,6 +37,7 @@
             this.columnHeaderDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderMTBF = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderClient = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonOK = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBoxType = new System.Windows.Forms.ComboBox();
@@ -49,15 +50,17 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.listBoxMat = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label1.Location = new System.Drawing.Point(325, 164);
+            this.label1.Location = new System.Drawing.Point(325, 211);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(272, 36);
             this.label1.TabIndex = 11;
@@ -91,9 +94,9 @@
             this.columnHeaderClient,
             this.columnHeader1});
             this.listViewMat.HideSelection = false;
-            this.listViewMat.Location = new System.Drawing.Point(47, 211);
+            this.listViewMat.Location = new System.Drawing.Point(47, 258);
             this.listViewMat.Name = "listViewMat";
-            this.listViewMat.Size = new System.Drawing.Size(776, 153);
+            this.listViewMat.Size = new System.Drawing.Size(833, 153);
             this.listViewMat.TabIndex = 12;
             this.listViewMat.UseCompatibleStateImageBehavior = false;
             this.listViewMat.View = System.Windows.Forms.View.Details;
@@ -126,11 +129,15 @@
             this.columnHeaderClient.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeaderClient.Width = 124;
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Images";
+            // 
             // buttonOK
             // 
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOK.Location = new System.Drawing.Point(686, 396);
+            this.buttonOK.Location = new System.Drawing.Point(686, 443);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(138, 41);
             this.buttonOK.TabIndex = 15;
@@ -150,7 +157,7 @@
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.comboBoxSite);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(47, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(833, 149);
             this.groupBox1.TabIndex = 0;
@@ -232,7 +239,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(194, 382);
+            this.button7.Location = new System.Drawing.Point(194, 429);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(138, 56);
             this.button7.TabIndex = 14;
@@ -242,7 +249,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(47, 382);
+            this.button8.Location = new System.Drawing.Point(47, 429);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(118, 55);
             this.button8.TabIndex = 13;
@@ -250,15 +257,32 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // columnHeader1
+            // pictureBox
             // 
-            this.columnHeader1.Text = "Images";
+            this.pictureBox.Location = new System.Drawing.Point(904, 258);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(217, 153);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox.TabIndex = 16;
+            this.pictureBox.TabStop = false;
+            // 
+            // listBoxMat
+            // 
+            this.listBoxMat.FormattingEnabled = true;
+            this.listBoxMat.ItemHeight = 16;
+            this.listBoxMat.Location = new System.Drawing.Point(928, 195);
+            this.listBoxMat.Name = "listBoxMat";
+            this.listBoxMat.Size = new System.Drawing.Size(166, 52);
+            this.listBoxMat.TabIndex = 17;
+            this.listBoxMat.SelectedIndexChanged += new System.EventHandler(this.listBoxMat_SelectedIndexChanged);
             // 
             // FormListMat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 450);
+            this.ClientSize = new System.Drawing.Size(1145, 507);
+            this.Controls.Add(this.listBoxMat);
+            this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.groupBox1);
@@ -270,6 +294,7 @@
             this.Load += new System.EventHandler(this.FormListMat_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,5 +323,7 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.ListBox listBoxMat;
     }
 }

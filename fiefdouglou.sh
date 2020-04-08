@@ -5,7 +5,7 @@ cd fiefdouglou
 		rm fiefdouglou.exe
 		rm fiefdouglou.exe.config
 		rm fiefdouglou.pdb
-	cd ../
+	cd ../../
 	rm -rf obj
 	cd Properties
 		if test -f Settings.settings; then rm Settings.settings; fi

@@ -298,11 +298,11 @@ namespace fiefdouglou
                 pictureBox.Image = Image.FromFile(opf.FileName);
                 pictureBox.Size = new System.Drawing.Size(100, 100);
 
-                string path = Directory.GetCurrentDirectory() + @"\img\";
+                string destpath = Directory.GetCurrentDirectory() + @"\img\";
                 string filename = opf.SafeFileName;
                 string filepath = opf.FileName;
 
-                File.Copy(filepath, path + filename);
+                File.Copy(filepath, destpath + filename);
 
                 textBoxToto.Text = Path.GetFileName(opf.FileName.ToString());
             }

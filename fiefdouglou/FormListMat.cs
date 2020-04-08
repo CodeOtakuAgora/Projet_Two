@@ -3,6 +3,7 @@
 using System;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 // on encapsule toute notre form dans un bocal (package) propre au projet
@@ -47,6 +48,15 @@ namespace fiefdouglou
             Connection.closeConnection();
 
             button7_Click(sender, e);
+
+            string sqlNoQuery = "SELECT * FROM materiel";
+            SqlDataReader drNoSQL = Connection.openConnection(sqlNoQuery);
+
+            while (drNoSQL.Read())
+            {
+                listBoxMat.Items.Add(drNoSQL["nom"].ToString());
+            }
+            Connection.closeConnection();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -277,6 +287,22 @@ namespace fiefdouglou
 
                 listViewMat.Items.Add(lvi);
             }
+        }
+        private void listBoxMat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string destpath = "";
+            string text = listBoxMat.SelectedItems[0].ToString();
+
+            string sqlQuery = "SELECT * FROM materiel WHERE nom = '" + text + "'";
+            SqlDataReader drSQL = Connection.openConnection(sqlQuery);
+
+            while (drSQL.Read())
+            {
+                destpath = Directory.GetCurrentDirectory() + @"\img\" + drSQL["picture"].ToString();
+                pictureBox.Image = Image.FromFile(destpath);
+                pictureBox.Size = new System.Drawing.Size(150, 150);
+            }
+            Connection.closeConnection();
         }
     }
 }
