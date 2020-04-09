@@ -51,11 +51,13 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.pictureBoxMat = new System.Windows.Forms.PictureBox();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMat)).BeginInit();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.listBoxMat = new System.Windows.Forms.ListBox();
+            this.buttonDate = new System.Windows.Forms.Button();
+            this.dateFin = new System.Windows.Forms.DateTimePicker();
+            this.dateDebut = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -150,6 +152,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonDate);
+            this.groupBox1.Controls.Add(this.dateFin);
+            this.groupBox1.Controls.Add(this.dateDebut);
             this.groupBox1.Controls.Add(this.comboBoxType);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.button4);
@@ -162,7 +167,7 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(47, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(833, 149);
+            this.groupBox1.Size = new System.Drawing.Size(1074, 149);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtres";
@@ -268,6 +273,7 @@
             this.pictureBoxMat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxMat.TabIndex = 16;
             this.pictureBoxMat.TabStop = false;
+            // 
             // pictureBox
             // 
             this.pictureBox.Location = new System.Drawing.Point(904, 258);
@@ -281,14 +287,35 @@
             // 
             this.listBoxMat.FormattingEnabled = true;
             this.listBoxMat.ItemHeight = 16;
-            this.listBoxMat.Location = new System.Drawing.Point(928, 179);
-            this.listBoxMat.Name = "listBoxMat";
-            this.listBoxMat.Size = new System.Drawing.Size(166, 68);
             this.listBoxMat.Location = new System.Drawing.Point(928, 195);
             this.listBoxMat.Name = "listBoxMat";
             this.listBoxMat.Size = new System.Drawing.Size(166, 52);
             this.listBoxMat.TabIndex = 17;
             this.listBoxMat.SelectedIndexChanged += new System.EventHandler(this.listBoxMat_SelectedIndexChanged);
+            // 
+            // buttonDate
+            // 
+            this.buttonDate.Location = new System.Drawing.Point(908, 102);
+            this.buttonDate.Name = "buttonDate";
+            this.buttonDate.Size = new System.Drawing.Size(98, 35);
+            this.buttonDate.TabIndex = 15;
+            this.buttonDate.Text = "Date";
+            this.buttonDate.UseVisualStyleBackColor = true;
+            this.buttonDate.Click += new System.EventHandler(this.buttonDate_Click);
+            // 
+            // dateFin
+            // 
+            this.dateFin.Location = new System.Drawing.Point(881, 57);
+            this.dateFin.Name = "dateFin";
+            this.dateFin.Size = new System.Drawing.Size(158, 22);
+            this.dateFin.TabIndex = 14;
+            // 
+            // dateDebut
+            // 
+            this.dateDebut.Location = new System.Drawing.Point(881, 16);
+            this.dateDebut.Name = "dateDebut";
+            this.dateDebut.Size = new System.Drawing.Size(158, 22);
+            this.dateDebut.TabIndex = 13;
             // 
             // FormListMat
             // 
@@ -342,5 +369,8 @@
         private System.Windows.Forms.PictureBox pictureBoxMat;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.ListBox listBoxMat;
+        private System.Windows.Forms.Button buttonDate;
+        private System.Windows.Forms.DateTimePicker dateFin;
+        private System.Windows.Forms.DateTimePicker dateDebut;
     }
 }

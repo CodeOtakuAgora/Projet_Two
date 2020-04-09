@@ -252,5 +252,20 @@ namespace fiefdouglou
                 listViewMat.Items.Add(lvi);
             }
         }
+
+        private void buttonDate_Click(object sender, EventArgs e)
+        {
+            DateTime dtdeb = dateDebut.Value;
+            DateTime dtfin = dateFin.Value;
+
+            string strSQL = "SELECT i.materiel_concerne as nom_matos, i.commentaire as com_matos, i.date_intervention " +
+                " as date_com, i.valide as val_com, i.id_site as nom_du_param, t.nom as nom_du_technicien " +
+                " FROM intervention i inner join technicien t on " +
+                " i.id_technicien = t.id_technicien where date_intervention >= '" + dtdeb.ToString("yyyy-dd-MM") +
+               "' and date_intervention <= '" + dtfin.ToString("yyyy-dd-MM") + "'";
+
+            remplirListViewInterv(strSQL);
+
+        }
     }
 }

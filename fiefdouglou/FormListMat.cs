@@ -145,6 +145,10 @@ namespace fiefdouglou
                         site = drSQL["duree"].ToString();
                     if (param == "recherche")
                         site = textBox1.Text;
+                    if (param == "date_filtre")
+                    {
+                        site = dateDebut.Value.ToString("yyyy-dd-MM") + " / " + dateFin.Value.ToString("yyyy-dd-MM");
+                    }
 
                     // on définit notre listView et on la remplit en lui ajoutant tout ce dont on a besoin d'afficher
                     ListViewItem lvi = new ListViewItem();
@@ -303,6 +307,20 @@ namespace fiefdouglou
                 pictureBoxMat.Size = new System.Drawing.Size(150, 150);
             }
             Connection.closeConnection();
+        }
+
+        private void buttonDate_Click(object sender, EventArgs e)
+        {
+            DateTime dtdeb = dateDebut.Value;
+            DateTime dtfin = dateFin.Value;
+
+            string param = "date_filtre";
+            string strSQL = "SELECT m.nom as nom_matos, m.description as desc_matos, m.date_intervention_faite " +
+                " as date_matos, m.mtbf as mtbf_matos FROM materiel m where " +
+               " date_intervention_faite >= '" + dtdeb.ToString("yyyy-dd-MM") +
+               "' and date_intervention_faite <= '" + dtfin.ToString("yyyy-dd-MM") + "'";
+
+            remplirListViewMat(strSQL, param);
         }
     }
 }

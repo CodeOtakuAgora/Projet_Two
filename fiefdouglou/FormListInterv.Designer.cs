@@ -38,6 +38,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonDate = new System.Windows.Forms.Button();
+            this.dateFin = new System.Windows.Forms.DateTimePicker();
+            this.dateDebut = new System.Windows.Forms.DateTimePicker();
             this.comboBoxMat = new System.Windows.Forms.ComboBox();
             this.button7 = new System.Windows.Forms.Button();
             this.comboBoxType = new System.Windows.Forms.ComboBox();
@@ -125,6 +128,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonDate);
+            this.groupBox1.Controls.Add(this.dateFin);
+            this.groupBox1.Controls.Add(this.dateDebut);
             this.groupBox1.Controls.Add(this.comboBoxMat);
             this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.comboBoxType);
@@ -135,10 +141,34 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(64, 23);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(833, 149);
+            this.groupBox1.Size = new System.Drawing.Size(931, 170);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtres";
+            // 
+            // buttonDate
+            // 
+            this.buttonDate.Location = new System.Drawing.Point(739, 113);
+            this.buttonDate.Name = "buttonDate";
+            this.buttonDate.Size = new System.Drawing.Size(98, 35);
+            this.buttonDate.TabIndex = 12;
+            this.buttonDate.Text = "Date";
+            this.buttonDate.UseVisualStyleBackColor = true;
+            this.buttonDate.Click += new System.EventHandler(this.buttonDate_Click);
+            // 
+            // dateFin
+            // 
+            this.dateFin.Location = new System.Drawing.Point(712, 68);
+            this.dateFin.Name = "dateFin";
+            this.dateFin.Size = new System.Drawing.Size(158, 22);
+            this.dateFin.TabIndex = 10;
+            // 
+            // dateDebut
+            // 
+            this.dateDebut.Location = new System.Drawing.Point(712, 27);
+            this.dateDebut.Name = "dateDebut";
+            this.dateDebut.Size = new System.Drawing.Size(158, 22);
+            this.dateDebut.TabIndex = 9;
             // 
             // comboBoxMat
             // 
@@ -236,7 +266,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 495);
+            this.ClientSize = new System.Drawing.Size(1037, 495);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox1);
@@ -274,5 +304,8 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonDate;
+        private System.Windows.Forms.DateTimePicker dateFin;
+        private System.Windows.Forms.DateTimePicker dateDebut;
     }
 }
