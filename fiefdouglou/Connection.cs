@@ -42,7 +42,7 @@ namespace fiefdouglou
          * Étant donné qu’il n’y a aucune variable d’instance, vous accédez aux membres d’une classe statique
          * en utilisant le nom de classe lui-même
         */
-        public static void getConnectionString()
+        public static void GetConnectionString()
         {
             connString = ConfigurationManager.ConnectionStrings["fiefdouglouConnectionString"].ToString();
         }
@@ -56,7 +56,7 @@ namespace fiefdouglou
          * Étant donné qu’il n’y a aucune variable d’instance, vous accédez aux membres d’une classe statique
          * en utilisant le nom de classe lui-même
         */
-        public static SqlDataReader openConnection(string sqlQuery)
+        public static SqlDataReader OpenConnection(string sqlQuery)
         {
             cnSQL = new SqlConnection(connString);
             cnSQL.Open();
@@ -75,7 +75,7 @@ namespace fiefdouglou
          * Étant donné qu’il n’y a aucune variable d’instance, vous accédez aux membres d’une classe statique
          * en utilisant le nom de classe lui-même
         */
-        public static int executeCountQuery(string sqlQuery)
+        public static int ExecuteCountQuery(string sqlQuery)
         {
             cnSQL = new SqlConnection(connString);
             cnSQL.Open();
@@ -93,15 +93,15 @@ namespace fiefdouglou
          * Étant donné qu’il n’y a aucune variable d’instance, vous accédez aux membres d’une classe statique
          * en utilisant le nom de classe lui-même
         */
-        public static SqlDataReader executeProcedure(string procedure)
+        public static SqlDataReader ExecuteProcedure(string procedure)
         {
             cnSQL = new SqlConnection(connString);
             cnSQL.Open();
-            cmSQL = new SqlCommand(procedure, cnSQL);
-
-            cmSQL.CommandType = CommandType.StoredProcedure;
-            drSQL = cmSQL.ExecuteReader();
-            return drSQL;
+            cmSQL = new SqlCommand(procedure, cnSQL)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            return cmSQL.ExecuteReader();
         }
 
         // cette méthode est a apellé dés qu'on sohaite éxécuter une requete autre que SELECT tels que
@@ -114,13 +114,15 @@ namespace fiefdouglou
          * Étant donné qu’il n’y a aucune variable d’instance, vous accédez aux membres d’une classe statique
          * en utilisant le nom de classe lui-même
         */
-        public static void executeQuery(string sqlQuery)
+        public static void ExecuteQuery(string sqlQuery)
         {
             cnSQL = new SqlConnection(connString);
             cnSQL.Open();
             cmSQL = new SqlCommand(sqlQuery, cnSQL);
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.UpdateCommand = new SqlCommand(sqlQuery, cnSQL);
+            SqlDataAdapter adapter = new SqlDataAdapter()
+            {
+                UpdateCommand = new SqlCommand(sqlQuery, cnSQL)
+            };
             adapter.UpdateCommand.ExecuteNonQuery();
         }
 
@@ -132,7 +134,7 @@ namespace fiefdouglou
          * Étant donné qu’il n’y a aucune variable d’instance, vous accédez aux membres d’une classe statique
          * en utilisant le nom de classe lui-même
         */
-        public static void closeConnection()
+        public static void CloseConnection()
         {
             if (drSQL != null)
                 drSQL.Close();
@@ -157,7 +159,7 @@ namespace fiefdouglou
          * aux form déjà ouvertes c'est pourquoi nous devrons alors le définir avec le type new pour instancier 
          * et donc apeller cette méthode pour éviter les doublons de form
         */
-        public bool isAlreadyOpen(System.Type formType)
+        public bool IsAlreadyOpen(System.Type formType)
         {
             foreach (Form f in Application.OpenForms)
             {

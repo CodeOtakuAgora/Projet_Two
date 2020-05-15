@@ -19,84 +19,94 @@ namespace fiefdouglou
             // on charge notre form en initialisant tout ses composants
             InitializeComponent();
             // on récupère les identifiants de connection à la database
-            Connection.getConnectionString();
+            Connection.GetConnectionString();
         }
 
-        private void buttonFermer_Click(object sender, EventArgs e)
+        private void ButtonFermer_Click(object sender, EventArgs e)
         {
             // on propose à l'utiisateur de quitter la FormCrud si il le souhaite
                 Close();
         }
 
-        private void buttonClient_Click(object sender, EventArgs e)
+        private void ButtonClient_Click(object sender, EventArgs e)
         {
             // on charge la FormCrudClient en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormCrudClient));
+            bool isFormOpen = connection.IsAlreadyOpen(typeof(FormCrudClient));
             if (!isFormOpen)
             {
-                FormCrudClient leclient = new FormCrudClient();
-                leclient.StartPosition = FormStartPosition.CenterScreen;
-                leclient.ShowDialog();
+                var leclient = new FormCrudClient()
+                {
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                leclient.Show();
             }
         }
 
-        private void buttonSite_Click(object sender, EventArgs e)
+        private void ButtonSite_Click(object sender, EventArgs e)
         {
             // on charge la FormCrudSite en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormCrudSite));
+            bool isFormOpen = connection.IsAlreadyOpen(typeof(FormCrudSite));
             if (!isFormOpen)
             {
-                FormCrudSite lesite = new FormCrudSite();
-                lesite.StartPosition = FormStartPosition.CenterScreen;
-                lesite.ShowDialog();
+                var lesite = new FormCrudSite()
+                {
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                lesite.Show();
             }
         }
 
-        private void buttonMatos_Click(object sender, EventArgs e)
+        private void ButtonMatos_Click(object sender, EventArgs e)
         {
             // on charge la FormCrudMatos en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormCrudMatos));
+            bool isFormOpen = connection.IsAlreadyOpen(typeof(FormCrudMatos));
             if (!isFormOpen)
             {
-                FormCrudMatos lematos = new FormCrudMatos();
-                lematos.StartPosition = FormStartPosition.CenterScreen;
-                lematos.ShowDialog();
+                var lematos = new FormCrudMatos()
+                {
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                lematos.Show();
             }
 
         }
 
-        private void buttonTech_Click(object sender, EventArgs e)
+        private void ButtonTech_Click(object sender, EventArgs e)
         {
             // on charge la FormCrudTech en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormCrudTech));
+            bool isFormOpen = connection.IsAlreadyOpen(typeof(FormCrudTech));
             if (!isFormOpen)
             {
-                FormCrudTech letech = new FormCrudTech();
-                letech.StartPosition = FormStartPosition.CenterScreen;
-                letech.ShowDialog();
+                var letech = new FormCrudTech()
+                {
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                letech.Show();
             }
 
         }
 
-        private void buttonInterv_Click(object sender, EventArgs e)
+        private void ButtonInterv_Click(object sender, EventArgs e)
         {
             // on charge la FormCrudInterv en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormCrudInterv));
+            bool isFormOpen = connection.IsAlreadyOpen(typeof(FormCrudInterv));
             if (!isFormOpen)
             {
-                FormCrudInterv linterv = new FormCrudInterv();
-                linterv.StartPosition = FormStartPosition.CenterScreen;
-                linterv.ShowDialog();
+                var linterv = new FormCrudInterv()
+                {
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                linterv.Show();
             }
         }
     }

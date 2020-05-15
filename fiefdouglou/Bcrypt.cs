@@ -64,16 +64,20 @@ using System.Text;
 /// 10, and the valid range is 4 to 31.
 /// </para>
 /// </remarks>
-public class BCrypt {
 
-    private const int GENSALT_DEFAULT_LOG2_ROUNDS = 10;
-    private const int BCRYPT_SALT_LEN = 16;
+namespace Bcrypt
+{
+    public class BCrypt
+    {
 
-    // Blowfish parameters.
-    private const int BLOWFISH_NUM_ROUNDS = 16;
+        private const int GENSALT_DEFAULT_LOG2_ROUNDS = 10;
+        private const int BCRYPT_SALT_LEN = 16;
 
-    // Initial contents of key schedule.
-    private static readonly uint[] p_orig = {
+        // Blowfish parameters.
+        private const int BLOWFISH_NUM_ROUNDS = 16;
+
+        // Initial contents of key schedule.
+        private static readonly uint[] p_orig = {
         0x243f6a88, 0x85a308d3, 0x13198a2e, 0x03707344,
         0xa4093822, 0x299f31d0, 0x082efa98, 0xec4e6c89,
         0x452821e6, 0x38d01377, 0xbe5466cf, 0x34e90c6c,
@@ -81,7 +85,7 @@ public class BCrypt {
         0x9216d5d9, 0x8979fb1b
     };
 
-    private static readonly uint[] s_orig = {
+        private static readonly uint[] s_orig = {
         0xd1310ba6, 0x98dfb5ac, 0x2ffd72db, 0xd01adfb7,
         0xb8e1afed, 0x6a267e96, 0xba7c9045, 0xf12c7f99,
         0x24a19947, 0xb3916cf7, 0x0801f2e2, 0x858efc16,
@@ -340,14 +344,14 @@ public class BCrypt {
         0xb74e6132, 0xce77e25b, 0x578fdfe3, 0x3ac372e6
     };
 
-    // bcrypt IV: "OrpheanBeholderScryDoubt".
-    private static readonly uint[] bf_crypt_ciphertext = {
+        // bcrypt IV: "OrpheanBeholderScryDoubt".
+        private static readonly uint[] bf_crypt_ciphertext = {
         0x4f727068, 0x65616e42, 0x65686f6c,
         0x64657253, 0x63727944, 0x6f756274
     };
 
-    // Table for Base64 encoding.
-    private static readonly char[] base64_code = {
+        // Table for Base64 encoding.
+        private static readonly char[] base64_code = {
         '.', '/', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
         'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
         'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
@@ -356,8 +360,8 @@ public class BCrypt {
         '6', '7', '8', '9'
     };
 
-    // Table for Base64 decoding.
-    private static readonly int[] index_64 = {
+        // Table for Base64 decoding.
+        private static readonly int[] index_64 = {
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -373,407 +377,467 @@ public class BCrypt {
         51, 52, 53, -1, -1, -1, -1, -1
     };
 
-    // Expanded Blowfish key.
-    private uint[] p;
-    private uint[] s;
+        // Expanded Blowfish key.
+        private uint[] p;
+        private uint[] s;
 
-    /// <summary>Encode a byte array using bcrypt's slightly-modified
-    /// Base64 encoding scheme. Note that this is _not_ compatible
-    /// with the standard MIME-Base64 encoding.</summary>
-    /// <param name="d">The byte array to encode</param>
-    /// <param name="length">The number of bytes to encode</param>
-    /// <returns>A Base64-encoded string</returns>
-    private static string EncodeBase64(byte[] d, int length) {
+        /// <summary>Encode a byte array using bcrypt's slightly-modified
+        /// Base64 encoding scheme. Note that this is _not_ compatible
+        /// with the standard MIME-Base64 encoding.</summary>
+        /// <param name="d">The byte array to encode</param>
+        /// <param name="length">The number of bytes to encode</param>
+        /// <returns>A Base64-encoded string</returns>
+        private static string EncodeBase64(byte[] d, int length)
+        {
 
-        if (length <= 0 || length > d.Length) {
-            throw new ArgumentOutOfRangeException("length", length, null);
-        }
+            if (length <= 0 || length > d.Length)
+            {
+                throw new ArgumentOutOfRangeException("length", length, null);
+            }
 
-        StringBuilder rs = new StringBuilder(length * 2);
+            StringBuilder rs = new StringBuilder(length * 2);
 
-        for (int offset = 0, c1, c2; offset < length; ) {
-            c1 = d[offset++] & 0xff;
-            rs.Append(base64_code[(c1 >> 2) & 0x3f]);
-            c1 = (c1 & 0x03) << 4;
-            if (offset >= length) {
+            for (int offset = 0, c1, c2; offset < length;)
+            {
+                c1 = d[offset++] & 0xff;
+                rs.Append(base64_code[(c1 >> 2) & 0x3f]);
+                c1 = (c1 & 0x03) << 4;
+                if (offset >= length)
+                {
+                    rs.Append(base64_code[c1 & 0x3f]);
+                    break;
+                }
+                c2 = d[offset++] & 0xff;
+                c1 |= (c2 >> 4) & 0x0f;
                 rs.Append(base64_code[c1 & 0x3f]);
-                break;
-            }
-            c2 = d[offset++] & 0xff;
-            c1 |= (c2 >> 4) & 0x0f;
-            rs.Append(base64_code[c1 & 0x3f]);
-            c1 = (c2 & 0x0f) << 2;
-            if (offset >= length) {
+                c1 = (c2 & 0x0f) << 2;
+                if (offset >= length)
+                {
+                    rs.Append(base64_code[c1 & 0x3f]);
+                    break;
+                }
+                c2 = d[offset++] & 0xff;
+                c1 |= (c2 >> 6) & 0x03;
                 rs.Append(base64_code[c1 & 0x3f]);
-                break;
-            }
-            c2 = d[offset++] & 0xff;
-            c1 |= (c2 >> 6) & 0x03;
-            rs.Append(base64_code[c1 & 0x3f]);
-            rs.Append(base64_code[c2 & 0x3f]);
-        }
-
-        return rs.ToString();
-    }
-
-    /// <summary>Look up the 3 bits base64-encoded by the specified
-    /// character, range-checking against the conversion
-    /// table.</summary>
-    /// <param name="c">The Base64-encoded value</param>
-    /// <returns>The decoded value of <c>x</c></returns>
-    private static int Char64(char c) {
-        int i = (int)c;
-        return (i < 0 || i > index_64.Length) ? -1 : index_64[i];
-    }
-
-    /// <summary>Decode a string encoded using BCrypt's Base64 scheme to a
-    /// byte array. Note that this is _not_ compatible with the standard
-    /// MIME-Base64 encoding.</summary>
-    /// <param name="s">The string to decode</param>
-    /// <param name="maximumLength">The maximum number of bytes to decode</param>
-    /// <returns>An array containing the decoded bytes</returns>
-    private static byte[] DecodeBase64(string s, int maximumLength) {
-
-        List<byte> bytes = new List<byte>(Math.Min(maximumLength, s.Length));
-
-        if (maximumLength <= 0) {
-            throw new ArgumentOutOfRangeException("maximumLength", maximumLength, null);
-        }
-
-        for (int offset = 0, slen = s.Length, length = 0; offset < slen - 1 && length < maximumLength; ) {
-            int c1 = Char64(s[offset++]);
-            int c2 = Char64(s[offset++]);
-            if (c1 == -1 || c2 == -1) {
-                break;
+                rs.Append(base64_code[c2 & 0x3f]);
             }
 
-            bytes.Add((byte)((c1 << 2) | ((c2 & 0x30) >> 4)));
-            if (++length >= maximumLength || offset >= s.Length) {
-                break;
+            return rs.ToString();
+        }
+
+        /// <summary>Look up the 3 bits base64-encoded by the specified
+        /// character, range-checking against the conversion
+        /// table.</summary>
+        /// <param name="c">The Base64-encoded value</param>
+        /// <returns>The decoded value of <c>x</c></returns>
+        private static int Char64(char c)
+        {
+            int i = (int)c;
+            return (i < 0 || i > index_64.Length) ? -1 : index_64[i];
+        }
+
+        /// <summary>Decode a string encoded using BCrypt's Base64 scheme to a
+        /// byte array. Note that this is _not_ compatible with the standard
+        /// MIME-Base64 encoding.</summary>
+        /// <param name="s">The string to decode</param>
+        /// <param name="maximumLength">The maximum number of bytes to decode</param>
+        /// <returns>An array containing the decoded bytes</returns>
+        private static byte[] DecodeBase64(string s, int maximumLength)
+        {
+
+            List<byte> bytes = new List<byte>(Math.Min(maximumLength, s.Length));
+
+            if (maximumLength <= 0)
+            {
+                throw new ArgumentOutOfRangeException("maximumLength", maximumLength, null);
             }
 
-            int c3 = Char64(s[offset++]);
-            if (c3 == -1) {
-                break;
+            for (int offset = 0, slen = s.Length, length = 0; offset < slen - 1 && length < maximumLength;)
+            {
+                int c1 = Char64(s[offset++]);
+                int c2 = Char64(s[offset++]);
+                if (c1 == -1 || c2 == -1)
+                {
+                    break;
+                }
+
+                bytes.Add((byte)((c1 << 2) | ((c2 & 0x30) >> 4)));
+                if (++length >= maximumLength || offset >= s.Length)
+                {
+                    break;
+                }
+
+                int c3 = Char64(s[offset++]);
+                if (c3 == -1)
+                {
+                    break;
+                }
+
+                bytes.Add((byte)(((c2 & 0x0f) << 4) | ((c3 & 0x3c) >> 2)));
+                if (++length >= maximumLength || offset >= s.Length)
+                {
+                    break;
+                }
+
+                int c4 = Char64(s[offset++]);
+                bytes.Add((byte)(((c3 & 0x03) << 6) | c4));
+
+                ++length;
             }
 
-            bytes.Add((byte)(((c2 & 0x0f) << 4) | ((c3 & 0x3c) >> 2)));
-            if (++length >= maximumLength || offset >= s.Length) {
-                break;
+            return bytes.ToArray();
+        }
+
+        /// <summary>
+        /// Blowfish encipher a single 64-bit block encoded as two 32-bit
+        /// halves.
+        /// </summary>
+        /// <param name="block">An array containing the two 32-bit half
+        /// blocks.</param>
+        /// <param name="offset">The position in the array of the
+        /// blocks.</param>
+        private void Encipher(uint[] block, int offset)
+        {
+
+            uint i, n, l = block[offset], r = block[offset + 1];
+
+            l ^= this.p[0];
+            i = 0;
+            while (i <= BLOWFISH_NUM_ROUNDS - 2)
+            {
+                // Feistel substitution on left word
+                n = this.s[(l >> 24) & 0xff];
+                n += this.s[0x100 | ((l >> 16) & 0xff)];
+                n ^= this.s[0x200 | ((l >> 8) & 0xff)];
+                n += this.s[0x300 | (l & 0xff)];
+                r ^= n ^ this.p[++i];
+
+                // Feistel substitution on right word
+                n = this.s[(r >> 24) & 0xff];
+                n += this.s[0x100 | ((r >> 16) & 0xff)];
+                n ^= this.s[0x200 | ((r >> 8) & 0xff)];
+                n += this.s[0x300 | (r & 0xff)];
+                l ^= n ^ this.p[++i];
+            }
+            block[offset] = r ^ this.p[BLOWFISH_NUM_ROUNDS + 1];
+            block[offset + 1] = l;
+        }
+
+        /// <summary>
+        /// Cycically extract a word of key material.
+        /// </summary>
+        /// <param name="data">The string to extract the data
+        /// from.</param>
+        /// <param name="offset">The current offset into data.</param>
+        /// <returns>The next work of material from data.</returns>
+        private static uint StreamToWord(byte[] data, ref int offset)
+        {
+
+            uint word = 0;
+
+            for (int i = 0; i < 4; i++)
+            {
+                word = (word << 8) | data[offset];
+                offset = (offset + 1) % data.Length;
             }
 
-            int c4 = Char64(s[offset++]);
-            bytes.Add((byte)(((c3 & 0x03) << 6) | c4));
-
-            ++length;
+            return word;
         }
 
-        return bytes.ToArray();
-    }
-
-    /// <summary>
-    /// Blowfish encipher a single 64-bit block encoded as two 32-bit
-    /// halves.
-    /// </summary>
-    /// <param name="block">An array containing the two 32-bit half
-    /// blocks.</param>
-    /// <param name="offset">The position in the array of the
-    /// blocks.</param>
-    private void Encipher(uint[] block, int offset) {
-
-        uint i, n, l = block[offset], r = block[offset + 1];
-
-        l ^= this.p[0];
-        for (i = 0; i <= BLOWFISH_NUM_ROUNDS - 2;) {
-            // Feistel substitution on left word
-            n = this.s[(l >> 24) & 0xff];
-            n += this.s[0x100 | ((l >> 16) & 0xff)];
-            n ^= this.s[0x200 | ((l >> 8) & 0xff)];
-            n += this.s[0x300 | (l & 0xff)];
-            r ^= n ^ this.p[++i];
-
-            // Feistel substitution on right word
-            n = this.s[(r >> 24) & 0xff];
-            n += this.s[0x100 | ((r >> 16) & 0xff)];
-            n ^= this.s[0x200 | ((r >> 8) & 0xff)];
-            n += this.s[0x300 | (r & 0xff)];
-            l ^= n ^ this.p[++i];
-        }
-        block[offset] = r ^ this.p[BLOWFISH_NUM_ROUNDS + 1];
-        block[offset + 1] = l;
-    }
-
-    /// <summary>
-    /// Cycically extract a word of key material.
-    /// </summary>
-    /// <param name="data">The string to extract the data
-    /// from.</param>
-    /// <param name="offset">The current offset into data.</param>
-    /// <returns>The next work of material from data.</returns>
-    private static uint StreamToWord(byte[] data, ref int offset) {
-
-        uint word = 0;
-
-        for (int i = 0; i < 4; i++) {
-            word = (word << 8) | data[offset];
-            offset = (offset + 1) % data.Length;
+        /// <summary>
+        /// Initialize the Blowfish key schedule.
+        /// </summary>
+        private void InitKey()
+        {
+            this.p = new uint[p_orig.Length];
+            p_orig.CopyTo(this.p, 0);
+            this.s = new uint[s_orig.Length];
+            s_orig.CopyTo(this.s, 0);
         }
 
-        return word;
-    }
+        /// <summary>
+        /// Key the Blowfish cipher.
+        /// </summary>
+        /// <param name="key">An array containing the key.</param>
+        private void Key(byte[] key)
+        {
 
-    /// <summary>
-    /// Initialize the Blowfish key schedule.
-    /// </summary>
-    private void InitKey() {
-        this.p = new uint[p_orig.Length];
-        p_orig.CopyTo(this.p, 0);
-        this.s = new uint[s_orig.Length];
-        s_orig.CopyTo(this.s, 0);
-    }
+            uint[] lr = { 0, 0 };
+            int plen = this.p.Length, slen = this.s.Length;
 
-    /// <summary>
-    /// Key the Blowfish cipher.
-    /// </summary>
-    /// <param name="key">An array containing the key.</param>
-    private void Key(byte[] key) {
+            int offset = 0;
+            for (int i = 0; i < plen; i++)
+            {
+                this.p[i] = this.p[i] ^ StreamToWord(key, ref offset);
+            }
 
-        uint[] lr = { 0, 0 };
-        int plen = this.p.Length, slen = this.s.Length;
+            for (int i = 0; i < plen; i += 2)
+            {
+                Encipher(lr, 0);
+                this.p[i] = lr[0];
+                this.p[i + 1] = lr[1];
+            }
 
-        int offset = 0;
-        for (int i = 0; i < plen; i++) {
-            this.p[i] = this.p[i] ^ StreamToWord(key, ref offset);
-        }
-
-        for (int i = 0; i < plen; i += 2) {
-            Encipher(lr, 0);
-            this.p[i] = lr[0];
-            this.p[i + 1] = lr[1];
-        }
-
-        for (int i = 0; i < slen; i += 2) {
-            Encipher(lr, 0);
-            this.s[i] = lr[0];
-            this.s[i + 1] = lr[1];
-        }
-    }
-
-    /// <summary>
-    /// Perform the "enhanced key schedule" step described by Provos
-    /// and Mazieres in "A Future-Adaptable Password Scheme"
-    /// (http://www.openbsd.org/papers/bcrypt-paper.ps).
-    /// </summary>
-    /// <param name="data">Salt information.</param>
-    /// <param name="key">Password information.</param>
-    private void EksKey(byte[] data, byte[] key) {
-
-        uint[] lr = { 0, 0 };
-        int plen = this.p.Length, slen = this.s.Length;
-
-        int keyOffset = 0;
-        for (int i = 0; i < plen; i++) {
-            this.p[i] = this.p[i] ^ StreamToWord(key, ref keyOffset);
-        }
-
-        int dataOffset = 0;
-        for (int i = 0; i < plen; i += 2) {
-            lr[0] ^= StreamToWord(data, ref dataOffset);
-            lr[1] ^= StreamToWord(data, ref dataOffset);
-            Encipher(lr, 0);
-            this.p[i] = lr[0];
-            this.p[i + 1] = lr[1];
-        }
-
-        for (int i = 0; i < slen; i += 2) {
-            lr[0] ^= StreamToWord(data, ref dataOffset);
-            lr[1] ^= StreamToWord(data, ref dataOffset);
-            Encipher(lr, 0);
-            this.s[i] = lr[0];
-            this.s[i + 1] = lr[1];
-        }
-    }
-
-    /// <summary>
-    /// Perform the central password hashing step in the bcrypt
-    /// scheme.
-    /// </summary>
-    /// <param name="password">The password to hash.</param>
-    /// <param name="salt">The binary salt to hash with the
-    /// password.</param>
-    /// <param name="logRounds">The binary logarithm of the number of
-    /// rounds of hashing to apply.</param>
-    /// <returns>An array containing the binary hashed password.</returns>
-    private byte[] CryptRaw(byte[] password, byte[] salt, int logRounds) {
-
-        uint[] cdata = new uint[bf_crypt_ciphertext.Length];
-        bf_crypt_ciphertext.CopyTo(cdata, 0);
-
-        int clen = cdata.Length;
-        byte[] ret;
-
-        if (logRounds < 4 || logRounds > 31) {
-            throw new ArgumentOutOfRangeException("logRounds", logRounds, null);
-        }
-
-        int rounds = 1 << logRounds;
-        if (salt.Length != BCRYPT_SALT_LEN) {
-            throw new ArgumentException("Invalid salt length.", "salt");
-        }
-
-        InitKey();
-        EksKey(salt, password);
-
-        for (int i = 0; i < rounds; i++) {
-            Key(password);
-            Key(salt);
-        }
-
-        for (int i = 0; i < 64; i++) {
-            for (int j = 0; j < (clen >> 1); j++) {
-                Encipher(cdata, j << 1);
+            for (int i = 0; i < slen; i += 2)
+            {
+                Encipher(lr, 0);
+                this.s[i] = lr[0];
+                this.s[i + 1] = lr[1];
             }
         }
 
-        ret = new byte[clen * 4];
-        for (int i = 0, j = 0; i < clen; i++) {
-            ret[j++] = (byte)((cdata[i] >> 24) & 0xff);
-            ret[j++] = (byte)((cdata[i] >> 16) & 0xff);
-            ret[j++] = (byte)((cdata[i] >> 8) & 0xff);
-            ret[j++] = (byte)(cdata[i] & 0xff);
-        }
+        /// <summary>
+        /// Perform the "enhanced key schedule" step described by Provos
+        /// and Mazieres in "A Future-Adaptable Password Scheme"
+        /// (http://www.openbsd.org/papers/bcrypt-paper.ps).
+        /// </summary>
+        /// <param name="data">Salt information.</param>
+        /// <param name="key">Password information.</param>
+        private void EksKey(byte[] data, byte[] key)
+        {
 
-        return ret;
-    }
+            uint[] lr = { 0, 0 };
+            int plen = this.p.Length, slen = this.s.Length;
 
-    /// <summary>
-    /// Hash a password using the OpenBSD bcrypt scheme.
-    /// </summary>
-    /// <param name="password">The password to hash.</param>
-    /// <param name="salt">The salt to hash with (perhaps generated
-    /// using <c>BCrypt.GenerateSalt</c>).</param>
-    /// <returns>The hashed password.</returns>
-    /*
-    * A lire svp
-    * cette méthode permet de nous hashé un password à partir d'une chaine de charatère
-    * et d'une clé de hashage qui à été généré grace à la méthode generateSalt
-    * afin d'avoir un pasword hashé qui est sécurisé et dur à cracker
-    */
-    public static string HashPassword(string password, string salt) {
-        if (password == null) {
-            throw new ArgumentNullException("password");
-        }
-        if (salt == null) {
-            throw new ArgumentNullException("salt");
-        }
-
-        char minor = (char)0;
-
-        if (salt[0] != '$' || salt[1] != '2') {
-            throw new ArgumentException("Invalid salt version");
-        }
-
-        int offset;
-        if (salt[1] != '$') {
-            minor = salt[2];
-            if (minor != 'a' || salt[3] != '$') {
-                throw new ArgumentException("Invalid salt revision");
+            int keyOffset = 0;
+            for (int i = 0; i < plen; i++)
+            {
+                this.p[i] = this.p[i] ^ StreamToWord(key, ref keyOffset);
             }
-            offset = 4;
-        } else {
-            offset = 3;
+
+            int dataOffset = 0;
+            for (int i = 0; i < plen; i += 2)
+            {
+                lr[0] ^= StreamToWord(data, ref dataOffset);
+                lr[1] ^= StreamToWord(data, ref dataOffset);
+                Encipher(lr, 0);
+                this.p[i] = lr[0];
+                this.p[i + 1] = lr[1];
+            }
+
+            for (int i = 0; i < slen; i += 2)
+            {
+                lr[0] ^= StreamToWord(data, ref dataOffset);
+                lr[1] ^= StreamToWord(data, ref dataOffset);
+                Encipher(lr, 0);
+                this.s[i] = lr[0];
+                this.s[i + 1] = lr[1];
+            }
         }
 
-        // Extract number of rounds
-        if (salt[offset + 2] > '$') {
-            throw new ArgumentException("Missing salt rounds");
+        /// <summary>
+        /// Perform the central password hashing step in the bcrypt
+        /// scheme.
+        /// </summary>
+        /// <param name="password">The password to hash.</param>
+        /// <param name="salt">The binary salt to hash with the
+        /// password.</param>
+        /// <param name="logRounds">The binary logarithm of the number of
+        /// rounds of hashing to apply.</param>
+        /// <returns>An array containing the binary hashed password.</returns>
+        private byte[] CryptRaw(byte[] password, byte[] salt, int logRounds)
+        {
+
+            uint[] cdata = new uint[bf_crypt_ciphertext.Length];
+            bf_crypt_ciphertext.CopyTo(cdata, 0);
+
+            int clen = cdata.Length;
+            byte[] ret;
+
+            if (logRounds < 4 || logRounds > 31)
+            {
+                throw new ArgumentOutOfRangeException("logRounds", logRounds, null);
+            }
+
+            int rounds = 1 << logRounds;
+            if (salt.Length != BCRYPT_SALT_LEN)
+            {
+                throw new ArgumentException("Invalid salt length.", "salt");
+            }
+
+            InitKey();
+            EksKey(salt, password);
+
+            for (int i = 0; i < rounds; i++)
+            {
+                Key(password);
+                Key(salt);
+            }
+
+            for (int i = 0; i < 64; i++)
+            {
+                for (int j = 0; j < (clen >> 1); j++)
+                {
+                    Encipher(cdata, j << 1);
+                }
+            }
+
+            ret = new byte[clen * 4];
+            for (int i = 0, j = 0; i < clen; i++)
+            {
+                ret[j++] = (byte)((cdata[i] >> 24) & 0xff);
+                ret[j++] = (byte)((cdata[i] >> 16) & 0xff);
+                ret[j++] = (byte)((cdata[i] >> 8) & 0xff);
+                ret[j++] = (byte)(cdata[i] & 0xff);
+            }
+
+            return ret;
         }
 
-        int rounds = Int32.Parse(salt.Substring(offset, 2), NumberFormatInfo.InvariantInfo);
+        /// <summary>
+        /// Hash a password using the OpenBSD bcrypt scheme.
+        /// </summary>
+        /// <param name="password">The password to hash.</param>
+        /// <param name="salt">The salt to hash with (perhaps generated
+        /// using <c>BCrypt.GenerateSalt</c>).</param>
+        /// <returns>The hashed password.</returns>
+        /*
+        * A lire svp
+        * cette méthode permet de nous hashé un password à partir d'une chaine de charatère
+        * et d'une clé de hashage qui à été généré grace à la méthode generateSalt
+        * afin d'avoir un pasword hashé qui est sécurisé et dur à cracker
+        */
+        public static string HashPassword(string password, string salt)
+        {
+            if (password == null)
+            {
+                throw new ArgumentNullException("password");
+            }
+            if (salt == null)
+            {
+                throw new ArgumentNullException("salt");
+            }
 
-        byte[] passwordBytes = Encoding.UTF8.GetBytes(password + (minor >= 'a' ? "\0" : String.Empty));
-        byte[] saltBytes = DecodeBase64(salt.Substring(offset + 3, 22),
-                                        BCRYPT_SALT_LEN);
+            char minor = (char)0;
 
-        BCrypt bcrypt = new BCrypt();
+            if (salt[0] != '$' || salt[1] != '2')
+            {
+                throw new ArgumentException("Invalid salt version");
+            }
 
-        byte[] hashed = bcrypt.CryptRaw(passwordBytes, saltBytes, rounds);
+            int offset;
+            if (salt[1] != '$')
+            {
+                minor = salt[2];
+                if (minor != 'a' || salt[3] != '$')
+                {
+                    throw new ArgumentException("Invalid salt revision");
+                }
+                offset = 4;
+            }
+            else
+            {
+                offset = 3;
+            }
 
-        StringBuilder rs = new StringBuilder();
+            // Extract number of rounds
+            if (salt[offset + 2] > '$')
+            {
+                throw new ArgumentException("Missing salt rounds");
+            }
 
-        rs.Append("$2");
-        if (minor >= 'a') {
-            rs.Append(minor);
+            int rounds = Int32.Parse(salt.Substring(offset, 2), NumberFormatInfo.InvariantInfo);
+
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(password + (minor >= 'a' ? "\0" : String.Empty));
+            byte[] saltBytes = DecodeBase64(salt.Substring(offset + 3, 22),
+                                            BCRYPT_SALT_LEN);
+
+            BCrypt bcrypt = new BCrypt();
+
+            byte[] hashed = bcrypt.CryptRaw(passwordBytes, saltBytes, rounds);
+
+            StringBuilder rs = new StringBuilder();
+
+            rs.Append("$2");
+            if (minor >= 'a')
+            {
+                rs.Append(minor);
+            }
+            rs.Append('$');
+            if (rounds < 10)
+            {
+                rs.Append('0');
+            }
+            rs.Append(rounds);
+            rs.Append('$');
+            rs.Append(EncodeBase64(saltBytes, saltBytes.Length));
+            rs.Append(EncodeBase64(hashed,
+                                   (bf_crypt_ciphertext.Length * 4) - 1));
+
+            return rs.ToString();
         }
-        rs.Append('$');
-        if (rounds < 10) {
-            rs.Append('0');
+
+        /// <summary>
+        /// Generate a salt for use with the BCrypt.HashPassword() method.
+        /// </summary>
+        /// <param name="logRounds">The log2 of the number of rounds of
+        /// hashing to apply. The work factor therefore increases as (2 **
+        /// logRounds).</param>
+        /// <returns>An encoded salt value.</returns>
+        public static string GenerateSalt(int logRounds)
+        {
+
+            byte[] randomBytes = new byte[BCRYPT_SALT_LEN];
+
+            RandomNumberGenerator.Create().GetBytes(randomBytes);
+
+            StringBuilder rs = new StringBuilder((randomBytes.Length * 2) + 8);
+
+            rs.Append("$2a$");
+            if (logRounds < 10)
+            {
+                rs.Append('0');
+            }
+            rs.Append(logRounds);
+            rs.Append('$');
+            rs.Append(EncodeBase64(randomBytes, randomBytes.Length));
+
+            return rs.ToString();
         }
-        rs.Append(rounds);
-        rs.Append('$');
-        rs.Append(EncodeBase64(saltBytes, saltBytes.Length));
-        rs.Append(EncodeBase64(hashed,
-                               (bf_crypt_ciphertext.Length * 4) - 1));
 
-        return rs.ToString();
-    }
-
-    /// <summary>
-    /// Generate a salt for use with the BCrypt.HashPassword() method.
-    /// </summary>
-    /// <param name="logRounds">The log2 of the number of rounds of
-    /// hashing to apply. The work factor therefore increases as (2 **
-    /// logRounds).</param>
-    /// <returns>An encoded salt value.</returns>
-    public static string GenerateSalt(int logRounds) {
-
-        byte[] randomBytes = new byte[BCRYPT_SALT_LEN];
-
-        RandomNumberGenerator.Create().GetBytes(randomBytes);
-
-        StringBuilder rs = new StringBuilder((randomBytes.Length * 2) + 8);
-
-        rs.Append("$2a$");
-        if (logRounds < 10) {
-            rs.Append('0');
+        /// <summary>
+        /// Generate a salt for use with the <c>BCrypt.HashPassword()</c>
+        /// method, selecting a reasonable default for the number of hashing
+        /// rounds to apply.
+        /// </summary>
+        /// <returns>An encoded salt value.</returns>
+        /*
+        * A lire svp
+        * cette méthode permet de nous générer une clé de hashage que l'on devra préciser
+        * pour hasher notre password
+        */
+        public static string GenerateSalt()
+        {
+            return GenerateSalt(GENSALT_DEFAULT_LOG2_ROUNDS);
         }
-        rs.Append(logRounds);
-        rs.Append('$');
-        rs.Append(EncodeBase64(randomBytes, randomBytes.Length));
 
-        return rs.ToString();
-    }
+        /// <summary>
+        /// Check that a plaintext password matches a previously hashed
+        /// one.
+        /// </summary>
+        /// <param name="plaintext">The plaintext password to verify.</param>
+        /// <param name="hashed">The previously hashed password.</param>
+        /// <returns><c>true</c> if the passwords, <c>false</c>
+        /// otherwise.</returns>
+        /*
+        * A lire svp
+        * cette méthode permet de vérifier si le password qui à été saise correspond avec le
+        * hash qui à été définit généralement depuis la database
+        */
+        public static bool CheckPassword(string plaintext, string hashed)
+        {
+            return StringComparer.Ordinal.Compare(hashed, HashPassword(plaintext, hashed)) == 0;
+        }
 
-    /// <summary>
-    /// Generate a salt for use with the <c>BCrypt.HashPassword()</c>
-    /// method, selecting a reasonable default for the number of hashing
-    /// rounds to apply.
-    /// </summary>
-    /// <returns>An encoded salt value.</returns>
-    /*
-    * A lire svp
-    * cette méthode permet de nous générer une clé de hashage que l'on devra préciser
-    * pour hasher notre password
-    */
-    public static string GenerateSalt() {
-        return GenerateSalt(GENSALT_DEFAULT_LOG2_ROUNDS);
-    }
-
-    /// <summary>
-    /// Check that a plaintext password matches a previously hashed
-    /// one.
-    /// </summary>
-    /// <param name="plaintext">The plaintext password to verify.</param>
-    /// <param name="hashed">The previously hashed password.</param>
-    /// <returns><c>true</c> if the passwords, <c>false</c>
-    /// otherwise.</returns>
-    /*
-    * A lire svp
-    * cette méthode permet de vérifier si le password qui à été saise correspond avec le
-    * hash qui à été définit généralement depuis la database
-    */
-    public static bool CheckPassword(string plaintext, string hashed) {
-        return StringComparer.Ordinal.Compare(hashed, HashPassword(plaintext, hashed)) == 0;
+        /*
+         * petit astuce de code qui permet de générer un mot de passe hashé à rentré dans la database à partir
+         * d'une chaine de charactère rentré et d'une clé de hashage définit 
+         * en gros disons que GenerateSalt permet de nous générer la clé de hashage et ensuite on associe
+         * cette valeur retourné ainsi que la valeur definit dans la méthode hashPassword qui s'occupe alors de hashé 
+         * le password en vérifiant si le hash est bien securisé et nous renvoie une exception si ce n'est pas le cas
+         * En gros on apelle la méthode GenerateSalt on stocke le res ensuite on apelle HashPassword en lui passant le res
+         * ainsi que le texte que l'on souhaite hashé et on affiche le résultat retourné par la méthode 
+        */
     }
 
 }

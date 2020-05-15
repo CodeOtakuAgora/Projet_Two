@@ -94,7 +94,7 @@
             this.buttonOK.TabIndex = 4;
             this.buttonOK.Text = "Fermer";
             this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            this.buttonOK.Click += new System.EventHandler(this.ButtonOK_Click);
             // 
             // label2
             // 
@@ -115,7 +115,7 @@
             this.buttonValider.TabIndex = 3;
             this.buttonValider.Text = "Valider";
             this.buttonValider.UseVisualStyleBackColor = true;
-            this.buttonValider.Click += new System.EventHandler(this.buttonValider_Click);
+            this.buttonValider.Click += new System.EventHandler(this.ButtonValider_Click);
             // 
             // listViewInterv
             // 
@@ -148,7 +148,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "FormUpdateInterv";
             this.Text = "FormUpdateInterv";
-            this.Load += new System.EventHandler(this.formUpdateInterv_Load);
+            this.Load += new System.EventHandler(this.FormUpdateInterv_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

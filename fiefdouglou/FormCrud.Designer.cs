@@ -47,7 +47,7 @@
             this.buttonFermer.TabIndex = 6;
             this.buttonFermer.Text = "Fermer";
             this.buttonFermer.UseVisualStyleBackColor = true;
-            this.buttonFermer.Click += new System.EventHandler(this.buttonFermer_Click);
+            this.buttonFermer.Click += new System.EventHandler(this.ButtonFermer_Click);
             // 
             // buttonClient
             // 
@@ -58,7 +58,7 @@
             this.buttonClient.TabIndex = 2;
             this.buttonClient.Text = "Client ...";
             this.buttonClient.UseVisualStyleBackColor = true;
-            this.buttonClient.Click += new System.EventHandler(this.buttonClient_Click);
+            this.buttonClient.Click += new System.EventHandler(this.ButtonClient_Click);
             // 
             // buttonSite
             // 
@@ -69,7 +69,7 @@
             this.buttonSite.TabIndex = 1;
             this.buttonSite.Text = "Site ...";
             this.buttonSite.UseVisualStyleBackColor = true;
-            this.buttonSite.Click += new System.EventHandler(this.buttonSite_Click);
+            this.buttonSite.Click += new System.EventHandler(this.ButtonSite_Click);
             // 
             // buttonMatos
             // 
@@ -80,7 +80,7 @@
             this.buttonMatos.TabIndex = 3;
             this.buttonMatos.Text = "Matos ...";
             this.buttonMatos.UseVisualStyleBackColor = true;
-            this.buttonMatos.Click += new System.EventHandler(this.buttonMatos_Click);
+            this.buttonMatos.Click += new System.EventHandler(this.ButtonMatos_Click);
             // 
             // buttonTech
             // 
@@ -91,7 +91,7 @@
             this.buttonTech.TabIndex = 4;
             this.buttonTech.Text = "Tech ...";
             this.buttonTech.UseVisualStyleBackColor = true;
-            this.buttonTech.Click += new System.EventHandler(this.buttonTech_Click);
+            this.buttonTech.Click += new System.EventHandler(this.ButtonTech_Click);
             // 
             // buttonInterv
             // 
@@ -102,7 +102,7 @@
             this.buttonInterv.TabIndex = 5;
             this.buttonInterv.Text = "Interv ...";
             this.buttonInterv.UseVisualStyleBackColor = true;
-            this.buttonInterv.Click += new System.EventHandler(this.buttonInterv_Click);
+            this.buttonInterv.Click += new System.EventHandler(this.ButtonInterv_Click);
             // 
             // groupBoxCrud
             // 

@@ -115,28 +115,28 @@
             this.siteToolStripMenuItem.Name = "siteToolStripMenuItem";
             this.siteToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
             this.siteToolStripMenuItem.Text = "Ajouter Intervention...";
-            this.siteToolStripMenuItem.Click += new System.EventHandler(this.siteToolStripMenuItem_Click);
+            this.siteToolStripMenuItem.Click += new System.EventHandler(this.SiteToolStripMenuItem_Click);
             // 
             // clientToolStripMenuItem1
             // 
             this.clientToolStripMenuItem1.Name = "clientToolStripMenuItem1";
             this.clientToolStripMenuItem1.Size = new System.Drawing.Size(252, 26);
             this.clientToolStripMenuItem1.Text = "Consulter interventions...";
-            this.clientToolStripMenuItem1.Click += new System.EventHandler(this.clientToolStripMenuItem1_Click);
+            this.clientToolStripMenuItem1.Click += new System.EventHandler(this.ClientToolStripMenuItem1_Click);
             // 
             // matérielToolStripMenuItem1
             // 
             this.matérielToolStripMenuItem1.Name = "matérielToolStripMenuItem1";
             this.matérielToolStripMenuItem1.Size = new System.Drawing.Size(252, 26);
             this.matérielToolStripMenuItem1.Text = "Consulter les matériels";
-            this.matérielToolStripMenuItem1.Click += new System.EventHandler(this.matérielToolStripMenuItem1_Click);
+            this.matérielToolStripMenuItem1.Click += new System.EventHandler(this.MatérielToolStripMenuItem1_Click);
             // 
             // consulterLesOpérationsToolStripMenuItem
             // 
             this.consulterLesOpérationsToolStripMenuItem.Name = "consulterLesOpérationsToolStripMenuItem";
             this.consulterLesOpérationsToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
             this.consulterLesOpérationsToolStripMenuItem.Text = "Consulter les opérations";
-            this.consulterLesOpérationsToolStripMenuItem.Click += new System.EventHandler(this.consulterLesOpérationsToolStripMenuItem_Click);
+            this.consulterLesOpérationsToolStripMenuItem.Click += new System.EventHandler(this.ConsulterLesOpérationsToolStripMenuItem_Click);
             // 
             // crudToolStripMenuItem
             // 
@@ -151,7 +151,7 @@
             this.gestionToolStripMenuItem.Name = "gestionToolStripMenuItem";
             this.gestionToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
             this.gestionToolStripMenuItem.Text = "Gestion";
-            this.gestionToolStripMenuItem.Click += new System.EventHandler(this.gestionToolStripMenuItem_Click);
+            this.gestionToolStripMenuItem.Click += new System.EventHandler(this.GestionToolStripMenuItem_Click);
             // 
             // buttonAddInterv
             // 
@@ -161,7 +161,7 @@
             this.buttonAddInterv.TabIndex = 1;
             this.buttonAddInterv.Text = "Ajouter une Intervention";
             this.buttonAddInterv.UseVisualStyleBackColor = true;
-            this.buttonAddInterv.Click += new System.EventHandler(this.buttonAddInterv_Click);
+            this.buttonAddInterv.Click += new System.EventHandler(this.ButtonAddInterv_Click);
             // 
             // button2
             // 
@@ -171,7 +171,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Consulter les Interventions";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
             // 
@@ -181,7 +181,7 @@
             this.button3.TabIndex = 4;
             this.button3.Text = "Consulter les opérations";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // button4
             // 
@@ -191,7 +191,7 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "Consulter les matériels";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // listBoxMat
             // 

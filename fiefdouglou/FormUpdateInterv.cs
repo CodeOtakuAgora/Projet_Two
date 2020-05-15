@@ -20,16 +20,14 @@ namespace fiefdouglou
             // on charge notre form en initialisant tout ses composants
             InitializeComponent();
             // on récupère les identifiants de connection à la database
-            Connection.getConnectionString();
+            Connection.GetConnectionString();
         }
 
-        private void formUpdateInterv_Load(object sender, System.EventArgs e)
+        private void FormUpdateInterv_Load(object sender, System.EventArgs e)
         {
             // on commence par vider notre listView juste au cas où
             listViewInterv.Items.Clear();
 
-            SqlDataReader drSQL = null;
-            string strSQL = "";
             int i = 0;
             string site = "";
             DateTime dt = DateTime.Now;
@@ -46,10 +44,10 @@ namespace fiefdouglou
                 * site et pour chaque matériel trouvé regarder si il appartient au site définit
 
                 */
-                strSQL = "SELECT i.id_intervention as id_matos, i.materiel_concerne as nom_matos, i.commentaire " +
+                string strSQL = "SELECT i.id_intervention as id_matos, i.materiel_concerne as nom_matos, i.commentaire " +
                     " as com_matos, i.date_intervention as date_com, i.valide as val_com" +
                     " FROM intervention i ORDER BY valide";
-                drSQL = Connection.openConnection(strSQL);
+                SqlDataReader drSQL = Connection.OpenConnection(strSQL);
 
                 // une fois notre éxécuté on va boucler dessus afin de remplir notre listViwe 
                 // de tout ce que nous a retourné notre requete
@@ -98,18 +96,18 @@ namespace fiefdouglou
             // une fois que le bout de code a fini son éxécution on ferme toute nos connections à la database
             finally
             {
-                Connection.closeConnection();
+                Connection.CloseConnection();
             }
         }
 
-        private void buttonOK_Click(object sender, System.EventArgs e)
+        private void ButtonOK_Click(object sender, System.EventArgs e)
         {
             Close();
         }
 
-        private void buttonValider_Click(object sender, EventArgs e)
+        private void ButtonValider_Click(object sender, EventArgs e)
         {
-            Connection.getConnectionString();
+            Connection.GetConnectionString();
             string strSQLInterv;
             bool validate = false;
 
@@ -127,7 +125,7 @@ namespace fiefdouglou
                     if (dr == DialogResult.Yes)
                     {
                         strSQLInterv = string.Format("UPDATE intervention SET valide = 1 WHERE id_intervention = {0}", text[0]);
-                        Connection.executeQuery(strSQLInterv);
+                        Connection.ExecuteQuery(strSQLInterv);
                         validate = true;
                     }
                 }
@@ -151,18 +149,20 @@ namespace fiefdouglou
             // une fois que le bout de code a fini son éxécution on ferme toute nos connections à la database
             finally
             {
-                Connection.closeConnection();
+                Connection.CloseConnection();
                 if (validate)
                 {
                     this.Close();
                     // on charge la FormUpdateInterv en vérifiant si elle est pas déjà ouverte 
                     // afin d'éviter d'ouvrir un doublon
                     Connection connection = new Connection();
-                    bool isFormOpen = connection.isAlreadyOpen(typeof(FormUpdateInterv));
+                    bool isFormOpen = connection.IsAlreadyOpen(typeof(FormUpdateInterv));
                     if (!isFormOpen)
                     {
-                        FormUpdateInterv formInterv = new FormUpdateInterv();
-                        formInterv.StartPosition = FormStartPosition.CenterScreen;
+                        var formInterv = new FormUpdateInterv()
+                        {
+                            StartPosition = FormStartPosition.CenterScreen
+                        };
                         formInterv.Show();
                     }
                 }

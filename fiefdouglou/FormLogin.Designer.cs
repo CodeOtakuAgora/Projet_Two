@@ -64,7 +64,7 @@
             this.buttonValidate.TabIndex = 3;
             this.buttonValidate.Text = "Valider";
             this.buttonValidate.UseVisualStyleBackColor = true;
-            this.buttonValidate.Click += new System.EventHandler(this.buttonValidate_Click);
+            this.buttonValidate.Click += new System.EventHandler(this.ButtonValidate_Click);
             // 
             // labelLogin
             // 
@@ -107,7 +107,7 @@
             this.buttonUndo.TabIndex = 4;
             this.buttonUndo.Text = "Annuler";
             this.buttonUndo.UseVisualStyleBackColor = true;
-            this.buttonUndo.Click += new System.EventHandler(this.buttonUndo_Click);
+            this.buttonUndo.Click += new System.EventHandler(this.ButtonUndo_Click);
             // 
             // FormLogin
             // 

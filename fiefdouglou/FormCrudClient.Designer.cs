@@ -60,7 +60,7 @@
             this.listBoxClient.Name = "listBoxClient";
             this.listBoxClient.Size = new System.Drawing.Size(179, 308);
             this.listBoxClient.TabIndex = 0;
-            this.listBoxClient.SelectedIndexChanged += new System.EventHandler(this.listBoxClient_SelectedIndexChanged);
+            this.listBoxClient.SelectedIndexChanged += new System.EventHandler(this.ListBoxClient_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -81,7 +81,7 @@
             this.buttonOK.TabIndex = 6;
             this.buttonOK.Text = "Fermer";
             this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            this.buttonOK.Click += new System.EventHandler(this.ButtonOK_Click);
             // 
             // groupBox1
             // 
@@ -211,7 +211,7 @@
             this.buttonAjouterClient.TabIndex = 1;
             this.buttonAjouterClient.Text = "Ajouter";
             this.buttonAjouterClient.UseVisualStyleBackColor = true;
-            this.buttonAjouterClient.Click += new System.EventHandler(this.buttonAjouterClient_Click);
+            this.buttonAjouterClient.Click += new System.EventHandler(this.ButtonAjouterClient_Click);
             // 
             // buttonValider
             // 
@@ -222,7 +222,7 @@
             this.buttonValider.TabIndex = 5;
             this.buttonValider.Text = "Valider";
             this.buttonValider.UseVisualStyleBackColor = true;
-            this.buttonValider.Click += new System.EventHandler(this.buttonValider_Click);
+            this.buttonValider.Click += new System.EventHandler(this.ButtonValider_Click);
             // 
             // buttonSupprimerClient
             // 
@@ -233,7 +233,7 @@
             this.buttonSupprimerClient.TabIndex = 3;
             this.buttonSupprimerClient.Text = "Supprimer";
             this.buttonSupprimerClient.UseVisualStyleBackColor = true;
-            this.buttonSupprimerClient.Click += new System.EventHandler(this.buttonSupprimerClient_Click);
+            this.buttonSupprimerClient.Click += new System.EventHandler(this.ButtonSupprimerClient_Click);
             // 
             // buttonModifierClient
             // 
@@ -244,7 +244,7 @@
             this.buttonModifierClient.TabIndex = 2;
             this.buttonModifierClient.Text = "Modifier";
             this.buttonModifierClient.UseVisualStyleBackColor = true;
-            this.buttonModifierClient.Click += new System.EventHandler(this.buttonModifierClient_Click);
+            this.buttonModifierClient.Click += new System.EventHandler(this.ButtonModifierClient_Click);
             // 
             // buttonAnnuler
             // 
@@ -255,7 +255,7 @@
             this.buttonAnnuler.TabIndex = 4;
             this.buttonAnnuler.Text = "Annuler";
             this.buttonAnnuler.UseVisualStyleBackColor = true;
-            this.buttonAnnuler.Click += new System.EventHandler(this.buttonAnnuler_Click);
+            this.buttonAnnuler.Click += new System.EventHandler(this.ButtonAnnuler_Click);
             // 
             // FormCrudClient
             // 

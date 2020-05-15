@@ -124,7 +124,7 @@
             this.buttonOK.TabIndex = 13;
             this.buttonOK.Text = "Fermer";
             this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            this.buttonOK.Click += new System.EventHandler(this.ButtonOK_Click);
             // 
             // groupBox1
             // 
@@ -154,7 +154,7 @@
             this.buttonDate.TabIndex = 12;
             this.buttonDate.Text = "Date";
             this.buttonDate.UseVisualStyleBackColor = true;
-            this.buttonDate.Click += new System.EventHandler(this.buttonDate_Click);
+            this.buttonDate.Click += new System.EventHandler(this.ButtonDate_Click);
             // 
             // dateFin
             // 
@@ -186,7 +186,7 @@
             this.button7.TabIndex = 6;
             this.button7.Text = "Matériel";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
             // comboBoxType
             // 
@@ -204,7 +204,7 @@
             this.button6.TabIndex = 8;
             this.button6.Text = "Type";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // comboBoxClient
             // 
@@ -222,7 +222,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "Client";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // comboBoxSite
             // 
@@ -240,7 +240,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Site";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.Button1_Click_1);
             // 
             // button3
             // 
@@ -250,7 +250,7 @@
             this.button3.TabIndex = 11;
             this.button3.Text = "Anicennes Inteventions";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // button4
             // 
@@ -260,7 +260,7 @@
             this.button4.TabIndex = 12;
             this.button4.Text = "Prochaines Interventions";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // FormListInterv
             // 

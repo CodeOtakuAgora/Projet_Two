@@ -21,17 +21,17 @@ namespace fiefdouglou
             InitializeComponent();
         }
 
-        private void siteToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void SiteToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             // on charge la FormCrudInterv en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
-            buttonAddInterv_Click(sender, e);
+            ButtonAddInterv_Click(sender, e);
         }
 
         private void EpiredMmaterial()
         {
             // on récupère les identifiants de connection à la database
-            Connection.getConnectionString();
+            Connection.GetConnectionString();
 
             // on définit un compteur afin que lorsque que l'on va surligner une intervention (rouge, vert)
             // pour fficher de manière graphique si elle est validé ou pas, on a alors beosin d'un compteur qui commence à 0
@@ -39,7 +39,7 @@ namespace fiefdouglou
             int i = 0;
             // on récupère notre procédure stockée qui permet de récupérer tout les matériel périmés dont la date de 
             // leur prochaines intervention - mtbf (exprimé en nombre de jour) est inférieur à la date actuelle
-            SqlDataReader md = Connection.executeProcedure("MatosPerimer");
+            SqlDataReader md = Connection.ExecuteProcedure("MatosPerimer");
 
             // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
             // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
@@ -63,7 +63,7 @@ namespace fiefdouglou
             formLogin.ShowDialog();
 
             // on récupère les identifiants de connection à la database
-            Connection.getConnectionString();
+            Connection.GetConnectionString();
 
             try
             {
@@ -82,7 +82,7 @@ namespace fiefdouglou
                 // qui se lance tout les jour à une heure précise afin d'éxécuter le logiciel automatiquement
                 string test = string.Format("SELECT COUNT(*) FROM Materiel WHERE DATEADD(DAY, -mtbf, date_intervention_faite) " +
                     " <= '{0}'", toto.ToString());
-                int res = Connection.executeCountQuery(test);
+                int res = Connection.ExecuteCountQuery(test);
                 // si le résultat retourné par le requete est 0 donc il n'a rien trouvé 
                 // alors aucun matétriel défectueux n'a été trouvé
                 if (res == 0)
@@ -115,99 +115,109 @@ namespace fiefdouglou
             // une fois que les bout de code a fini son éxécution on ferme toute nos connections à la database
             finally
             {
-                Connection.closeConnection();
+                Connection.CloseConnection();
             }
         }
 
-        private void gestionToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void GestionToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             // on charge la FormCrud en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormCrud));
+            bool isFormOpen = connection.IsAlreadyOpen(typeof(FormCrud));
             if (!isFormOpen)
             {
-                FormCrud formgm = new FormCrud();
-                formgm.StartPosition = FormStartPosition.CenterScreen;
+                var formgm = new FormCrud()
+                {
+                    StartPosition = FormStartPosition.CenterScreen
+                };
                 formgm.Show();
             }
         }
 
-        private void buttonAddInterv_Click(object sender, EventArgs e)
+        private void ButtonAddInterv_Click(object sender, EventArgs e)
         {
             // on charge la FormCrudInterv en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormCrudInterv));
+            bool isFormOpen = connection.IsAlreadyOpen(typeof(FormCrudInterv));
             if (!isFormOpen)
             {
-                FormCrudInterv formInterv = new FormCrudInterv();
-                formInterv.StartPosition = FormStartPosition.CenterScreen;
+                var formInterv = new FormCrudInterv()
+                {
+                    StartPosition = FormStartPosition.CenterScreen
+                };
                 formInterv.Show();
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             // on charge la FormListInterv en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormListInterv));
+            bool isFormOpen = connection.IsAlreadyOpen(typeof(FormListInterv));
             if (!isFormOpen)
             {
-                FormListInterv formInterv = new FormListInterv();
-                formInterv.StartPosition = FormStartPosition.CenterScreen;
+                var formInterv = new FormListInterv()
+                {
+                    StartPosition = FormStartPosition.CenterScreen
+                };
                 formInterv.Show();
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
             // on charge la FormListMat en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormListMat));
+            bool isFormOpen = connection.IsAlreadyOpen(typeof(FormListMat));
             if (!isFormOpen)
             {
-                FormListMat formMat = new FormListMat();
-                formMat.StartPosition = FormStartPosition.CenterScreen;
+                var formMat = new FormListMat()
+                {
+                    StartPosition = FormStartPosition.CenterScreen
+                };
                 formMat.Show();
             }
         }
 
-        private void clientToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ClientToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             // on charge la FormListInterv en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
-            button2_Click(sender, e);
+            Button2_Click(sender, e);
         }
 
-        private void matérielToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void MatérielToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             // on charge la FormListMat en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
-            button4_Click(sender, e);
+            Button4_Click(sender, e);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             // on charge la FormUpdateInterv en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
             Connection connection = new Connection();
-            bool isFormOpen = connection.isAlreadyOpen(typeof(FormUpdateInterv));
+            bool isFormOpen = connection.IsAlreadyOpen(typeof(FormUpdateInterv));
             if (!isFormOpen)
             {
-                FormUpdateInterv formMat = new FormUpdateInterv();
-                formMat.StartPosition = FormStartPosition.CenterScreen;
+                var formMat = new FormUpdateInterv()
+                {
+                    StartPosition = FormStartPosition.CenterScreen
+                };
                 formMat.Show();
             }
         }
 
-        private void consulterLesOpérationsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ConsulterLesOpérationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // on charge la FormUpdateInterv en vérifiant si elle est pas déjà ouverte 
             // afin d'éviter d'ouvrir un doublon
-            button3_Click(sender, e);
+            Button3_Click(sender, e);
         }
     }
 }

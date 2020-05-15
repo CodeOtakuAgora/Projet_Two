@@ -53,7 +53,7 @@
             this.buttonAnnulerSite.TabIndex = 4;
             this.buttonAnnulerSite.Text = "Annuler";
             this.buttonAnnulerSite.UseVisualStyleBackColor = true;
-            this.buttonAnnulerSite.Click += new System.EventHandler(this.buttonAnnulerSite_Click);
+            this.buttonAnnulerSite.Click += new System.EventHandler(this.ButtonAnnulerSite_Click);
             // 
             // buttonModifierSite
             // 
@@ -64,7 +64,7 @@
             this.buttonModifierSite.TabIndex = 2;
             this.buttonModifierSite.Text = "Modifier";
             this.buttonModifierSite.UseVisualStyleBackColor = true;
-            this.buttonModifierSite.Click += new System.EventHandler(this.buttonModifierSite_Click);
+            this.buttonModifierSite.Click += new System.EventHandler(this.ButtonModifierSite_Click);
             // 
             // buttonSupprimerSite
             // 
@@ -75,7 +75,7 @@
             this.buttonSupprimerSite.TabIndex = 3;
             this.buttonSupprimerSite.Text = "Supprimer";
             this.buttonSupprimerSite.UseVisualStyleBackColor = true;
-            this.buttonSupprimerSite.Click += new System.EventHandler(this.buttonSupprimerSite_Click);
+            this.buttonSupprimerSite.Click += new System.EventHandler(this.ButtonSupprimerSite_Click);
             // 
             // buttonValiderSite
             // 
@@ -86,7 +86,7 @@
             this.buttonValiderSite.TabIndex = 5;
             this.buttonValiderSite.Text = "Valider";
             this.buttonValiderSite.UseVisualStyleBackColor = true;
-            this.buttonValiderSite.Click += new System.EventHandler(this.buttonValiderSite_Click);
+            this.buttonValiderSite.Click += new System.EventHandler(this.ButtonValiderSite_Click);
             // 
             // buttonAjouterSite
             // 
@@ -97,7 +97,7 @@
             this.buttonAjouterSite.TabIndex = 1;
             this.buttonAjouterSite.Text = "Ajouter";
             this.buttonAjouterSite.UseVisualStyleBackColor = true;
-            this.buttonAjouterSite.Click += new System.EventHandler(this.buttonAjouterSite_Click);
+            this.buttonAjouterSite.Click += new System.EventHandler(this.ButtonAjouterSite_Click);
             // 
             // groupBox1
             // 
@@ -155,7 +155,7 @@
             this.buttonOK.TabIndex = 6;
             this.buttonOK.Text = "Fermer";
             this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            this.buttonOK.Click += new System.EventHandler(this.ButtonOK_Click);
             // 
             // label1
             // 
@@ -174,7 +174,7 @@
             this.listBoxTech.Name = "listBoxTech";
             this.listBoxTech.Size = new System.Drawing.Size(159, 308);
             this.listBoxTech.TabIndex = 0;
-            this.listBoxTech.SelectedIndexChanged += new System.EventHandler(this.listBoxSite_SelectedIndexChanged);
+            this.listBoxTech.SelectedIndexChanged += new System.EventHandler(this.ListBoxSite_SelectedIndexChanged);
             // 
             // FormCrudTech
             // 

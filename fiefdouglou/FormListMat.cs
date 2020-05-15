@@ -21,20 +21,16 @@ namespace fiefdouglou
             // on charge notre form en initialisant tout ses composants
             InitializeComponent();
             // on récupère les identifiants de connection à la database
-            Connection.getConnectionString();
+            Connection.GetConnectionString();
         }
 
         private void FormListMat_Load(object sender, EventArgs e)
         {
             // au chargement de la form on remplit nos comboBox de tout nos sites
-            // notre comboBox de tout les nom de nos sites de la database
-            SqlDataReader drSQLsmc = null;
-            string strSQLsmc = "";
-
-            strSQLsmc = "SELECT m.type AS filtre_par_type, c.nom AS filtre_par_client, s.nom AS filtre_par_site," +
+            string strSQLsmc = "SELECT m.type AS filtre_par_type, c.nom AS filtre_par_client, s.nom AS filtre_par_site," +
                 " m.picture AS picture FROM materiel m INNER JOIN client c ON c.id_client = m.id_client INNER JOIN site s " +
                 " ON s.id_site = m.id_site; ";
-            drSQLsmc = Connection.openConnection(strSQLsmc);
+            SqlDataReader drSQLsmc = Connection.OpenConnection(strSQLsmc);
 
             while (drSQLsmc.Read())
             {
@@ -45,21 +41,21 @@ namespace fiefdouglou
                 if (!comboBoxType.Items.Contains("informatique"))
                     comboBoxType.Items.Add(drSQLsmc["filtre_par_type"].ToString());
             }
-            Connection.closeConnection();
+            Connection.CloseConnection();
 
-            button7_Click(sender, e);
+            Button7_Click(sender, e);
 
             string sqlNoQuery = "SELECT * FROM materiel";
-            SqlDataReader drNoSQL = Connection.openConnection(sqlNoQuery);
+            SqlDataReader drNoSQL = Connection.OpenConnection(sqlNoQuery);
 
             while (drNoSQL.Read())
             {
                 listBoxMat.Items.Add(drNoSQL["nom"].ToString());
             }
-            Connection.closeConnection();
+            Connection.CloseConnection();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             // on récupère ce qui à été définit dans nos comboBox
             string sitechoisi = comboBoxSite.SelectedItem.ToString();
@@ -69,15 +65,15 @@ namespace fiefdouglou
             string query = "SELECT m.nom as nom_matos, m.description as desc_matos, " +
                 " m.date_intervention_faite as date_matos, m.mtbf as mtbf_matos, s.nom as nom_du_param " +
                 " FROM materiel m inner join site s on m.id_site = s.id_site " + strfilter;
-            remplirListViewMat(query, param);
+            RemplirListViewMat(query, param);
         }
 
-        private void buttonOK_Click(object sender, EventArgs e)
+        private void ButtonOK_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             // on récupère ce qui à été définit dans nos comboBox
             string clientchoisi = comboBoxClient.SelectedItem.ToString();
@@ -87,26 +83,24 @@ namespace fiefdouglou
             string query = "SELECT m.nom as nom_matos, m.description as desc_matos, m.date_intervention_faite " +
                     " as date_matos, m.mtbf as mtbf_matos, c.nom as nom_du_param FROM materiel m inner join client c " +
                     " on m.id_client = c.id_client " + strfilter;
-            remplirListViewMat(query, param);
+            RemplirListViewMat(query, param);
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void Button6_Click(object sender, EventArgs e)
         {
             string param = "type";
             string clientchoisi = comboBoxType.SelectedItem.ToString();
             string query = "SELECT m.type as type_matos, m.nom as nom_matos, m.description as desc_matos," +
                 " m.date_intervention_faite as date_matos, m.mtbf as mtbf_matos FROM materiel m " +
                 " WHERE type = '" + clientchoisi + "'";
-            remplirListViewMat(query, param);
+            RemplirListViewMat(query, param);
         }
 
-        private void remplirListViewMat(string sqlQuery, string param)
+        private void RemplirListViewMat(string sqlQuery, string param)
         {
             // on commence par vider notre listView juste au cas où
             listViewMat.Items.Clear();
 
-            SqlDataReader drSQL = null;
-            string strSQL = "";
             int i = 0;
 
             try
@@ -122,8 +116,8 @@ namespace fiefdouglou
                 * site et pour chaque matériel trouvé regarder si il appartient au site définit
 
                 */
-                strSQL = sqlQuery;
-                drSQL = Connection.openConnection(strSQL);
+                string strSQL = sqlQuery;
+                SqlDataReader drSQL = Connection.OpenConnection(strSQL);
                 string site = "";
                 int j = 1;
 
@@ -151,8 +145,10 @@ namespace fiefdouglou
                     }
 
                     // on définit notre listView et on la remplit en lui ajoutant tout ce dont on a besoin d'afficher
-                    ListViewItem lvi = new ListViewItem();
-                    lvi.Text = nom;
+                    var lvi = new ListViewItem()
+                    {
+                        Text = nom
+                    };
                     lvi.SubItems.Add(NoSerie);
                     lvi.SubItems.Add(DateInstallation);
                     lvi.SubItems.Add(mtbf);
@@ -183,40 +179,40 @@ namespace fiefdouglou
             // une fois que le bout de code a fini son éxécution on ferme toute nos connections à la database
             finally
             {
-                Connection.closeConnection();
+                Connection.CloseConnection();
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Button5_Click(object sender, EventArgs e)
         {
             string param = "date";
             string query = "SELECT m.nom as nom_matos, m.description as desc_matos, m.date_intervention_faite " +
                     " as date_matos, m.mtbf as mtbf_matos FROM materiel m ORDER BY date_intervention_faite";
-            remplirListViewMat(query, param);
+            RemplirListViewMat(query, param);
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
             string param = "duree";
             string query = "SELECT m.nom as nom_matos, m.description as desc_matos, m.date_intervention_faite " +
                     " as date_matos, m.mtbf as mtbf_matos, " +
                     " -DATEDIFF(DAY, date_intervention_faite, GETDATE()) AS duree FROM materiel m " +
                 " WHERE DATEADD(DAY, mtbf, date_intervention_faite) >= GETDATE() ORDER BY duree";
-            remplirListViewMat(query, param);
+            RemplirListViewMat(query, param);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             string param = "recherche";
             string query = string.Format("SELECT m.nom as nom_matos, m.description as desc_matos, m.date_intervention_faite " +
                 " as date_matos, m.mtbf as mtbf_matos FROM materiel m WHERE m.nom LIKE '%{0}%'", textBox1.Text);
-            remplirListViewMat(query, param);
+            RemplirListViewMat(query, param);
 
             // on va vérifier si lintervention existe comme ca on pourra gérer si l'utilisateur rentre n'importe quoi
             // dans la barre de recherche on pourra alors lui afficher une message d'erreur
             string queryCount = string.Format("SELECT COUNT(*) FROM intervention WHERE materiel_concerne LIKE '%{0}%' " +
                 " AND id_intervention > 2", textBox1.Text);
-            int res = Connection.executeCountQuery(queryCount);
+            int res = Connection.ExecuteCountQuery(queryCount);
 
             // si aucune intervention n'a été trouvé dans le recherche qui à été saisie on affiche un message d'erreur
             if (res == 0)
@@ -225,14 +221,14 @@ namespace fiefdouglou
             }
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void Button8_Click(object sender, EventArgs e)
         {
             // on commence par vider notre listView juste au cas où
             listViewMat.Items.Clear();
 
             // on récupère notre procédure stockée qui permet de récupérer tout les matériel périmés dont la date de 
             // leur prochaines intervention - mtbf (exprimé en nombre de jour) est inférieur à la date actuelle
-            SqlDataReader md = Connection.executeProcedure("MatosPerimer");
+            SqlDataReader md = Connection.ExecuteProcedure("MatosPerimer");
 
             // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
             // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
@@ -247,8 +243,10 @@ namespace fiefdouglou
                 string site = md["type"].ToString();
 
                 // on définit notre listView et on la remplit en lui ajoutant tout ce dont on a besoin d'afficher
-                ListViewItem lvi = new ListViewItem();
-                lvi.Text = nom;
+                var lvi = new ListViewItem()
+                {
+                    Text = nom
+                };
                 lvi.SubItems.Add(NoSerie);
                 lvi.SubItems.Add(DateInstallation);
                 lvi.SubItems.Add(mtbf);
@@ -258,14 +256,14 @@ namespace fiefdouglou
             }
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void Button7_Click(object sender, EventArgs e)
         {
             // on commence par vider notre listView juste au cas où
             listViewMat.Items.Clear();
 
             // on récupère notre procédure stockée qui permet de récupérer tout les matériel périmés dont la date de 
             // leur prochaines intervention - mtbf (exprimé en nombre de jour) est inférieur à la date actuelle
-            SqlDataReader md = Connection.executeProcedure("MatosFonctionnel");
+            SqlDataReader md = Connection.ExecuteProcedure("MatosFonctionnel");
 
             // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
             // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
@@ -281,8 +279,10 @@ namespace fiefdouglou
                 string toto = md["picture"].ToString();
 
                 // on définit notre listView et on la remplit en lui ajoutant tout ce dont on a besoin d'afficher
-                ListViewItem lvi = new ListViewItem();
-                lvi.Text = nom;
+                var lvi = new ListViewItem()
+                {
+                    Text = nom
+                };
                 lvi.SubItems.Add(NoSerie);
                 lvi.SubItems.Add(DateInstallation);
                 lvi.SubItems.Add(mtbf);
@@ -292,24 +292,23 @@ namespace fiefdouglou
                 listViewMat.Items.Add(lvi);
             }
         }
-        private void listBoxMat_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListBoxMat_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string destpath = "";
             string matos = listBoxMat.SelectedItems[0].ToString();
             string sqlQuery = "SELECT * FROM materiel WHERE nom = '" + matos + "'";
 
-            SqlDataReader drSQL = Connection.openConnection(sqlQuery);
+            SqlDataReader drSQL = Connection.OpenConnection(sqlQuery);
 
             while (drSQL.Read())
             {
-                destpath = Directory.GetCurrentDirectory() + @"\img\" + drSQL["picture"].ToString();
+                string destpath = Directory.GetCurrentDirectory() + @"\img\" + drSQL["picture"].ToString();
                 pictureBoxMat.Image = Image.FromFile(destpath);
                 pictureBoxMat.Size = new System.Drawing.Size(150, 150);
             }
-            Connection.closeConnection();
+            Connection.CloseConnection();
         }
 
-        private void buttonDate_Click(object sender, EventArgs e)
+        private void ButtonDate_Click(object sender, EventArgs e)
         {
             DateTime dtdeb = dateDebut.Value;
             DateTime dtfin = dateFin.Value;
@@ -320,7 +319,7 @@ namespace fiefdouglou
                " date_intervention_faite >= '" + dtdeb.ToString("yyyy-dd-MM") +
                "' and date_intervention_faite <= '" + dtfin.ToString("yyyy-dd-MM") + "'";
 
-            remplirListViewMat(strSQL, param);
+            RemplirListViewMat(strSQL, param);
         }
     }
 }

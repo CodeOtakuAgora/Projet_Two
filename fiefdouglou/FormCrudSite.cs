@@ -22,10 +22,10 @@ namespace fiefdouglou
             // on charge notre form en initialisant tout ses composants
             InitializeComponent();
             // on récupère les identifiants de connection à la database
-            Connection.getConnectionString();
+            Connection.GetConnectionString();
         }
 
-        private void buttonOK_Click(object sender, EventArgs e)
+        private void ButtonOK_Click(object sender, EventArgs e)
         {
             // on propose à l'utiisateur de quitter la FormCrudSite si il le souhaite
             Close();
@@ -34,22 +34,21 @@ namespace fiefdouglou
         private void FormCrudSite_Load(object sender, EventArgs e)
         {
             // au chargement de notre form, on apelle la méthode chargeSite pour tout initialiser 
-            chargeSite();
+            ChargeSite();
         }
 
         // on initialise notre form en définissant tout ce qui a besoin d'etre définit au chargement de la form
-        private void chargeSite()
+        private void ChargeSite()
         {
             // on commence par vider notre listbox au chargement juste au cas où
             listBoxSite.Items.Clear();
-            SqlDataReader drSQLClient = null;
-            string strSQLClient = "";
+
             try
             {
                 // on récupère tout nos site depuis la databse et on remplit notre listbox avec tout ce que notre requete 
                 // nous a retourné comme donnée
-                strSQLClient = "SELECT * FROM site";
-                drSQLClient = Connection.openConnection(strSQLClient);
+                string strSQLClient = "SELECT * FROM site";
+                SqlDataReader drSQLClient = Connection.OpenConnection(strSQLClient);
                 // on remplit notre listbox juste du nom du site ce qui nous permettra par la suite de pouvoir cibler un éléments 
                 // de la listbox en nous basant juste de son nom ce qui sera plus simple et parlant plutot que d'utiliser son id 
                 while (drSQLClient.Read())
@@ -57,7 +56,7 @@ namespace fiefdouglou
                     listBoxSite.Items.Add(drSQLClient["nom"].ToString());
                 }
                 // une fois la requete executé, on ferme tout nos connection à la database que l'on a définit
-                Connection.closeConnection();
+                Connection.CloseConnection();
             }
             // si une requete sql qui n'a pas fonctionné dans le bout de code qu'on essaye d'éxécuté 
             // alors on attrape l'exception et on affiche l'erreur
@@ -69,7 +68,7 @@ namespace fiefdouglou
             // une fois que le bout de code a fini son éxécution on ferme toute nos connections à la database
             finally
             {
-                Connection.closeConnection();
+                Connection.CloseConnection();
             }
             // puis on rend les textbox grisée (non selectionnable)
             EnableSite(false);
@@ -96,15 +95,12 @@ namespace fiefdouglou
             buttonAnnulerSite.Enabled = b;
         }
 
-        private void listBoxSite_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListBoxSite_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlDataReader drSQLClient = null;
-            string strSQLClient = "";
-
             // une fois qu'un éléments de notre listbox à été clické et donc définit en sql on précise dans notre requete les informations précise 
             // que l'on souhaite récupéreré et afficher depuis la database
-            strSQLClient = "SELECT * FROM site where nom = '" + listBoxSite.SelectedItem.ToString() + "'";
-            drSQLClient = Connection.openConnection(strSQLClient);
+            string strSQLClient = "SELECT * FROM site where nom = '" + listBoxSite.SelectedItem.ToString() + "'";
+            SqlDataReader drSQLClient = Connection.OpenConnection(strSQLClient);
 
             // puis on boucle sur le site selectionné et on remplit nos textbox 
             drSQLClient.Read();
@@ -116,10 +112,10 @@ namespace fiefdouglou
             comboBoxIdInterv.Items.Add(drSQLClient["id_intervention"].ToString());
 
             // et on ferme toute les connections à la database
-            Connection.closeConnection();
+            Connection.CloseConnection();
         }
 
-        private void buttonSupprimerSite_Click(object sender, EventArgs e)
+        private void ButtonSupprimerSite_Click(object sender, EventArgs e)
         {
             // si aucun élément de la listbox n'a été selectionné il faut empecher l'utilisateur de pouvoir agir sur la database
             // c'est pourquoi on lui retourne une erreur si il click sur ajouter ou modifier alors qu'aucun éléments n'a été selectionné 
@@ -134,14 +130,13 @@ namespace fiefdouglou
             // on récupère le nom du site selectionné
             string sternom = textBoxNomSite.Text;
 
-            string strSQLClient = "";
             // on définit notre requete de supression en filtrant sur son nom et on l'éxécute
-            strSQLClient = "delete from site where nom = '" + sternom + "'";
-            Connection.executeQuery(strSQLClient);
+            string strSQLClient = "delete from site where nom = '" + sternom + "'";
+            Connection.ExecuteQuery(strSQLClient);
 
             // puis une fois la requete executé, on apelle la méthode chargeSite pour tout réinitialiser 
             // et recharger notre form automatiquement avec les modifcation que l'on iven de saisir 
-            chargeSite();
+            ChargeSite();
             // on vide tout ce qui est contenu dans tout nos éléments visuels (textbox, listbox...)
             EffaceInformationsSite();
         }
@@ -155,7 +150,7 @@ namespace fiefdouglou
             comboBoxIdInterv.Items.Clear();
         }
 
-        private void buttonAnnulerSite_Click(object sender, EventArgs e)
+        private void ButtonAnnulerSite_Click(object sender, EventArgs e)
         {
             // on vide tout ce qui est contenu dans tout nos éléments visuels (textbox, listbox...)
             EffaceInformationsSite();
@@ -165,18 +160,15 @@ namespace fiefdouglou
             mode = "";
         }
 
-        private void buttonAjouterSite_Click(object sender, EventArgs e)
+        private void ButtonAjouterSite_Click(object sender, EventArgs e)
         {
             // on vide tout ce qui est contenu dans tout nos éléments visuels (textbox, listbox...)
             EffaceInformationsSite();
 
-            SqlDataReader drSQLClient = null;
-            string strSQLClient = "";
-
             // une fois qu'un éléments de notre listbox à été clické et donc définit en sql on précise dans notre requete les informations précise 
             // que l'on souhaite récupéreré et afficher depuis la database
-            strSQLClient = "SELECT * FROM site";
-            drSQLClient = Connection.openConnection(strSQLClient);
+            string strSQLClient = "SELECT * FROM site";
+            SqlDataReader drSQLClient = Connection.OpenConnection(strSQLClient);
 
             // puis on boucle sur le site selectionné et on remplit nos textbox 
             while (drSQLClient.Read())
@@ -185,7 +177,7 @@ namespace fiefdouglou
             }
 
             // et on ferme toute les connection à la database
-            Connection.closeConnection();
+            Connection.CloseConnection();
 
             // on rend toute nos textbox enable donc clickable (non grisée)
             EnableSite(true);
@@ -194,7 +186,7 @@ namespace fiefdouglou
             mode = "Ajouter";
         }
 
-        private void buttonModifierSite_Click(object sender, EventArgs e)
+        private void ButtonModifierSite_Click(object sender, EventArgs e)
         {
 
             // si aucun élément de la listbox n'a été selectionné il faut empecher l'utilisateur de pouvoir agir sur la database
@@ -214,7 +206,7 @@ namespace fiefdouglou
             mode = "Modifier";
         }
 
-        private void buttonValiderSite_Click(object sender, EventArgs e)
+        private void ButtonValiderSite_Click(object sender, EventArgs e)
         {
             // on récupère dans des variables tout ce qui à été saisie dans les textbox
             string strSQL = "";
@@ -245,7 +237,7 @@ namespace fiefdouglou
                 // on récupère l'id du site car pour mettre à jour nos informations nous devons nous baser l'id de l'éléments
                 int idsite;
                 string sql2 = "select * from site  where nom = '" + listBoxSite.SelectedItem.ToString() + "'";
-                SqlDataReader drSQLInterv = Connection.openConnection(sql2);
+                SqlDataReader drSQLInterv = Connection.OpenConnection(sql2);
                 drSQLInterv.Read();
                 idsite = Convert.ToInt32(drSQLInterv["id_site"]);
                 drSQLInterv.Close();
@@ -253,18 +245,13 @@ namespace fiefdouglou
                 // on définit ensuite notre requete de modifcation en filtrant pour modifier uniquement l'élément selectionné
                 strSQL = string.Format("UPDATE site SET id_intervention = {0}, nom = '{1}', adresse = '{2}', code_postal = '{3}', ville = '{4}' where id_site = {5}", strinterv, sternom, stradr, strpst, strvle, idsite);
             }
-            // si un mode différent à été définit on la gère en retournant une exception
-            else
-            {
-                throw new Exception("Mode invalide");
-            }
             // on éxécute notre requete sql
-            Connection.executeQuery(strSQL);
+            Connection.ExecuteQuery(strSQL);
             // et on ferme toute nos connection à la database
-            Connection.closeConnection();
+            Connection.CloseConnection();
             // puis une fois la requete executé, on apelle la méthode chargeSite pour tout réinitialiser 
             // et recharger notre form automatiquement avec les modifcation que l'on iven de saisir 
-            chargeSite();
+            ChargeSite();
             // et on vide tout ce qui est contenu dans tout nos éléments visuels (textbox, listbox...)
             EffaceInformationsSite();
         }

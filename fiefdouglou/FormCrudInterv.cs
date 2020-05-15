@@ -22,7 +22,7 @@ namespace fiefdouglou
             // on charge notre form en initialisant tout ses composants
             InitializeComponent();
             // on récupère les identifiants de connection à la database
-            Connection.getConnectionString();
+            Connection.GetConnectionString();
         }
 
         private void ButtonOK_Click(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace fiefdouglou
                 // on récupère tout nos clients depuis la databse et on remplit notre listbox avec tout ce que notre 
                 // requete nous a retourné comme donnée
                 string strSQLClient = "SELECT * FROM intervention";
-                SqlDataReader drSQLClient = Connection.openConnection(strSQLClient);
+                SqlDataReader drSQLClient = Connection.OpenConnection(strSQLClient);
 
                 // une fois la requete executé, on ferme tout nos connection à la database que l'on a définit
                 while (drSQLClient.Read())
@@ -74,7 +74,7 @@ namespace fiefdouglou
             // une fois que le bout de code a fini son éxécution on ferme toute nos connections à la database
             finally
             {
-                Connection.closeConnection();
+                Connection.CloseConnection();
             }
 
             // puis on rend les textbox grisée (non selectionnable)
@@ -110,7 +110,7 @@ namespace fiefdouglou
             // une fois qu'un éléments de notre listbox à été clické et donc définit en sql on précise dans notre requete 
             // les informations précise que l'on souhaite récupéreré et afficher depuis la database
             string strSQLClient = "SELECT * FROM intervention WHERE materiel_concerne = '" + strNomCLient + "'";
-            SqlDataReader drSQLClient = Connection.openConnection(strSQLClient);
+            SqlDataReader drSQLClient = Connection.OpenConnection(strSQLClient);
 
             // puis on boucle sur le site selectionné et on remplit nos textbox 
             while (drSQLClient.Read())
@@ -141,7 +141,7 @@ namespace fiefdouglou
                 " as id_du_technicien FROM intervention i inner join site s on s.id_site = i.id_site inner join " +
                     " client c on c.id_client = i.id_client inner join materiel m on m.nom = i.materiel_concerne" +
                     " inner join technicien t on t.id_intervention = i.id_intervention";
-            SqlDataReader drSQLClient = Connection.openConnection(strSQLClient);
+            SqlDataReader drSQLClient = Connection.OpenConnection(strSQLClient);
 
             // puis on boucle sur le site selectionné et on remplit nos textbox 
             while (drSQLClient.Read())
@@ -206,7 +206,7 @@ namespace fiefdouglou
                 // on récupère l'id du client car pour mettre à jour nos informations nous devons nous baser l'id de l'éléments
                 int idclient;
                 string sql2 = "select * from intervention  where materiel_concerne = '" + listBoxInterv.SelectedItem.ToString() + "'";
-                SqlDataReader drSQLInterv = Connection.openConnection(sql2);
+                SqlDataReader drSQLInterv = Connection.OpenConnection(sql2);
                 drSQLInterv.Read();
                 idclient = Convert.ToInt32(drSQLInterv["id_intervention"]);
                 drSQLInterv.Close();
@@ -218,9 +218,9 @@ namespace fiefdouglou
             }
 
             // on éxécute notre requete sql
-            Connection.executeQuery(strSQL);
+            Connection.ExecuteQuery(strSQL);
             // et on ferme toute nos connection à la database
-            Connection.closeConnection();
+            Connection.CloseConnection();
             // puis une fois la requete executé, on apelle la méthode chargeSite pour tout réinitialiser 
             // et recharger notre form automatiquement avec les modifcation que l'on iven de saisir 
             ChargeClient();
@@ -241,7 +241,7 @@ namespace fiefdouglou
 
             // on récupère l'id du client car pour mettre à jour nos informations nous devons nous baser l'id de l'éléments
             string sql2 = "select * from intervention  where materiel_concerne = '" + listBoxInterv.SelectedItem.ToString() + "'";
-            SqlDataReader drSQLInterv = Connection.openConnection(sql2);
+            SqlDataReader drSQLInterv = Connection.OpenConnection(sql2);
             drSQLInterv.Read();
             int idinterv = Convert.ToInt32(drSQLInterv["id_intervention"]);
             drSQLInterv.Close();
@@ -249,7 +249,7 @@ namespace fiefdouglou
             // on définit notre requete de supression en filtrant sur son nom et on l'éxécute
             string strSQLClient = "delete from intervention where id_intervention = " + idinterv;
             MessageBox.Show(strSQLClient.ToString());
-            Connection.openConnection(strSQLClient);
+            Connection.OpenConnection(strSQLClient);
 
             ChargeClient();
 

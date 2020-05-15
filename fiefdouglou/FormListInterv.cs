@@ -20,20 +20,18 @@ namespace fiefdouglou
             // on charge notre form en initialisant tout ses composants
             InitializeComponent();
             // on récupère les identifiants de connection à la database
-            Connection.getConnectionString();
+            Connection.GetConnectionString();
         }
 
         private void FormListInterv_Load(object sender, EventArgs e)
         {
             // au chargement de la form on remplit nos comboBox de tout nos sites
             // notre comboBox de tout les nom de nos sites de la database
-            SqlDataReader drSQLSite = null;
-            string strSQLSite = "";
 
-            strSQLSite = "SELECT m.type AS filtre_par_type, c.nom AS filtre_par_client, s.nom AS filtre_par_site, " +
+            string strSQLSite = "SELECT m.type AS filtre_par_type, c.nom AS filtre_par_client, s.nom AS filtre_par_site, " +
                 " m.nom as filtre_par_nom FROM materiel m INNER JOIN client c ON c.id_client = m.id_client " +
                 " INNER JOIN site s ON s.id_site = m.id_site";
-            drSQLSite = Connection.openConnection(strSQLSite);
+            SqlDataReader drSQLSite = Connection.OpenConnection(strSQLSite);
 
             while (drSQLSite.Read())
             {
@@ -45,17 +43,17 @@ namespace fiefdouglou
                 if (!comboBoxType.Items.Contains("informatique"))
                     comboBoxType.Items.Add(drSQLSite["filtre_par_type"].ToString());
             }
-            Connection.closeConnection();
+            Connection.CloseConnection();
 
-            button4_Click(sender, e);
+            Button4_Click(sender, e);
         }
 
-        private void buttonOK_Click(object sender, EventArgs e)
+        private void ButtonOK_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void Button1_Click_1(object sender, EventArgs e)
         {
             // on récupère ce qui à été définit dans nos comboBox
             string sitechoisi = comboBoxSite.SelectedItem.ToString();
@@ -65,17 +63,15 @@ namespace fiefdouglou
                 " as date_com, i.valide as val_com, t.nom as nom_du_technicien, s.nom as nom_du_param FROM intervention i" +
                 " inner join site s on i.id_site = s.id_site inner join technicien t on " +
                 " i.id_technicien = t.id_technicien " + strfilter;
-            remplirListViewInterv(query);
+            RemplirListViewInterv(query);
 
         }
 
-        private void remplirListViewInterv(string sqlQuery)
+        private void RemplirListViewInterv(string sqlQuery)
         {
             // on commence par vider notre listView juste au cas où
             listViewMat.Items.Clear();
 
-            SqlDataReader drSQL = null;
-            string strSQL = "";
             int i = 0;
 
             try
@@ -91,8 +87,8 @@ namespace fiefdouglou
                 * site et pour chaque matériel trouvé regarder si il appartient au site définit
 
                 */
-                strSQL = sqlQuery;
-                drSQL = Connection.openConnection(strSQL);
+                string strSQL = sqlQuery;
+                SqlDataReader drSQL = Connection.OpenConnection(strSQL);
 
                 // une fois notre éxécuté on va boucler dessus afin de remplir notre listViwe 
                 // de tout ce que nous a retourné notre requete
@@ -107,8 +103,10 @@ namespace fiefdouglou
 
 
                     // on définit notre listView et on la remplit en lui ajoutant tout ce dont on a besoin d'afficher
-                    ListViewItem lvi = new ListViewItem();
-                    lvi.Text = nom;
+                    var lvi = new ListViewItem()
+                    {
+                        Text = nom
+                    };
                     lvi.SubItems.Add(NoSerie);
                     lvi.SubItems.Add(DateInstallation);
                     lvi.SubItems.Add(mtbf);
@@ -139,11 +137,11 @@ namespace fiefdouglou
             // une fois que le bout de code a fini son éxécution on ferme toute nos connections à la database
             finally
             {
-                Connection.closeConnection();
+                Connection.CloseConnection();
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             // on récupère ce qui à été définit dans nos comboBox
             string clientchoisi = comboBoxClient.SelectedItem.ToString();
@@ -153,10 +151,10 @@ namespace fiefdouglou
                 " as date_com, i.valide as val_com, t.nom as nom_du_technicien, c.nom as nom_du_param FROM intervention i" +
                 " inner join client c on i.id_client = c.id_client inner join technicien t on " +
                 " i.id_technicien = t.id_technicien " + strfilter;
-            remplirListViewInterv(query);
+            RemplirListViewInterv(query);
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void Button7_Click(object sender, EventArgs e)
         {
             // on récupère ce qui à été définit dans nos comboBox
             string matchoisi = comboBoxMat.SelectedItem.ToString();
@@ -166,10 +164,10 @@ namespace fiefdouglou
                 " as date_com, i.valide as val_com, t.nom as nom_du_technicien, s.nom as nom_du_param FROM intervention i" +
                 " inner join site s on i.id_site = s.id_site inner join technicien t on " +
                 " i.id_technicien = t.id_technicien " + strfilter;
-            remplirListViewInterv(query);
+            RemplirListViewInterv(query);
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void Button6_Click(object sender, EventArgs e)
         {
             // on récupère ce qui à été définit dans nos comboBox
             string typechoisi = comboBoxType.SelectedItem.ToString();
@@ -180,17 +178,17 @@ namespace fiefdouglou
                 " as nom_du_param FROM intervention i inner join site s on i.id_site = s.id_site inner join " +
                 " technicien t on i.id_technicien = t.id_technicien inner join materiel m " +
                 " on m.nom = i.materiel_concerne " + strfilter;
-            remplirListViewInterv(query);
+            RemplirListViewInterv(query);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             // on commence par vider notre listView juste au cas où
             listViewMat.Items.Clear();
 
             // on récupère notre procédure stockée qui permet de récupérer tout les matériel périmés dont la date de 
             // leur prochaines intervention - mtbf (exprimé en nombre de jour) est inférieur à la date actuelle
-            SqlDataReader md = Connection.executeProcedure("PrevIntervention");
+            SqlDataReader md = Connection.ExecuteProcedure("PrevIntervention");
 
             // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
             // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
@@ -206,8 +204,10 @@ namespace fiefdouglou
                 string site = md["id_site"].ToString();
 
                 // on définit notre listView et on la remplit en lui ajoutant tout ce dont on a besoin d'afficher
-                ListViewItem lvi = new ListViewItem();
-                lvi.Text = nom;
+                var lvi = new ListViewItem()
+                {
+                    Text = nom
+                };
                 lvi.SubItems.Add(NoSerie);
                 lvi.SubItems.Add(DateInstallation);
                 lvi.SubItems.Add(mtbf);
@@ -218,14 +218,14 @@ namespace fiefdouglou
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
             // on commence par vider notre listView juste au cas où
             listViewMat.Items.Clear();
 
             // on récupère notre procédure stockée qui permet de récupérer tout les matériel périmés dont la date de 
             // leur prochaines intervention - mtbf (exprimé en nombre de jour) est inférieur à la date actuelle
-            SqlDataReader md = Connection.executeProcedure("NextIntervention");
+            SqlDataReader md = Connection.ExecuteProcedure("NextIntervention");
 
             // on boucle sur les valeurs dans la database et on les remplit une par une dans la listview
             // en précisant uniquement les colonnes de la database que l'on souhaite afficher dans la listview
@@ -241,8 +241,10 @@ namespace fiefdouglou
                 string site = md["id_site"].ToString();
 
                 // on définit notre listView et on la remplit en lui ajoutant tout ce dont on a besoin d'afficher
-                ListViewItem lvi = new ListViewItem();
-                lvi.Text = nom;
+                var lvi = new ListViewItem()
+                {
+                    Text = nom
+                };
                 lvi.SubItems.Add(NoSerie);
                 lvi.SubItems.Add(DateInstallation);
                 lvi.SubItems.Add(mtbf);
@@ -253,7 +255,7 @@ namespace fiefdouglou
             }
         }
 
-        private void buttonDate_Click(object sender, EventArgs e)
+        private void ButtonDate_Click(object sender, EventArgs e)
         {
             DateTime dtdeb = dateDebut.Value;
             DateTime dtfin = dateFin.Value;
@@ -264,7 +266,7 @@ namespace fiefdouglou
                 " i.id_technicien = t.id_technicien where date_intervention >= '" + dtdeb.ToString("yyyy-dd-MM") +
                "' and date_intervention <= '" + dtfin.ToString("yyyy-dd-MM") + "'";
 
-            remplirListViewInterv(strSQL);
+            RemplirListViewInterv(strSQL);
 
         }
     }

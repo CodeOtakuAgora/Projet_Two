@@ -87,7 +87,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Site";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // listViewMat
             // 
@@ -148,7 +148,7 @@
             this.buttonOK.TabIndex = 15;
             this.buttonOK.Text = "Fermer";
             this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            this.buttonOK.Click += new System.EventHandler(this.ButtonOK_Click);
             // 
             // groupBox1
             // 
@@ -195,7 +195,7 @@
             this.button4.TabIndex = 10;
             this.button4.Text = "MTBF";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // button5
             // 
@@ -205,7 +205,7 @@
             this.button5.TabIndex = 9;
             this.button5.Text = "Intervention";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // button6
             // 
@@ -215,7 +215,7 @@
             this.button6.TabIndex = 6;
             this.button6.Text = "Type";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // button3
             // 
@@ -225,7 +225,7 @@
             this.button3.TabIndex = 8;
             this.button3.Text = "Materiel";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // comboBoxClient
             // 
@@ -243,7 +243,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "Client";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button7
             // 
@@ -253,7 +253,7 @@
             this.button7.TabIndex = 14;
             this.button7.Text = "Matériels Fonctionnels";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
             // button8
             // 
@@ -263,7 +263,7 @@
             this.button8.TabIndex = 13;
             this.button8.Text = "Matériels Périmés";
             this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.button8.Click += new System.EventHandler(this.Button8_Click);
             // 
             // pictureBoxMat
             // 
@@ -291,7 +291,7 @@
             this.listBoxMat.Name = "listBoxMat";
             this.listBoxMat.Size = new System.Drawing.Size(166, 52);
             this.listBoxMat.TabIndex = 17;
-            this.listBoxMat.SelectedIndexChanged += new System.EventHandler(this.listBoxMat_SelectedIndexChanged);
+            this.listBoxMat.SelectedIndexChanged += new System.EventHandler(this.ListBoxMat_SelectedIndexChanged);
             // 
             // buttonDate
             // 
@@ -301,7 +301,7 @@
             this.buttonDate.TabIndex = 15;
             this.buttonDate.Text = "Date";
             this.buttonDate.UseVisualStyleBackColor = true;
-            this.buttonDate.Click += new System.EventHandler(this.buttonDate_Click);
+            this.buttonDate.Click += new System.EventHandler(this.ButtonDate_Click);
             // 
             // dateFin
             // 
