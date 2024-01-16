@@ -3,14 +3,6 @@
 
 ## ***Développé par Hugo Fief / Thomas Oussoultzoglou / Victor Pandourangane***
 
-```
-! TODO : ! 
-
-- Faire toute les docs du ppe2 qu'il faudra fournir lors de l'épreuve e4
-- Faire la refonte de l'UX du ppe 
-
-```
-
 --- 
 
 ## ! Informations de connection pour l'admin !
